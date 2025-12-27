@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import botPhone from "@/assets/bot-phone.png";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -54,9 +55,9 @@ const BookDemoSection = () => {
   if (isSubmitted) {
     return (
       <section id="book-demo" className="section-dark py-24 relative overflow-hidden">
-        {/* Background watermark */}
-        <div className="absolute left-10 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none">
-          <div className="text-[300px]">🤖</div>
+        {/* Background bot watermark */}
+        <div className="absolute left-0 bottom-0 opacity-10 pointer-events-none w-80">
+          <img src={botPhone} alt="" className="w-full" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -73,9 +74,9 @@ const BookDemoSection = () => {
 
   return (
     <section id="book-demo" className="section-dark py-24 relative overflow-hidden">
-      {/* Background watermark */}
-      <div className="absolute left-10 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none">
-        <div className="text-[300px]">🤖</div>
+      {/* Background bot watermark */}
+      <div className="absolute left-0 bottom-0 opacity-10 pointer-events-none w-64 md:w-80">
+        <img src={botPhone} alt="" className="w-full" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

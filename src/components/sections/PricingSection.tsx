@@ -1,4 +1,6 @@
 import { Check } from "lucide-react";
+import botDancing from "@/assets/bot-dancing.png";
+import botDancingBack from "@/assets/bot-dancing-back.png";
 
 const plans = [
   {
@@ -33,8 +35,16 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="section-dark py-24">
-      <div className="container mx-auto px-6">
+    <section id="pricing" className="section-dark py-24 relative overflow-hidden">
+      {/* Decorative bots */}
+      <div className="absolute left-0 top-1/4 opacity-20 pointer-events-none w-32 md:w-48 -translate-x-1/4">
+        <img src={botDancingBack} alt="" className="w-full" />
+      </div>
+      <div className="absolute right-0 bottom-1/4 opacity-20 pointer-events-none w-32 md:w-48 translate-x-1/4">
+        <img src={botDancing} alt="" className="w-full" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-chikitra-teal mb-3">

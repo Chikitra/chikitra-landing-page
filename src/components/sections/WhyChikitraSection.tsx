@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import botHeart from "@/assets/bot-heart.png";
 
 const features = [
   {
@@ -23,13 +24,9 @@ const WhyChikitraSection = () => {
     <section id="why-chikitra" className="section-dark py-24">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left - Image Placeholder */}
-          <div className="aspect-[4/5] max-h-[600px] rounded-2xl bg-chikitra-dark-card border border-chikitra-dark-card overflow-hidden">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-chikitra-mint/20 text-sm">
-                Image Placeholder
-              </div>
-            </div>
+          {/* Left - Bot Image */}
+          <div className="aspect-[4/5] max-h-[600px] rounded-2xl bg-chikitra-dark-card border border-chikitra-dark-card overflow-hidden flex items-center justify-center p-8">
+            <img src={botHeart} alt="Chikitra Bot with Heart" className="max-h-full object-contain" />
           </div>
 
           {/* Right - Content */}
