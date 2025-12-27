@@ -1,3 +1,8 @@
+import botWaving from "@/assets/bot-waving.png";
+import botTablet from "@/assets/bot-tablet.png";
+import botCelebrating from "@/assets/bot-celebrating.png";
+import botThumbsup from "@/assets/bot-thumbsup.png";
+
 const HeroSection = () => {
   const scrollToPricing = () => {
     document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
@@ -29,21 +34,17 @@ const HeroSection = () => {
 
         {/* Hero Images Row */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
-          {/* Image 1 - Clinic */}
+          {/* Image 1 - Bot Waving */}
           <div className="aspect-[4/5] rounded-2xl bg-chikitra-dark overflow-hidden image-pop">
-            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex items-center justify-center">
-              <div className="text-chikitra-mint/30 text-xs text-center p-4">
-                Image Placeholder
-              </div>
+            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex items-center justify-center p-4">
+              <img src={botWaving} alt="Chikitra Bot Waving" className="max-h-full object-contain" />
             </div>
           </div>
           
-          {/* Image 2 - AI Brain */}
+          {/* Image 2 - Bot with Tablet */}
           <div className="aspect-[4/5] rounded-2xl bg-chikitra-dark overflow-hidden image-pop">
-            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex items-center justify-center">
-              <div className="text-chikitra-mint/30 text-xs text-center p-4">
-                Image Placeholder
-              </div>
+            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex items-center justify-center p-4">
+              <img src={botTablet} alt="Chikitra Bot with Tablet" className="max-h-full object-contain" />
             </div>
           </div>
           
@@ -56,20 +57,17 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Image 4 - Light placeholder */}
+          {/* Image 4 - Bot Celebrating */}
           <div className="aspect-[4/5] rounded-2xl bg-chikitra-mint-card overflow-hidden image-pop hidden md:block">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-chikitra-dark/20 text-xs text-center p-4">
-                Image Placeholder
-              </div>
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img src={botCelebrating} alt="Chikitra Bot Celebrating" className="max-h-full object-contain" />
             </div>
           </div>
           
-          {/* Image 5 - 24/7 Support */}
+          {/* Image 5 - Bot Thumbs up */}
           <div className="aspect-[4/5] rounded-2xl bg-chikitra-dark overflow-hidden image-pop hidden md:block">
-            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex flex-col items-center justify-center gap-2">
-              <div className="text-chikitra-mint/50 text-2xl font-bold">24/7</div>
-              <div className="text-chikitra-mint/30 text-xs">GLOBAL SUPPORT</div>
+            <div className="w-full h-full bg-gradient-to-br from-chikitra-dark to-chikitra-dark-card flex items-center justify-center p-4">
+              <img src={botThumbsup} alt="Chikitra Bot Thumbs Up" className="max-h-full object-contain" />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Plus } from "lucide-react";
+import logoImage from "@/assets/chikitra-logo.avif";
 
 interface ChikitraLogoProps {
   variant?: "light" | "dark";
@@ -24,25 +24,13 @@ const ChikitraLogo = ({ variant = "light", showTagline = false, size = "md" }: C
   const textClass = textSizes[size];
 
   return (
-    <Link to="/" className="flex items-start gap-2 group">
+    <Link to="/" className="flex items-center gap-2 group">
       {/* Logo Icon */}
-      <div className={`relative ${iconContainerClass} flex-shrink-0`}>
-        {/* Main rounded square background */}
-        <div className="absolute inset-0 bg-chikitra-teal rounded-lg" />
-        
-        {/* Heart icon */}
-        <Heart 
-          className="absolute top-1 left-1 w-3 h-3 text-red-500 fill-red-500" 
-        />
-        
-        {/* Plus icon */}
-        <Plus 
-          className="absolute top-1 right-1 w-3 h-3 text-chikitra-mint" 
-        />
-        
-        {/* Inner screen area */}
-        <div className="absolute bottom-1.5 left-1.5 right-1.5 h-[45%] bg-chikitra-dark rounded-sm" />
-      </div>
+      <img 
+        src={logoImage} 
+        alt="Chikitra Logo" 
+        className={`${iconContainerClass} object-contain`}
+      />
       
       {/* Brand text */}
       <div className="flex flex-col">
