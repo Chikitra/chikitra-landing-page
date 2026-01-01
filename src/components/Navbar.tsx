@@ -72,23 +72,23 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-chikitra-mint/95 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm" style={{ backgroundColor: 'rgba(235, 245, 233, 0.95)' }}>
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <ChikitraLogo variant="light" size="md" />
 
         {/* Nav Links */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-12">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                className={`text-sm font-medium transition-colors hover:text-chikitra-teal ${
-                  activeSection === item.sectionId
-                    ? "text-chikitra-teal font-semibold"
-                    : "text-chikitra-dark"
-                }`}
+                className="text-base font-medium transition-colors"
+                style={{
+                  color: '#053F3D',
+                  fontWeight: activeSection === item.sectionId ? '600' : '500'
+                }}
               >
                 {item.label}
               </a>
@@ -99,7 +99,14 @@ const Navbar = () => {
           <li>
             <button
               onClick={handleBookDemo}
-              className="btn-pill-outline text-sm"
+              className="btn-pill text-sm"
+              style={{
+                color: '#053F3D',
+                borderColor: '#016361',
+                borderWidth: '2px',
+                borderStyle: 'solid',
+                backgroundColor: 'transparent'
+              }}
             >
               Book a demo
             </button>
@@ -109,7 +116,11 @@ const Navbar = () => {
         {/* Sign in button */}
         <Link
           to="/signin"
-          className="btn-pill-filled text-sm"
+          className="btn-pill text-sm"
+          style={{
+            color: '#DBEFE9',
+            backgroundColor: '#016361'
+          }}
         >
           Sign in
         </Link>
