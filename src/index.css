@@ -32,7 +32,7 @@
     --muted-foreground: 165 25% 40%;
 
     /* Accent - Teal highlight for "Chikitra" */
-    --accent: 165 60% 35%;
+    --accent: 179 98% 19%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive */
@@ -107,13 +107,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: "Aptos", "Segoe UI", Calibri, system-ui, sans-serif;
-  }
-
-  /* Chikitra brand font */
-  .font-brand {
-    font-family: "Open Sans", sans-serif;
+    @apply bg-background text-foreground antialiased font-sans;
   }
 }
 
@@ -148,7 +142,8 @@
 
   /* Light sections */
   .section-light {
-    @apply bg-chikitra-mint text-chikitra-dark;
+    background-color: #EAF5EF;
+    @apply text-chikitra-dark;
   }
 
   /* Card hover pop effect */
@@ -233,5 +228,14 @@
   }
   .border-chikitra-dark-card {
     border-color: hsl(var(--chikitra-dark-card));
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
