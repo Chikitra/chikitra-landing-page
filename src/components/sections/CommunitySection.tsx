@@ -34,14 +34,14 @@ const VideoCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => 
     <div className="flex flex-col items-center text-center">
       {/* Quote */}
       <p 
-        className="text-base italic mb-4 font-medium"
+        className="text-base md:text-lg italic mb-3 font-medium"
         style={{ color: '#231F20' }}
       >
         {testimonial.quote}
       </p>
       
-      {/* Video Frame */}
-      <div className="relative w-32 h-28 mb-4">
+      {/* Video Frame - Larger size */}
+      <div className="relative w-48 h-44 md:w-56 md:h-52 lg:w-64 lg:h-60 mb-3">
         <img 
           src={videoFrame} 
           alt="Video frame" 
@@ -54,15 +54,15 @@ const VideoCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => 
           aria-label={isPlaying ? "Pause video" : "Play video"}
         >
           {isPlaying ? (
-            <Pause className="w-8 h-8 text-white drop-shadow-lg" fill="white" />
+            <Pause className="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-lg" fill="white" />
           ) : (
-            <Play className="w-8 h-8 text-white drop-shadow-lg" fill="white" />
+            <Play className="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-lg" fill="white" />
           )}
         </button>
       </div>
       
       {/* Doctor Info */}
-      <p className="font-semibold text-sm" style={{ color: '#231F20' }}>
+      <p className="font-semibold text-sm md:text-base" style={{ color: '#231F20' }}>
         {testimonial.name}
       </p>
       <p className="text-sm" style={{ color: '#231F20' }}>
@@ -81,53 +81,53 @@ const CommunitySection = () => {
       {/* Community / Testimonials Section */}
       <section 
         id="community" 
-        className="py-20 relative overflow-hidden"
+        className="py-12 md:py-16 relative overflow-hidden"
         style={{ backgroundColor: '#C2E2CB' }}
       >
         {/* Background Illustrations at 2% opacity */}
         <img 
           src={thinkingIcon} 
           alt="" 
-          className="absolute left-8 bottom-8 w-48 h-48 pointer-events-none select-none"
+          className="absolute left-4 bottom-4 w-40 h-40 md:w-56 md:h-56 pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
         <img 
           src={promotionIcon} 
           alt="" 
-          className="absolute right-12 top-12 w-40 h-40 pointer-events-none select-none"
+          className="absolute right-8 top-8 w-36 h-36 md:w-48 md:h-48 pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
 
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Left Column - Headline */}
             <div className="lg:col-span-3">
               <h2 
-                className="text-4xl md:text-5xl font-bold mb-2"
+                className="text-3xl md:text-4xl lg:text-5xl mb-1"
                 style={{ color: '#043A38' }}
               >
-                From the
+                <span className="font-normal">From the</span>
               </h2>
               <h2 
-                className="text-4xl md:text-5xl font-bold mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4"
                 style={{ color: '#043A38' }}
               >
                 community.
               </h2>
               <p 
-                className="text-base mb-4"
+                className="text-sm md:text-base mb-3"
                 style={{ color: '#043A38' }}
               >
                 What doctors & clinics are saying...
               </p>
-              <p className="text-sm italic" style={{ color: '#043A38' }}>Some text</p>
-              <p className="text-sm italic" style={{ color: '#043A38' }}>Some text</p>
-              <p className="text-sm italic" style={{ color: '#043A38' }}>Some text</p>
+              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
+              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
+              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
             </div>
 
             {/* Right Column - Video Testimonials */}
             <div className="lg:col-span-9">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                 {testimonials.map((testimonial, index) => (
                   <VideoCard key={index} testimonial={testimonial} />
                 ))}
@@ -140,78 +140,78 @@ const CommunitySection = () => {
       {/* About Us Section */}
       <section 
         id="about" 
-        className="py-20 relative overflow-hidden"
+        className="pt-12 md:pt-16 pb-0 relative overflow-hidden"
         style={{ backgroundColor: '#C4D6C8' }}
       >
-        {/* Background Illustrations at 2% opacity */}
+        {/* Background Illustrations - Very large, almost filling section */}
         <img 
           src={thinkingIcon} 
           alt="" 
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none select-none"
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
         <img 
           src={promotionIcon} 
           alt="" 
-          className="absolute right-8 top-20 w-48 h-48 pointer-events-none select-none rotate-12"
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
 
         <div className="container mx-auto px-6">
           {/* Main Heading */}
-          <div className="text-center mb-12">
-            <p className="text-lg md:text-xl mb-2" style={{ color: '#052826' }}>
+          <div className="text-center mb-8 md:mb-10">
+            <p className="text-base md:text-lg lg:text-xl mb-2" style={{ color: '#052826' }}>
               <span style={{ color: '#008080' }}>C</span>
               <span style={{ color: '#3ABDAA' }}>hikitra</span>
               <span style={{ color: '#052826' }}> - India's first AI-powered clinic management tool</span>
             </p>
-            <p className="text-lg md:text-xl" style={{ color: '#052826' }}>
+            <p className="text-base md:text-lg lg:text-xl" style={{ color: '#052826' }}>
               built to transform <span className="font-semibold">your</span> clinic into a <span className="font-bold">smarter one</span>
             </p>
           </div>
 
           {/* Built by Doctors */}
           <p 
-            className="text-xl md:text-2xl italic text-center mb-16"
+            className="text-lg md:text-xl lg:text-2xl italic text-center mb-10 md:mb-12"
             style={{ color: '#0D514C' }}
           >
             Built by '<span className="font-semibold not-italic">Doctors</span>', for '<span className="font-semibold not-italic">Doctors</span>'
           </p>
 
-          {/* Founders */}
-          <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-0">
+          {/* Founders - Same height, with gap, no bottom padding */}
+          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-8 lg:gap-16">
             {/* Founder 1 - Dr. Ankeeta Roy */}
-            <div className="flex flex-col lg:flex-row items-center lg:items-end gap-4 z-10">
-              <div className="text-center lg:text-right order-2 lg:order-1">
-                <p className="font-bold text-base" style={{ color: '#231F20' }}>
+            <div className="flex flex-col items-center z-10">
+              <div className="text-center mb-4">
+                <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
                   Dr. Ankeeta Roy, <span className="font-normal italic">a.k.a 'The Big Brain'</span>
                 </p>
-                <p className="text-sm" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-sm" style={{ color: '#231F20' }}>Founder & CEO</p>
+                <p className="text-xs md:text-sm" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-semibold text-xs md:text-sm" style={{ color: '#231F20' }}>Founder & CEO</p>
               </div>
               <img 
                 src={founderAnkeeta} 
                 alt="Dr. Ankeeta Roy - Founder & CEO" 
-                className="w-48 md:w-64 lg:w-72 h-auto object-contain order-1 lg:order-2"
+                className="w-56 md:w-64 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
             </div>
 
             {/* Founder 2 - Dr. Tahreem Afroz */}
-            <div className="flex flex-col lg:flex-row items-center lg:items-end gap-4 lg:-ml-16 z-20">
+            <div className="flex flex-col items-center z-20">
+              <div className="text-center mb-4">
+                <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
+                  Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
+                </p>
+                <p className="text-xs md:text-sm" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-semibold text-xs md:text-sm" style={{ color: '#231F20' }}>Co-founder & CMO</p>
+              </div>
               <img 
                 src={founderTahreem} 
                 alt="Dr. Tahreem Afroz - Co-founder & CMO" 
-                className="w-48 md:w-56 lg:w-64 h-auto object-contain"
+                className="w-56 md:w-64 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
-              <div className="text-center lg:text-left">
-                <p className="font-bold text-base" style={{ color: '#231F20' }}>
-                  Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
-                </p>
-                <p className="text-sm" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-sm" style={{ color: '#231F20' }}>Co-founder & CMO</p>
-              </div>
             </div>
           </div>
         </div>
