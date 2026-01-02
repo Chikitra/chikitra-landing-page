@@ -81,8 +81,8 @@ const BookDemoSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Left Content */}
-          <div>
+          {/* Left Content - Center on mobile/tablet */}
+          <div className="text-center lg:text-left">
             <p className="text-lg md:text-xl mb-2" style={{ color: '#C2E2CB' }}>Don't take our word for it —</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-2" style={{ color: '#C2E2CB', fontWeight: 500 }}>
               See the difference
@@ -94,7 +94,7 @@ const BookDemoSection = () => {
               TODAY.
             </h2>
 
-            <div className="pt-8 mb-6" style={{ borderTop: '1px solid rgba(194, 226, 203, 0.3)' }}>
+            <div className="pt-8 mb-6 mx-auto lg:mx-0" style={{ borderTop: '1px solid rgba(194, 226, 203, 0.3)' }}>
               <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>Book a demo</p>
               <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>and enjoy a</p>
               <p className="text-2xl md:text-3xl font-bold" style={{ color: '#C2E2CB' }}>FREE 30-day trial.</p>
