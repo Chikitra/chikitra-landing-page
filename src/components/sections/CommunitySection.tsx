@@ -100,21 +100,21 @@ const CommunitySection = () => {
 
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Left Column - Headline */}
-            <div className="lg:col-span-3">
-              <h2 
+            {/* Left Column - Headline - Center on mobile/tablet */}
+            <div className="lg:col-span-3 text-center lg:text-left">
+              <h2
                 className="text-3xl md:text-4xl lg:text-5xl mb-1"
                 style={{ color: '#043A38' }}
               >
                 <span className="font-normal">From the</span>
               </h2>
-              <h2 
+              <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4"
                 style={{ color: '#043A38' }}
               >
                 community.
               </h2>
-              <p 
+              <p
                 className="text-sm md:text-base mb-3"
                 style={{ color: '#043A38' }}
               >
