@@ -161,8 +161,8 @@ const CommunitySection = () => {
           {/* Main Heading */}
           <div className="text-center mb-8 md:mb-10">
             <p className="text-base md:text-lg lg:text-xl mb-2" style={{ color: '#052826' }}>
-              <span style={{ color: '#008080' }}>C</span>
-              <span style={{ color: '#3ABDAA' }}>hikitra</span>
+              <span className="font-extrabold" style={{ color: '#008080' }}>C</span>
+              <span className="font-extrabold" style={{ color: '#3ABDAA' }}>hikitra</span>
               <span style={{ color: '#052826' }}> - India's first AI-powered clinic management tool</span>
             </p>
             <p className="text-base md:text-lg lg:text-xl" style={{ color: '#052826' }}>
@@ -178,11 +178,12 @@ const CommunitySection = () => {
             Built by '<span className="font-semibold not-italic">Doctors</span>', for '<span className="font-semibold not-italic">Doctors</span>'
           </p>
 
-          {/* Founders - Same height, with gap, no bottom padding */}
-          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-8 lg:gap-16">
-            {/* Founder 1 - Dr. Ankeeta Roy */}
-            <div className="flex flex-col items-center z-10">
-              <div className="text-center mb-4">
+          {/* Founders - Images with text beside them */}
+          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-8 lg:gap-12">
+            {/* Founder 1 - Dr. Ankeeta Roy with text beside head area */}
+            <div className="relative flex items-start z-10">
+              {/* Text positioned beside head/face area */}
+              <div className="text-right pr-4 pt-4 md:pt-6 lg:pt-8">
                 <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
                   Dr. Ankeeta Roy, <span className="font-normal italic">a.k.a 'The Big Brain'</span>
                 </p>
@@ -192,26 +193,27 @@ const CommunitySection = () => {
               <img 
                 src={founderAnkeeta} 
                 alt="Dr. Ankeeta Roy - Founder & CEO" 
-                className="w-56 md:w-64 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
+                className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
             </div>
 
-            {/* Founder 2 - Dr. Tahreem Afroz */}
-            <div className="flex flex-col items-center z-20">
-              <div className="text-center mb-4">
+            {/* Founder 2 - Dr. Tahreem Afroz with text beside torso area */}
+            <div className="relative flex items-start z-20">
+              <img 
+                src={founderTahreem} 
+                alt="Dr. Tahreem Afroz - Co-founder & CMO" 
+                className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
+                style={{ opacity: 0.89 }}
+              />
+              {/* Text positioned beside torso/chest area */}
+              <div className="text-left pl-4 pt-32 md:pt-40 lg:pt-48">
                 <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
                   Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
                 </p>
                 <p className="text-xs md:text-sm" style={{ color: '#231F20' }}>MBBS</p>
                 <p className="font-semibold text-xs md:text-sm" style={{ color: '#231F20' }}>Co-founder & CMO</p>
               </div>
-              <img 
-                src={founderTahreem} 
-                alt="Dr. Tahreem Afroz - Co-founder & CMO" 
-                className="w-56 md:w-64 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
-                style={{ opacity: 0.89 }}
-              />
             </div>
           </div>
         </div>
