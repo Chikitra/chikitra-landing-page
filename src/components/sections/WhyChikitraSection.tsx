@@ -1,5 +1,4 @@
 import { CheckCircle2 } from "lucide-react";
-import botHeart from "@/assets/bot-heart.png";
 
 const features = [
   {
@@ -21,40 +20,42 @@ const features = [
 
 const WhyChikitraSection = () => {
   return (
-    <section id="why-chikitra" className="section-dark py-24">
+    <section id="why-chikitra" className="py-24" style={{ backgroundColor: '#052826' }}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left - Bot Image */}
           <div className="aspect-[4/5] max-h-[600px] rounded-2xl bg-chikitra-dark-card border border-chikitra-dark-card overflow-hidden flex items-center justify-center p-8">
-            <img src={botHeart} alt="Chikitra Bot with Heart" className="max-h-full object-contain" />
+            <div className="text-chikitra-mint/20 text-sm text-center">
+              Image Placeholder
+            </div>
           </div>
 
           {/* Right - Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-chikitra-teal mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-8" style={{ color: '#C2E2CB' }}>
               Why Chikitra?
             </h2>
-            
-            <p className="text-chikitra-mint/70 text-lg mb-2">
+
+            <p className="text-base mb-1" style={{ color: '#859F8B' }}>
               Most clinic tools solve one piece of the problem.
             </p>
-            <p className="text-chikitra-teal font-semibold text-lg mb-10">
+            <p className="font-semibold text-base mb-12" style={{ color: '#859F8B' }}>
               Chikitra runs the entire clinic - end to end.
             </p>
 
             {/* Features List */}
-            <div className="space-y-8 mb-12">
+            <div className="space-y-10 mb-16">
               {features.map((feature, index) => (
                 <div key={index} className="flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-chikitra-teal flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#C2E2CB' }} />
                   <div>
-                    <h3 className="text-chikitra-mint font-semibold text-lg mb-2">
+                    <h3 className="font-semibold text-xl mb-3" style={{ color: '#C2E2CB' }}>
                       {feature.title}
                     </h3>
-                    <p className="text-chikitra-mint/60 text-sm">
+                    <p className="text-base mb-1" style={{ color: '#9FBCA5' }}>
                       {feature.description}
                     </p>
-                    <p className="text-chikitra-teal font-medium text-sm">
+                    <p className="font-semibold text-base" style={{ color: '#9FBCA5' }}>
                       {feature.highlight}
                     </p>
                   </div>
@@ -63,12 +64,12 @@ const WhyChikitraSection = () => {
             </div>
 
             {/* Bottom Line */}
-            <div className="border-t border-chikitra-mint/20 pt-8">
-              <p className="text-chikitra-teal font-medium mb-2">The bottom line?</p>
-              <p className="text-chikitra-mint/70 mb-2">
+            <div>
+              <p className="text-base mb-3" style={{ color: '#C2E2CB' }}>The bottom line?</p>
+              <p className="text-base mb-4" style={{ color: '#C2E2CB' }}>
                 Others tools in the marks finds patients. They store data.
               </p>
-              <p className="text-chikitra-mint font-bold text-2xl">
+              <p className="font-bold text-3xl md:text-4xl" style={{ color: '#E6F3E6' }}>
                 Chikitra runs the clinic.
               </p>
             </div>
