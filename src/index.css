@@ -166,16 +166,37 @@
     background-color: #C1E2CB;
   }
 
-  /* Pricing card */
+  /* Pricing card - Top plans (Basic & Enterprise) */
+  .pricing-card-top {
+    @apply rounded-3xl p-8 transition-all duration-300 ease-out;
+    background-color: #0C3A33;
+    border: 3px solid #13544C;
+    @apply hover:scale-[1.05] hover:shadow-2xl;
+  }
+
+  /* Featured pricing card (Basic) - Pops more by default */
+  .pricing-card-featured {
+    @apply rounded-3xl p-8 transition-all duration-300 ease-out;
+    background-color: #0C3A33;
+    border: 3px solid #13544C;
+    @apply scale-[1.05];
+    box-shadow: 0 20px 60px rgba(19, 84, 76, 0.4), 0 0 40px rgba(40, 168, 153, 0.2);
+    @apply hover:scale-[1.08];
+  }
+
+  /* Pricing card - Professional (bottom) */
+  .pricing-card-professional {
+    @apply rounded-3xl p-8 transition-all duration-300 ease-out;
+    background-color: #113F47;
+    border: 3px solid #145056;
+    @apply hover:scale-[1.05] hover:shadow-2xl;
+  }
+
+  /* Old pricing card styles kept for compatibility */
   .pricing-card {
     @apply bg-chikitra-dark-card rounded-2xl p-8 border border-chikitra-dark-card;
     @apply transition-all duration-300 ease-out;
     @apply hover:scale-[1.02] hover:shadow-xl;
-  }
-
-  /* Featured pricing card (Basic) */
-  .pricing-card-featured {
-    @apply pricing-card shadow-lg scale-[1.02];
   }
 
   /* Video testimonial card */
