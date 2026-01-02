@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import peekingBot from "@/assets/peeking-bot.png";
+import botDancing from "@/assets/bot-dancing.png";
 
 const FeaturesSection = () => {
   const scrollToBookDemo = () => {
@@ -6,48 +8,65 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section id="features" className="section-light py-24">
+    <section id="features" className="py-24" style={{ backgroundColor: '#EBF6F0' }}>
       <div className="container mx-auto px-6">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-chikitra-dark leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6" style={{ color: '#015958' }}>
             Chikitra replaces clinic chaos
             <br />
             with calm, coordinated care.
           </h2>
-          
-          <p className="text-lg text-chikitra-dark/70">
+
+          <p className="text-lg" style={{ color: '#015958' }}>
             It automates the busywork, connects every touchpoint,
             <br />
             and helps clinics run smoother - without adding staff or complexity.
           </p>
         </div>
 
-        {/* Feature Cards Grid - 6 Empty Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto relative">
-          {/* Robot mascot decoration - top left of grid */}
-          <div className="absolute -left-16 -top-8 w-16 h-16 opacity-40 hidden lg:block">
-            <div className="w-full h-full rounded-lg bg-chikitra-dark/10 flex items-center justify-center text-2xl">
-              🤖
-            </div>
+        {/* Feature Cards - Mobile/Tablet: Scrollable, Desktop: Grid */}
+        <div className="max-w-5xl mx-auto">
+          {/* Mobile & Tablet: Horizontal Scrollable */}
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:hidden">
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <button
+                key={index}
+                onClick={scrollToBookDemo}
+                className="feature-card-empty group relative flex-none w-[80vw] md:w-[45vw] snap-center"
+              >
+                {/* Arrow Icon */}
+                <ArrowUpRight className="absolute top-4 right-4 w-5 h-5 transition-colors" style={{ color: '#231F20' }} />
+              </button>
+            ))}
           </div>
 
-          {[1, 2, 3, 4, 5, 6].map((index) => (
-            <button
-              key={index}
-              onClick={scrollToBookDemo}
-              className="feature-card-empty group"
-            >
-              {/* Arrow Icon */}
-              <ArrowUpRight className="absolute top-4 right-4 w-5 h-5 text-chikitra-dark/30 group-hover:text-chikitra-dark/60 transition-colors" />
-            </button>
-          ))}
+          {/* Desktop: Grid with Bots */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-6 relative">
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <button
+                key={index}
+                onClick={scrollToBookDemo}
+                className="feature-card-empty group relative"
+              >
+                {/* Peeking Bot - Top Left Card (Card 1) */}
+                {index === 1 && (
+                  <div className="absolute w-32 h-32 z-10" style={{ top: '-7rem', left: '-2rem' }}>
+                    <img src={peekingBot} alt="Peeking Bot" className="w-full h-full object-contain" />
+                  </div>
+                )}
 
-          {/* Robot mascot decoration - bottom right of grid */}
-          <div className="absolute -right-16 -bottom-8 w-16 h-16 opacity-40 hidden lg:block">
-            <div className="w-full h-full rounded-lg bg-chikitra-dark/10 flex items-center justify-center text-2xl transform -scale-x-100">
-              🤖
-            </div>
+                {/* Dancing Bot - Bottom Right Card (Card 6) */}
+                {index === 6 && (
+                  <div className="absolute w-40 h-40 z-10">
+                    <img src={botDancing} alt="Dancing Bot" className="object-contain" style={{ top: '-50%', position: 'relative', right: '-113%', height: '190%', maxWidth: 'none' }} />
+                  </div>
+                )}
+
+                {/* Arrow Icon */}
+                <ArrowUpRight className="absolute top-4 right-4 w-5 h-5 transition-colors" style={{ color: '#231F20' }} />
+              </button>
+            ))}
           </div>
         </div>
       </div>
