@@ -184,11 +184,11 @@ const CommunitySection = () => {
             <div className="relative flex items-start z-10">
               {/* Text positioned beside head/face area */}
               <div className="text-right pr-4 pt-4 md:pt-6 lg:pt-8">
-                <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
+                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>
                   Dr. Ankeeta Roy, <span className="font-normal italic">a.k.a 'The Big Brain'</span>
                 </p>
-                <p className="text-xs md:text-sm" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-xs md:text-sm" style={{ color: '#231F20' }}>Founder & CEO</p>
+                <p className="text-sm md:text-base" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-semibold text-sm md:text-base lg:text-lg" style={{ color: '#231F20' }}>Founder & CEO</p>
               </div>
               <img 
                 src={founderAnkeeta} 
@@ -208,11 +208,11 @@ const CommunitySection = () => {
               />
               {/* Text positioned beside torso/chest area */}
               <div className="text-left pl-4 pt-32 md:pt-40 lg:pt-48">
-                <p className="font-bold text-sm md:text-base" style={{ color: '#231F20' }}>
+                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>
                   Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
                 </p>
-                <p className="text-xs md:text-sm" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-xs md:text-sm" style={{ color: '#231F20' }}>Co-founder & CMO</p>
+                <p className="text-sm md:text-base" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-semibold text-sm md:text-base lg:text-lg" style={{ color: '#231F20' }}>Co-founder & CMO</p>
               </div>
             </div>
           </div>
