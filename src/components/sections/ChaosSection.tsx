@@ -4,7 +4,7 @@ const ChaosSection = () => {
       <div className="container mx-auto px-6">
         {/* Title */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="font-bold leading-tight mb-6" style={{ color: '#DBEFE9' }}>
+          <h2 className="font-bold leading-relaxed mb-6" style={{ color: '#DBEFE9' }}>
             <span className="text-3xl md:text-4xl lg:text-[2.75rem]">Most clinics still run on paper,</span>
             <br />
             <span className="text-3xl md:text-4xl lg:text-[2.75rem]">memory and </span>
