@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
-import botPhone from "@/assets/bot-phone.png";
+import botTablet from "@/assets/bot-tablet.png";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -54,16 +54,16 @@ const BookDemoSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="book-demo" className="section-dark py-24 relative overflow-hidden">
+      <section id="book-demo" className="py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
         {/* Background bot watermark */}
-        <div className="absolute left-0 bottom-0 opacity-10 pointer-events-none w-80">
-          <img src={botPhone} alt="" className="w-full" />
+        <div className="absolute left-[10%] top-1/2 -translate-y-1/2 pointer-events-none h-full max-h-[700px]" style={{ opacity: 0.03 }}>
+          <img src={botTablet} alt="" className="h-full w-auto scale-x-[-1]" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center py-20">
-            <h2 className="text-4xl font-bold text-chikitra-mint mb-4">Thank you!</h2>
-            <p className="text-xl text-chikitra-mint/80">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#C2E2CB' }}>Thank you!</h2>
+            <p className="text-xl" style={{ color: '#C2E2CB' }}>
               Our team will reach out to you soon to schedule your demo.
             </p>
           </div>
@@ -73,46 +73,46 @@ const BookDemoSection = () => {
   }
 
   return (
-    <section id="book-demo" className="section-dark py-24 relative overflow-hidden">
-      {/* Background bot watermark */}
-      <div className="absolute left-0 bottom-0 opacity-10 pointer-events-none w-64 md:w-80">
-        <img src={botPhone} alt="" className="w-full" />
+    <section id="book-demo" className="py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
+      {/* Background bot watermark - Behind left text section */}
+      <div className="absolute left-[10%] top-1/2 -translate-y-1/2 pointer-events-none h-full max-h-[700px]" style={{ opacity: 0.03 }}>
+        <img src={botTablet} alt="" className="h-full w-auto scale-x-[-1]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Content */}
           <div>
-            <p className="text-chikitra-mint/70 italic mb-2">Don't take our word for it —</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-chikitra-mint leading-tight mb-2">
+            <p className="text-lg md:text-xl mb-2" style={{ color: '#C2E2CB' }}>Don't take our word for it —</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-2" style={{ color: '#C2E2CB', fontWeight: 500 }}>
               See the difference
             </h2>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-chikitra-light-green mb-2">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl mb-2" style={{ color: '#C2E2CB', fontWeight: 500 }}>
               yourself,
             </h2>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-chikitra-light-green uppercase mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-8" style={{ color: '#C2E2CB', fontWeight: 900 }}>
               TODAY.
             </h2>
 
-            <div className="border-t border-chikitra-mint/20 pt-8 mb-6">
-              <p className="text-xl text-chikitra-teal mb-1">Book a demo</p>
-              <p className="text-xl text-chikitra-teal mb-1">and enjoy a</p>
-              <p className="text-2xl font-bold text-chikitra-light-green">FREE 30-day trial.</p>
+            <div className="pt-8 mb-6" style={{ borderTop: '1px solid rgba(194, 226, 203, 0.3)' }}>
+              <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>Book a demo</p>
+              <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>and enjoy a</p>
+              <p className="text-2xl md:text-3xl font-bold" style={{ color: '#C2E2CB' }}>FREE 30-day trial.</p>
             </div>
 
-            <p className="text-chikitra-mint/60 text-sm">
+            <p className="text-base md:text-lg" style={{ color: '#C2E2CB' }}>
               *Our team will reach out to help you get started.
             </p>
           </div>
 
           {/* Right - Form */}
-          <div className="bg-chikitra-dark-card rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-chikitra-mint text-center mb-2">Book a demo</h3>
-            <p className="text-chikitra-mint/70 text-center mb-8">See Chikitra in action</p>
+          <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#155146' }}>
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-2" style={{ color: '#C2E2CB' }}>Book a demo</h3>
+            <p className="text-xl md:text-2xl text-center mb-8" style={{ color: '#C2E2CB' }}>See Chikitra in action</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-chikitra-mint mb-2 text-sm">
+                <label htmlFor="name" className="block mb-2 text-base font-medium" style={{ color: '#C2E2CB' }}>
                   Name
                 </label>
                 <input
@@ -122,7 +122,13 @@ const BookDemoSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
-                  className="w-full px-4 py-3 rounded-full bg-chikitra-mint-card text-chikitra-dark placeholder:text-chikitra-dark/40 focus:outline-none focus:ring-2 focus:ring-chikitra-teal"
+                  className="w-full px-5 py-4 rounded-xl text-base focus:outline-none focus:ring-2 placeholder:opacity-40"
+                  style={{
+                    backgroundColor: '#123D34',
+                    color: '#C2E2CB',
+                    border: 'none'
+                  }}
+                  required
                 />
                 {errors.name && (
                   <p className="text-red-400 text-xs mt-1">{errors.name}</p>
@@ -130,7 +136,7 @@ const BookDemoSection = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-chikitra-mint mb-2 text-sm">
+                <label htmlFor="phone" className="block mb-2 text-base font-medium" style={{ color: '#C2E2CB' }}>
                   Phone number
                 </label>
                 <input
@@ -140,7 +146,13 @@ const BookDemoSection = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Enter your phone number (+91)"
-                  className="w-full px-4 py-3 rounded-full bg-chikitra-mint-card text-chikitra-dark placeholder:text-chikitra-dark/40 focus:outline-none focus:ring-2 focus:ring-chikitra-teal"
+                  className="w-full px-5 py-4 rounded-xl text-base focus:outline-none focus:ring-2 placeholder:opacity-40"
+                  style={{
+                    backgroundColor: '#123D34',
+                    color: '#C2E2CB',
+                    border: 'none'
+                  }}
+                  required
                 />
                 {errors.phone && (
                   <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
@@ -148,7 +160,7 @@ const BookDemoSection = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-chikitra-mint mb-2 text-sm">
+                <label htmlFor="email" className="block mb-2 text-base font-medium" style={{ color: '#C2E2CB' }}>
                   Email (optional)
                 </label>
                 <input
@@ -158,7 +170,12 @@ const BookDemoSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3 rounded-full bg-chikitra-mint-card text-chikitra-dark placeholder:text-chikitra-dark/40 focus:outline-none focus:ring-2 focus:ring-chikitra-teal"
+                  className="w-full px-5 py-4 rounded-xl text-base focus:outline-none focus:ring-2 placeholder:opacity-40"
+                  style={{
+                    backgroundColor: '#123D34',
+                    color: '#C2E2CB',
+                    border: 'none'
+                  }}
                 />
                 {errors.email && (
                   <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -168,7 +185,12 @@ const BookDemoSection = () => {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="btn-pill-light px-12 py-3 text-base font-medium"
+                  className="rounded-full px-16 py-4 text-lg font-bold transition-all duration-200 hover:opacity-90"
+                  style={{
+                    backgroundColor: '#C2E2CB',
+                    color: '#0E3A33',
+                    border: 'none'
+                  }}
                 >
                   Submit
                 </button>
