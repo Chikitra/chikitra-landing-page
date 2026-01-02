@@ -27,8 +27,8 @@ const FeaturesSection = () => {
 
         {/* Feature Cards - Mobile/Tablet: Scrollable, Desktop: Grid */}
         <div className="max-w-5xl mx-auto">
-          {/* Mobile & Tablet: Horizontal Scrollable */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:hidden">
+          {/* Mobile & Tablet: Horizontal Scrollable - Use xl: instead of lg: to support iPad Pro */}
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide xl:hidden">
             {[1, 2, 3, 4, 5, 6].map((index) => (
               <button
                 key={index}
@@ -41,8 +41,8 @@ const FeaturesSection = () => {
             ))}
           </div>
 
-          {/* Desktop: Grid with Bots */}
-          <div className="hidden lg:grid lg:grid-cols-3 gap-6 relative">
+          {/* Desktop: Grid with Bots - Use xl: instead of lg: to support iPad Pro */}
+          <div className="hidden xl:grid xl:grid-cols-3 gap-6 relative">
             {[1, 2, 3, 4, 5, 6].map((index) => (
               <button
                 key={index}
