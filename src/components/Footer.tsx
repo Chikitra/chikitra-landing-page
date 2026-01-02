@@ -1,25 +1,26 @@
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Facebook, MessageCircle } from "lucide-react";
 import ChikitraLogo from "./ChikitraLogo";
+import botPhone from "@/assets/bot-phone.png";
 
 const socialLinks = [
-  { 
-    icon: Instagram, 
+  {
+    icon: Instagram,
     href: "https://www.instagram.com/chikitra_official?utm_source=qr&igsh=aWluN2tia3JyeXNv",
     label: "Instagram"
   },
-  { 
-    icon: MessageCircle, 
+  {
+    icon: MessageCircle,
     href: "https://wa.me/918637389951",
     label: "WhatsApp"
   },
-  { 
-    icon: Linkedin, 
+  {
+    icon: Linkedin,
     href: "https://www.linkedin.com/company/chikitra/",
     label: "LinkedIn"
   },
-  { 
-    icon: Facebook, 
+  {
+    icon: Facebook,
     href: "https://www.facebook.com/share/17XUQhvto8/",
     label: "Facebook"
   },
@@ -32,38 +33,46 @@ const Footer = () => {
   };
 
   return (
-    <footer className="section-dark py-16">
-      <div className="container mx-auto px-6">
+    <footer className="py-16 relative overflow-hidden" style={{ backgroundColor: '#052826' }}>
+      {/* Background bot - Extreme right */}
+      <div className="absolute right-0 bottom-0 pointer-events-none h-full max-h-[400px] translate-x-[10%]" style={{ opacity: 0.07 }}>
+        <img src={botPhone} alt="" className="h-full w-auto" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Logo & Tagline */}
-          <div>
-            <ChikitraLogo variant="dark" showTagline size="md" />
+          {/* Logo & Tagline - Emphasized */}
+          <div className="scale-110 origin-left">
+            <ChikitraLogo variant="dark" showTagline size="lg" />
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-chikitra-teal mb-4">Company</h4>
+            <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Company</h4>
             <ul className="space-y-3">
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection("about")}
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   About us
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection("features")}
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   Features
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection("community")}
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   Testimonials
                 </button>
@@ -73,30 +82,33 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-chikitra-teal mb-4">Services</h4>
+            <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Services</h4>
             <ul className="space-y-3">
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection("pricing")}
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   Pricing
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection("book-demo")}
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   Book a demo
                 </button>
               </li>
               <li>
-                <a 
+                <a
                   href="https://wa.me/918637389951"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm"
+                  className="transition-colors text-sm hover:opacity-80"
+                  style={{ color: '#E6E7E8' }}
                 >
                   Support
                 </a>
@@ -106,14 +118,15 @@ const Footer = () => {
 
           {/* Get in touch */}
           <div>
-            <h4 className="font-semibold text-chikitra-teal mb-4">Get in touch</h4>
-            <a 
+            <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Get in touch</h4>
+            <a
               href="mailto:hello@chikitra.com"
-              className="text-chikitra-mint/80 hover:text-chikitra-mint transition-colors text-sm block mb-6"
+              className="transition-colors text-sm block mb-6 hover:opacity-80"
+              style={{ color: '#E6E7E8' }}
             >
               hello@chikitra.com
             </a>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -122,7 +135,11 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 flex items-center justify-center rounded-full border border-chikitra-mint/30 text-chikitra-mint/80 hover:text-chikitra-mint hover:border-chikitra-mint transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-full border transition-colors hover:opacity-80"
+                  style={{
+                    color: '#DEDEDE',
+                    borderColor: '#DEDEDE'
+                  }}
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -133,8 +150,8 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-chikitra-mint/20 pt-8">
-          <p className="text-center text-chikitra-mint/60 text-sm">
+        <div className="pt-8" style={{ borderTop: '1px solid rgba(230, 231, 232, 0.2)' }}>
+          <p className="text-center text-sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
             © 2025 Chikitra. All rights reserved.
           </p>
         </div>
