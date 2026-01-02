@@ -73,18 +73,18 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm" style={{ backgroundColor: 'rgba(235, 245, 233, 0.95)' }}>
-      <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <ChikitraLogo variant="light" size="md" />
 
-        {/* Nav Links */}
-        <ul className="hidden md:flex items-center gap-12">
+        {/* Nav Links - Center on tablet */}
+        <ul className="hidden md:flex items-center gap-4 lg:gap-8 xl:gap-12 flex-1 justify-center mx-4 lg:mx-8">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                className="text-base font-medium transition-colors"
+                className="text-sm lg:text-base font-medium transition-colors whitespace-nowrap"
                 style={{
                   color: '#053F3D',
                   fontWeight: activeSection === item.sectionId ? '600' : '500'
@@ -94,12 +94,12 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          
+
           {/* Book a demo - outlined pill */}
           <li>
             <button
               onClick={handleBookDemo}
-              className="btn-pill text-sm"
+              className="btn-pill text-xs lg:text-sm whitespace-nowrap"
               style={{
                 color: '#053F3D',
                 borderColor: '#016361',
@@ -116,7 +116,7 @@ const Navbar = () => {
         {/* Sign in button */}
         <Link
           to="/signin"
-          className="btn-pill text-sm"
+          className="btn-pill text-xs lg:text-sm whitespace-nowrap"
           style={{
             color: '#DBEFE9',
             backgroundColor: '#016361'
