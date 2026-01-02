@@ -57,11 +57,11 @@ const Index = () => {
       {/* Screen 2: Chaos / Problem */}
       <ChaosSection />
       
-      {/* Screen 3: Why Chikitra */}
-      <WhyChikitraSection />
-      
-      {/* Screen 4: Features (6 empty cards) */}
+      {/* Screen 3: Features (6 empty cards) */}
       <FeaturesSection />
+
+      {/* Screen 4: Why Chikitra */}
+      <WhyChikitraSection />
       
       {/* Screen 5: Community + Founders */}
       <CommunitySection />
