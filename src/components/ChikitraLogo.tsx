@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logoImage from "@/assets/chikitra-logo.avif";
+import footerBrand from "@/assets/footer-brand.png";
 
 interface ChikitraLogoProps {
   variant?: "light" | "dark";
@@ -23,33 +24,37 @@ const ChikitraLogo = ({ variant = "light", showTagline = false, size = "md" }: C
   const iconContainerClass = sizeClasses[size];
   const textClass = textSizes[size];
 
+  // If showTagline is true, use footer-brand.png instead
+  if (showTagline) {
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    return (
+      <button onClick={scrollToTop} className="block group cursor-pointer bg-transparent border-none p-0">
+        <img
+          src={footerBrand}
+          alt="Chikitra - Your AI Assistant for Smarter Clinics"
+          className="w-auto h-auto max-w-[200px] object-contain"
+        />
+      </button>
+    );
+  }
+
   return (
     <Link to="/" className="flex items-center gap-2 group">
       {/* Logo Icon */}
-      <img 
-        src={logoImage} 
-        alt="Chikitra Logo" 
+      <img
+        src={logoImage}
+        alt="Chikitra Logo"
         className={`${iconContainerClass} object-contain`}
       />
-      
+
       {/* Brand text */}
-      <div className="flex flex-col">
-        <span 
-          className={`font-brand font-bold ${textClass} ${
-            variant === "light" ? "text-chikitra-teal" : "text-chikitra-teal"
-          }`}
-        >
-          Chikitra
-        </span>
-        
-        {showTagline && (
-          <div className={`text-xs ${variant === "light" ? "text-chikitra-dark" : "text-chikitra-mint"}`}>
-            <p>Your AI Assistant</p>
-            <p>for Smarter Clinics</p>
-            <p className="mt-1 italic">Just, <span className="text-chikitra-teal">Chikitra</span></p>
-          </div>
-        )}
-      </div>
+      <span className={`font-brand font-bold ${textClass}`}>
+        <span style={{ color: '#008080' }}>C</span>
+        <span style={{ color: '#3ABDAA' }}>hikitra</span>
+      </span>
     </Link>
   );
 };
