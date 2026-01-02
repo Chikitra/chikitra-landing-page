@@ -33,21 +33,21 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-16 relative overflow-hidden" style={{ backgroundColor: '#052826' }}>
+    <footer className="py-12 md:py-16 relative overflow-hidden" style={{ backgroundColor: '#052826' }}>
       {/* Background bot - Extreme right */}
-      <div className="absolute right-0 bottom-0 pointer-events-none h-full max-h-[400px] translate-x-[10%]" style={{ opacity: 0.07 }}>
+      <div className="absolute right-0 bottom-0 pointer-events-none h-full max-h-[300px] md:max-h-[400px] translate-x-[10%]" style={{ opacity: 0.07 }}>
         <img src={botPhone} alt="" className="h-full w-auto" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Logo & Tagline - Emphasized */}
-          <div className="scale-110 origin-left">
+          <div className="scale-100 md:scale-110 origin-center md:origin-left mx-auto md:mx-0">
             <ChikitraLogo variant="dark" showTagline size="lg" />
           </div>
 
           {/* Company */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Company</h4>
             <ul className="space-y-3">
               <li>
@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Services</h4>
             <ul className="space-y-3">
               <li>
@@ -117,7 +117,7 @@ const Footer = () => {
           </div>
 
           {/* Get in touch */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4" style={{ color: '#E6E7E8' }}>Get in touch</h4>
             <a
               href="mailto:hello@chikitra.com"
@@ -128,7 +128,7 @@ const Footer = () => {
             </a>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center md:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
