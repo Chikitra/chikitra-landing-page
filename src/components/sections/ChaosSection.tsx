@@ -1,55 +1,44 @@
 const ChaosSection = () => {
   return (
-    <section id="chaos" className="section-dark py-24">
+    <section id="chaos" className="py-24" style={{ backgroundColor: '#042826' }}>
       <div className="container mx-auto px-6">
         {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-chikitra-mint leading-tight mb-6">
-            Most clinics still run on paper, memory
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <h2 className="font-bold leading-tight mb-6" style={{ color: '#DBEFE9' }}>
+            <span className="text-3xl md:text-4xl lg:text-[2.75rem]">Most clinics still run on paper,</span>
             <br />
-            and <span className="uppercase">CHAOS.</span>
+            <span className="text-3xl md:text-4xl lg:text-[2.75rem]">memory and </span>
+            <span className="uppercase text-4xl md:text-5xl lg:text-6xl">CHAOS.</span>
           </h2>
-          
-          <p className="text-lg text-chikitra-mint/70">
+
+          <p className="text-lg md:text-xl" style={{ color: '#DBEFE9' }}>
             This slows doctors down, frustrates patients, and quietly leaks revenue every day.
           </p>
         </div>
 
         {/* Bar Chart Visualization */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Growth Arrow */}
-          <div className="absolute top-[20%] right-[15%] z-10">
-            <div className="flex items-center">
-              <span className="text-chikitra-mint/60 italic text-lg mr-2">Growth</span>
-              <svg 
-                width="80" 
-                height="40" 
-                viewBox="0 0 80 40" 
-                className="text-chikitra-mint/40"
-              >
-                <path 
-                  d="M0 35 L60 5 L55 15 M60 5 L50 10" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5" 
-                  fill="none"
-                />
-              </svg>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Bars - Image Placeholders */}
+          <div className="flex items-end justify-center gap-4 md:gap-8 h-[300px] md:h-[350px]">
+            {/* Bar 1 - Tallest - Image Placeholder */}
+            <div className="flex-1 max-w-[200px] h-[85%] rounded-lg overflow-hidden bg-chikitra-mint-card">
+              {/* Image will go here */}
             </div>
-          </div>
 
-          {/* Bars */}
-          <div className="flex items-end justify-center gap-6 h-[400px]">
-            {/* Bar 1 - Tallest */}
-            <div className="w-24 md:w-32 h-[90%] bg-chikitra-dark-card rounded-2xl" />
-            
-            {/* Bar 2 */}
-            <div className="w-24 md:w-32 h-[70%] bg-chikitra-dark-card rounded-2xl" />
-            
-            {/* Bar 3 */}
-            <div className="w-24 md:w-32 h-[50%] bg-chikitra-dark-card rounded-2xl" />
-            
-            {/* Bar 4 - Shortest */}
-            <div className="w-24 md:w-32 h-[35%] bg-chikitra-dark-card rounded-2xl" />
+            {/* Bar 2 - Image Placeholder */}
+            <div className="flex-1 max-w-[200px] h-[65%] rounded-lg overflow-hidden bg-chikitra-mint-card">
+              {/* Image will go here */}
+            </div>
+
+            {/* Bar 3 - Image Placeholder */}
+            <div className="flex-1 max-w-[200px] h-[48%] rounded-lg overflow-hidden bg-chikitra-mint-card">
+              {/* Image will go here */}
+            </div>
+
+            {/* Bar 4 - Shortest - Image Placeholder */}
+            <div className="flex-1 max-w-[200px] h-[32%] rounded-lg overflow-hidden bg-chikitra-mint-card">
+              {/* Image will go here */}
+            </div>
           </div>
         </div>
       </div>
