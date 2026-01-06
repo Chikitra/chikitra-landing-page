@@ -41,22 +41,29 @@ const BookDemoSection = () => {
       setErrors({});
       setIsSubmitting(true);
 
-      // Submit to Google Sheets
-      await fetch(GOOGLE_SCRIPT_URL, {
+      // Submit to Google Sheets in the background (fire and forget)
+      fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+      }).catch(() => {
+        // Silently handle errors since we can't read the response anyway
       });
 
-      // Note: With 'no-cors' mode, we won't get response data, but the submission will work
-      setIsSubmitted(true);
-      toast({
-        title: "Demo request submitted!",
-        description: "Our team will reach out to you shortly.",
-      });
+      // Show success immediately (optimistic UI)
+      // The submission will complete in the background
+      setTimeout(() => {
+        setIsSubmitted(true);
+        toast({
+          title: "Demo request submitted!",
+          description: "Our team will reach out to you shortly.",
+        });
+        setIsSubmitting(false);
+      }, 500); // Small delay to show the "Submitting..." state
+
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Record<string, string> = {};
@@ -66,15 +73,15 @@ const BookDemoSection = () => {
           }
         });
         setErrors(newErrors);
+        setIsSubmitting(false);
       } else {
         toast({
           title: "Submission failed",
           description: "Please try again later.",
           variant: "destructive",
         });
+        setIsSubmitting(false);
       }
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
