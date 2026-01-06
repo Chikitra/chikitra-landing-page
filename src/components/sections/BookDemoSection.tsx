@@ -18,6 +18,10 @@ const BookDemoSection = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Replace this URL with your Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFnZKddQc985CR2DiqP8bECuULtF5Qn5aHCTmJ0qleH92xF2T39lp18HW45HRR-dia/exec";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,12 +32,26 @@ const BookDemoSection = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
+      // Validate form data
       formSchema.parse(formData);
       setErrors({});
+      setIsSubmitting(true);
+
+      // Submit to Google Sheets
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Note: With 'no-cors' mode, we won't get response data, but the submission will work
       setIsSubmitted(true);
       toast({
         title: "Demo request submitted!",
@@ -48,7 +66,15 @@ const BookDemoSection = () => {
           }
         });
         setErrors(newErrors);
+      } else {
+        toast({
+          title: "Submission failed",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -185,14 +211,15 @@ const BookDemoSection = () => {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="rounded-full px-16 py-4 text-lg font-bold transition-all duration-200 hover:opacity-90"
+                  disabled={isSubmitting}
+                  className="rounded-full px-16 py-4 text-lg font-bold transition-all duration-200 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     backgroundColor: '#C2E2CB',
                     color: '#0E3A33',
                     border: 'none'
                   }}
                 >
-                  Submit
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
               </div>
             </form>
