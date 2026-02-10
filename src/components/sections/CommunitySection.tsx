@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Play, Pause } from "lucide-react";
+import { useState, useRef } from "react";
+import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import videoFrame from "@/assets/video-frame.png";
+import testimonialVideo1 from "@/assets/WhatsApp Video 2026-02-10 at 21.50.03.mp4";
 import thinkingIcon from "@/assets/thinking-icon.png";
 import promotionIcon from "@/assets/promotion-icon.png";
 import founderAnkeeta from "@/assets/founder-ankeeta.png";
@@ -8,13 +9,14 @@ import founderTahreem from "@/assets/founder-tahreem.png";
 
 const testimonials = [
   {
-    quote: '"Chikitra is doing a great job..."',
+    quote: '"can\'t wait to try the demo"',
     name: "Dr. Random Random",
     degree: "MBBS, MS",
     clinic: "Random Hospital/Clinic",
+    video: testimonialVideo1,
   },
   {
-    quote: '"can\'t wait to try the demo"',
+    quote: '"Chikitra is doing a great job..."',
     name: "Dr. Random Random",
     degree: "MBBS, MS",
     clinic: "Random Hospital/Clinic",
@@ -27,81 +29,54 @@ const testimonials = [
   },
 ];
 
-const VideoCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  return (
-    <div className="flex flex-col items-center text-center">
-      {/* Quote */}
-      <p 
-        className="text-base md:text-lg italic mb-3 font-medium"
-        style={{ color: '#231F20' }}
-      >
-        {testimonial.quote}
-      </p>
-      
-      {/* Video Frame - Larger size */}
-      <div className="relative w-48 h-44 md:w-56 md:h-52 lg:w-64 lg:h-60 mb-3">
-        <img 
-          src={videoFrame} 
-          alt="Video frame" 
-          className="w-full h-full object-contain"
-        />
-        {/* Play/Pause Button Overlay */}
-        <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="absolute inset-0 flex items-center justify-center"
-          aria-label={isPlaying ? "Pause video" : "Play video"}
-        >
-          {isPlaying ? (
-            <Pause className="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-lg" fill="white" />
-          ) : (
-            <Play className="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-lg" fill="white" />
-          )}
-        </button>
-      </div>
-      
-      {/* Doctor Info */}
-      <p className="font-semibold text-sm md:text-base" style={{ color: '#231F20' }}>
-        {testimonial.name}
-      </p>
-      <p className="text-sm" style={{ color: '#231F20' }}>
-        {testimonial.degree}
-      </p>
-      <p className="text-sm" style={{ color: '#231F20' }}>
-        {testimonial.clinic}
-      </p>
-    </div>
-  );
-};
-
 const CommunitySection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const currentTestimonial = testimonials[currentIndex];
+
   return (
     <>
       {/* Community / Testimonials Section */}
-      <section 
-        id="community" 
-        className="py-12 md:py-16 relative overflow-hidden"
+      <section
+        id="community"
+        className="py-12 md:py-16 lg:py-20 relative overflow-hidden"
         style={{ backgroundColor: '#C2E2CB' }}
       >
-        {/* Background Illustrations at 2% opacity */}
-        <img 
-          src={thinkingIcon} 
-          alt="" 
-          className="absolute left-4 bottom-4 w-40 h-40 md:w-56 md:h-56 pointer-events-none select-none"
-          style={{ opacity: 0.02 }}
-        />
-        <img 
-          src={promotionIcon} 
-          alt="" 
-          className="absolute right-8 top-8 w-36 h-36 md:w-48 md:h-48 pointer-events-none select-none"
-          style={{ opacity: 0.02 }}
-        />
-
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Left Column - Headline - Center on mobile/tablet */}
-            <div className="lg:col-span-3 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-2 items-center">
+            {/* Left Column - Text Content */}
+            <div className="text-center lg:text-left lg:pl-16">
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl mb-1"
                 style={{ color: '#043A38' }}
@@ -109,13 +84,13 @@ const CommunitySection = () => {
                 <span className="font-normal">From the</span>
               </h2>
               <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4"
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6"
                 style={{ color: '#043A38' }}
               >
                 community.
               </h2>
               <p
-                className="text-sm md:text-base mb-3"
+                className="text-sm md:text-base lg:text-lg mb-3 md:mb-4"
                 style={{ color: '#043A38' }}
               >
                 What doctors & clinics are saying...
@@ -125,11 +100,125 @@ const CommunitySection = () => {
               <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
             </div>
 
-            {/* Right Column - Video Testimonials */}
-            <div className="lg:col-span-9">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                {testimonials.map((testimonial, index) => (
-                  <VideoCard key={index} testimonial={testimonial} />
+            {/* Right Column - Video Carousel */}
+            <div className="flex flex-col items-center">
+              {/* Quote */}
+              <p
+                className="text-base md:text-lg italic mb-4 md:mb-6 font-medium text-center"
+                style={{ color: '#231F20' }}
+              >
+                {currentTestimonial.quote}
+              </p>
+
+              {/* Video Player with Navigation Arrows */}
+              <div className="relative flex items-center justify-center w-full mb-4 md:mb-6">
+                {/* Left Arrow */}
+                <button
+                  onClick={prevTestimonial}
+                  className="absolute left-0 md:left-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  style={{ backgroundColor: '#0A8B80' }}
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
+                </button>
+
+                {/* Video Frame with Video Inside */}
+                <div className="relative w-64 h-56 md:w-80 md:h-72 lg:w-96 lg:h-80">
+                  {currentTestimonial.video ? (
+                    <>
+                      {/* Video Frame at bottom */}
+                      <img
+                        src={videoFrame}
+                        alt="Video frame"
+                        className="w-full h-full object-contain absolute inset-0"
+                      />
+                      {/* Video on top, positioned in screen area */}
+                      <video
+                        ref={videoRef}
+                        src={currentTestimonial.video}
+                        className="absolute object-cover  z-10"
+                        style={{
+                          top: '10%',
+                          left: '11%',
+                          width: '78%',
+                          height: '79%',
+                          borderRadius: '100px',
+                        }}
+                        onEnded={() => setIsPlaying(false)}
+                      />
+                      {/* Play/Pause Button Overlay */}
+                      <button
+                        onClick={togglePlayPause}
+                        className="absolute inset-0 flex items-center justify-center hover:bg-opacity-30 transition-all z-20"
+                        style={{ backgroundColor: isPlaying ? 'transparent' : 'transparent' }}
+                        aria-label={isPlaying ? "Pause video" : "Play video"}
+                      >
+                        {!isPlaying && (
+                          <Play className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg" fill="white" />
+                        )}
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      {/* Video Frame */}
+                      <img
+                        src={videoFrame}
+                        alt="Video frame"
+                        className="w-full h-full object-contain"
+                      />
+                      {/* Play/Pause Button Overlay for placeholder */}
+                      <button
+                        onClick={() => setIsPlaying(!isPlaying)}
+                        className="absolute inset-0 flex items-center justify-center z-20"
+                        aria-label={isPlaying ? "Pause video" : "Play video"}
+                      >
+                        {isPlaying ? (
+                          <Pause className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg" fill="white" />
+                        ) : (
+                          <Play className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg" fill="white" />
+                        )}
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Right Arrow */}
+                <button
+                  onClick={nextTestimonial}
+                  className="absolute right-0 md:right-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  style={{ backgroundColor: '#0A8B80' }}
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
+                </button>
+              </div>
+
+              {/* Doctor Info */}
+              <div className="text-center mb-4">
+                <p className="font-semibold text-sm md:text-base" style={{ color: '#231F20' }}>
+                  {currentTestimonial.name} ({currentTestimonial.degree})
+                </p>
+                <p className="text-sm" style={{ color: '#231F20' }}>
+                  {currentTestimonial.clinic}
+                </p>
+              </div>
+
+              {/* Pagination Dots */}
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      setIsPlaying(false);
+                    }}
+                    className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300"
+                    style={{
+                      backgroundColor: index === currentIndex ? '#0A8B80' : '#7FA587',
+                      opacity: index === currentIndex ? 1 : 0.5
+                    }}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
                 ))}
               </div>
             </div>
