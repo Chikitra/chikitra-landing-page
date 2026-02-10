@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,6 +12,7 @@ import BookDemoSection from "@/components/sections/BookDemoSection";
 
 const Index = () => {
   const location = useLocation();
+  const [showDesktopNav, setShowDesktopNav] = useState(false);
 
   useEffect(() => {
     // Handle scroll to section based on route
@@ -47,13 +48,37 @@ const Index = () => {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    // Handle scroll to show/hide desktop navbar and sidebar
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const scrollPosition = window.scrollY + 100;
+        setShowDesktopNav(scrollPosition > heroBottom);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <main className="min-h-screen">
-      <Navbar />
-      
+      {/* Mobile/Tablet Navbar - always visible on small screens */}
+      <div className="lg:hidden">
+        <Navbar />
+      </div>
+
+      {/* Desktop Navbar - hidden on hero section, appears when scrolled past hero */}
+      <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showDesktopNav ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}`}>
+        <Navbar />
+      </div>
+
       {/* Screen 1: Hero */}
-      <HeroSection />
-      
+      <HeroSection hideSidebar={showDesktopNav} />
+
       {/* Screen 2: Chaos / Problem */}
       <ChaosSection />
       
