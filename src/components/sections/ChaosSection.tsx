@@ -1,43 +1,110 @@
+import bgImage from "@/assets/Old-Ways-Section_Bg_image.png";
+import infographicImage from "@/assets/Old-Ways-Section_Image1.png";
+
 const ChaosSection = () => {
   return (
-    <section id="chaos" className="py-24" style={{ backgroundColor: '#042826' }}>
-      <div className="container mx-auto px-6">
-        {/* Title */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="font-bold leading-relaxed mb-6" style={{ color: '#DBEFE9' }}>
-            <span className="text-3xl md:text-4xl lg:text-[2.75rem]">Most clinics still run on paper,</span>
-            <br />
-            <span className="text-3xl md:text-4xl lg:text-[2.75rem]">memory and </span>
-            <span className="uppercase text-4xl md:text-5xl lg:text-6xl">CHAOS.</span>
-          </h2>
+    <section
+      id="chaos"
+      className="relative min-h-screen overflow-hidden z-[60]"
+      style={{ backgroundColor: '#381416' }}
+    >
+      {/* Background Image - Woman crying */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'auto 80%',
+          backgroundPosition: '200px calc(50% - 40px)',
+          opacity: 0.4,
+          filter: 'brightness(1.9)'
+        }}
+      />
 
-          <p className="text-lg md:text-xl" style={{ color: '#DBEFE9' }}>
-            This slows doctors down, frustrates patients, and quietly leaks revenue every day.
-          </p>
-        </div>
+      {/* Navigator Bar */}
+      
 
-        {/* Bar Chart Visualization */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Bars - Image Placeholders */}
-          <div className="flex items-end justify-center gap-4 md:gap-8 h-[300px] md:h-[350px]">
-            {/* Bar 1 - Tallest - Image Placeholder */}
-            <div className="flex-1 max-w-[200px] h-[85%] rounded-lg overflow-hidden bg-chikitra-mint-card">
-              {/* Image will go here */}
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* LEFT COLUMN - Text Content */}
+          <div className="order-2 lg:order-1">
+            {/* "The Problem..." */}
+            <p
+              className="text-lg md:text-xl mb-6 md:mb-8"
+              style={{ color: '#F9C1C8', opacity: 0.5 }}
+            >
+              The Problem…
+            </p>
+
+            {/* Main Headline */}
+            <h2
+              className="font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 md:mb-10"
+              style={{ color: '#F9C1C8' }}
+            >
+              Most clinics still run on paper, memory and CHAOS.
+            </h2>
+
+            {/* Sub-headline */}
+            <div className="mb-6 md:mb-8">
+              <p
+                className="text-xl md:text-2xl font-semibold mb-2"
+                style={{ color: '#F9C1C8' }}
+              >
+                Your clinic is <span className="font-bold">BUSY.</span>
+              </p>
+              <p
+                className="text-xl md:text-2xl font-semibold"
+                style={{ color: '#F9C1C8' }}
+              >
+                But it might be <span className="font-bold">BREAKING.</span>
+              </p>
             </div>
 
-            {/* Bar 2 - Image Placeholder */}
-            <div className="flex-1 max-w-[200px] h-[65%] rounded-lg overflow-hidden bg-chikitra-mint-card">
-              {/* Image will go here */}
+            {/* Description Text */}
+            <div className="mb-6 md:mb-8 space-y-4">
+              <p
+                className="text-base md:text-lg leading-relaxed"
+                style={{ color: '#F9C1C8' }}
+              >
+                Unclear waits, scattered records, overwhelmed staff, and silent revenue leaks hurt patients and profits alike.
+              </p>
+              <p
+                className="text-base md:text-lg leading-relaxed"
+                style={{ color: '#F9C1C8' }}
+              >
+                ...and you're not ALONE.
+              </p>
+              <p
+                className="text-base md:text-lg leading-relaxed"
+                style={{ color: '#F9C1C8' }}
+              >
+                This is the reality for a majority of clinics trying to manage OPDs with outdated systems and manual processes.
+              </p>
             </div>
 
-            {/* Bar 3 - Image Placeholder */}
-            <div className="flex-1 max-w-[200px] h-[48%] rounded-lg overflow-hidden bg-chikitra-mint-card">
-              {/* Image will go here */}
-            </div>
+            {/* Final Statement */}
+            <p
+              className="text-lg md:text-xl lg:text-2xl font-bold uppercase tracking-wide"
+              style={{ color: '#F9C1C8' }}
+            >
+              THIS IS NOT HOW A MODERN CLINIC SHOULD RUN.
+            </p>
+          </div>
 
-            {/* Bar 4 - Shortest - Image Placeholder */}
-            <div className="flex-1 max-w-[200px] h-[32%] rounded-lg overflow-hidden bg-chikitra-mint-card">
-              {/* Image will go here */}
+          {/* RIGHT COLUMN - Infographic */}
+          <div className="order-1 lg:order-2 w-full flex justify-center lg:justify-end">
+            <div
+              className="relative w-full max-w-md lg:max-w-lg rounded-xl overflow-hidden shadow-2xl"
+              style={{
+                border: '2px solid rgba(249, 193, 200, 0.3)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
+              }}
+            >
+              <img
+                src={infographicImage}
+                alt="Clinic Management Report"
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>
