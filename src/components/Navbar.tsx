@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import ChikitraLogo from "./ChikitraLogo";
+import chikitraLogo from "@/assets/Long_logo_original_final.png";
+import iconLogo from "@/assets/chikitra-logo.avif";
 
 const navItems = [
   { label: "Home", href: "#hero", sectionId: "hero" },
@@ -82,7 +83,18 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm" style={{ backgroundColor: 'rgba(235, 245, 233, 0.95)' }}>
       <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <ChikitraLogo variant="light" size="md" />
+        <div className="flex items-center gap-2">
+          <img
+            src={iconLogo}
+            alt="Chikitra Icon"
+            className="h-8 md:h-10 w-auto object-contain"
+          />
+          <img
+            src={chikitraLogo}
+            alt="Chikitra"
+            className="h-6 md:h-8 w-auto object-contain"
+          />
+        </div>
 
         {/* Desktop Nav Links - hidden below 1024px (lg breakpoint) */}
         <ul className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-12 flex-1 justify-center mx-4 lg:mx-8">
