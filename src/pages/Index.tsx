@@ -91,8 +91,7 @@ const Index = () => {
       {/* Screen 5: Community + Founders */}
       <CommunitySection />
       
-      {/* Screen 6: Pricing */}
-      <PricingSection />
+      
       
       {/* Screen 7: Book Demo CTA + Form */}
       <BookDemoSection />
