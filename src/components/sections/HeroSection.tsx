@@ -198,7 +198,7 @@ const HeroSection = ({ hideSidebar = false }: HeroSectionProps) => {
                     Book a demo
                   </button>
                   <button
-                    onClick={() => scrollToSection('pricing')}
+                    onClick={() => scrollToSection('book-demo')}
                     className="w-full sm:w-auto py-3 lg:py-4 px-8 lg:px-10 rounded-full font-medium text-base lg:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(4,127,115,0.9)]"
                     style={{
                       backgroundColor: 'rgba(1, 99, 97, 0.9)',
