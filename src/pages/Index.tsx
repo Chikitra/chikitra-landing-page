@@ -72,7 +72,7 @@ const Index = () => {
       </div>
 
       {/* Desktop Navbar - hidden on hero section, appears when scrolled past hero */}
-      <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showDesktopNav ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}`}>
+      <div className={`hidden lg:block fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${showDesktopNav ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}`}>
         <Navbar />
       </div>
 
