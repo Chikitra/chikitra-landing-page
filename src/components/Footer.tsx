@@ -86,15 +86,6 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <button
-                  onClick={() => scrollToSection("pricing")}
-                  className="transition-colors text-sm hover:opacity-80"
-                  style={{ color: '#E6E7E8' }}
-                >
-                  Pricing
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => scrollToSection("book-demo")}
                   className="transition-colors text-sm hover:opacity-80"
                   style={{ color: '#E6E7E8' }}
