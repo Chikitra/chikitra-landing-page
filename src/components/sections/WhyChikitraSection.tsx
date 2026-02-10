@@ -1,82 +1,160 @@
-import { CheckCircle2 } from "lucide-react";
+import workflowIcon from "@/assets/workflow (1).png";
+import medicalRecordIcon from "@/assets/medical-record (1).png";
+import notifyIcon from "@/assets/notify.png";
+import productivityIcon from "@/assets/productivity.png";
+import coinsIcon from "@/assets/coins.png";
+import panelIcon from "@/assets/panel.png";
+import spidermanBot from "@/assets/Spiderman_bot.png";
 
-const features = [
+const comparisonData = [
   {
-    title: "Daily Admin Operations & Revenue",
-    description: "Other apps helps patients find clinics.",
-    highlight: "Chikitra helps clinics run better once patients arrive.",
+    category: "Patient Flow",
+    icon: workflowIcon,
+    typical: "Stops at appointment booking.",
+    chikitra: "Manages the entire journey — entry to exit."
   },
   {
-    title: "Clinic Digitization",
-    description: "Other apps digitizes records.",
-    highlight: "Chikitra digitizes the workflow.",
+    category: "Patient Records",
+    icon: medicalRecordIcon,
+    typical: "Time wasted typing or digging through files.",
+    chikitra: "Patient history ready before they sit down."
   },
   {
-    title: "Automated Workflow",
-    description: "Traditional tools manage schedules and billing.",
-    highlight: "Chikitra manages outcomes.",
+    category: "Follow-ups",
+    icon: notifyIcon,
+    typical: "Depends on staff memory or manual messages.",
+    chikitra: "Automatic, timely follow-ups that bring patients back."
   },
+  {
+    category: "Staff Productivity",
+    icon: productivityIcon,
+    typical: "Staff stuck with calls, registers, and paperwork.",
+    chikitra: "Staff free to focus on patients, not admin."
+  },
+  {
+    category: "Revenue Leakage",
+    icon: coinsIcon,
+    typical: "No-shows and drop-offs go unnoticed.",
+    chikitra: "Data-driven decisions increase revenue and reduce costs."
+  },
+  {
+    category: "Data Control",
+    icon: panelIcon,
+    typical: "Data scattered across books, phones, and apps.",
+    chikitra: "100% private, secure, and always accessible to you."
+  }
 ];
 
 const WhyChikitraSection = () => {
   return (
-    <section id="why-chikitra" className="py-16 md:py-20 lg:py-24" style={{ backgroundColor: '#052826' }}>
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
-          {/* Left - Bot Image - Center on tablet */}
-          <div className="aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] max-h-[500px] md:max-h-[550px] lg:max-h-[600px] rounded-2xl bg-chikitra-dark-card border border-chikitra-dark-card overflow-hidden flex items-center justify-center p-8 md:mx-auto lg:mx-0 md:max-w-md lg:max-w-none">
-            <div className="text-chikitra-mint/20 text-sm text-center">
-              Image Placeholder
+    <>
+      <style>{`
+        .comparison-grid {
+          grid-template-columns: minmax(100px, 120px) 1fr 1fr;
+        }
+        @media (min-width: 768px) {
+          .comparison-grid {
+            grid-template-columns: minmax(140px, 160px) 1fr 1fr;
+          }
+        }
+        @media (min-width: 1280px) {
+          .comparison-grid {
+            grid-template-columns: minmax(180px, 220px) 1fr 1fr;
+          }
+        }
+      `}</style>
+
+      <section id="about" className="py-16 md:py-20 lg:py-24 relative" style={{ backgroundColor: '#052826' }}>
+        <div className="container mx-auto px-4 md:px-6">
+          {/* Main Content */}
+          <div className="max-w-6xl mx-auto relative">
+            {/* Spider-man Bot - Overlapping table */}
+            <div className="hidden xl:block absolute w-96 h-96 z-30" style={{ left: '-69px', top: '-178px' }}>
+              <img
+                src={spidermanBot}
+                alt="Spiderman Bot"
+                className="w-full h-full object-contain"
+              />
             </div>
-          </div>
 
-          {/* Right - Content - Center on tablet */}
-          <div className="md:text-center lg:text-left md:mx-auto lg:mx-0 md:max-w-2xl lg:max-w-none">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8" style={{ color: '#C2E2CB' }}>
-              Why Chikitra?
-            </h2>
+            {/* Comparison Table */}
+            <div className="rounded-xl md:rounded-2xl xl:rounded-[2.5rem] overflow-hidden relative z-10 flex flex-col" style={{ backgroundColor: '#10443D' }}>
+              {/* Header Row */}
+              <div className="grid comparison-grid" style={{ backgroundColor: '#10443D' }}>
+              {/* Left Column Header - Empty */}
+              <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
+              </div>
 
-            <p className="text-sm md:text-base mb-1" style={{ color: '#859F8B' }}>
-              Most clinic tools solve one piece of the problem.
-            </p>
-            <p className="font-semibold text-sm md:text-base mb-8 md:mb-10 lg:mb-12" style={{ color: '#859F8B' }}>
-              Chikitra runs the entire clinic - end to end.
-            </p>
+              {/* Typical Way Header */}
+              <div style={{ backgroundColor: '#0A3531' }} className="p-3 md:p-4 xl:p-6">
+                <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#D1D3D4' }}>
+                  Typical Way
+                </h3>
+              </div>
 
-            {/* Features List */}
-            <div className="space-y-6 md:space-y-8 lg:space-y-10 mb-10 md:mb-12 lg:mb-16">
-              {features.map((feature, index) => (
-                <div key={index} className="flex gap-3 md:gap-4 md:justify-center lg:justify-start md:max-w-xl md:mx-auto lg:mx-0">
-                  <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0 mt-1" style={{ color: '#C2E2CB' }} />
-                  <div className="md:text-center lg:text-left">
-                    <h3 className="font-semibold text-lg md:text-xl mb-2 md:mb-3" style={{ color: '#C2E2CB' }}>
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm md:text-base mb-1" style={{ color: '#9FBCA5' }}>
-                      {feature.description}
-                    </p>
-                    <p className="font-semibold text-sm md:text-base" style={{ color: '#9FBCA5' }}>
-                      {feature.highlight}
-                    </p>
-                  </div>
+              {/* Chikitra Way Header */}
+              <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
+                <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#C2E2CB' }}>
+                  The "<span style={{ fontStyle: 'italic' }}>Chikitra</span>" Way
+                </h3>
+              </div>
+            </div>
+
+            {/* Data Rows */}
+            {comparisonData.map((item, index) => (
+              <div
+                key={index}
+                className="grid comparison-grid"
+                style={{ backgroundColor: '#10443D' }}
+              >
+                {/* Category with Icon */}
+                <div
+                  style={{ backgroundColor: '#10443D' }}
+                  className="p-3 md:p-4 xl:p-6 md:flex md:items-center xl:justify-end gap-1 md:gap-2"
+                >
+                  <span className="font-semibold text-xs md:text-sm xl:text-base block md:inline" style={{ color: '#ADC9B4' }}>
+                    {item.category}
+                  </span>
+                  <img
+                    src={item.icon}
+                    alt={item.category}
+                    className="hidden md:inline-block w-6 md:h-6 xl:w-7 xl:h-7 object-contain flex-shrink-0"
+                    style={{ opacity: 0.5 }}
+                  />
                 </div>
-              ))}
-            </div>
 
-            {/* Bottom Line */}
-            <div>
-              <p className="text-sm md:text-base mb-2 md:mb-3" style={{ color: '#C2E2CB' }}>The bottom line?</p>
-              <p className="text-sm md:text-base mb-3 md:mb-4" style={{ color: '#C2E2CB' }}>
-                Others tools in the marks finds patients. They store data.
-              </p>
-              <p className="font-bold text-2xl md:text-3xl lg:text-4xl" style={{ color: '#E6F3E6' }}>
-                Chikitra runs the clinic.
-              </p>
-            </div>
+                {/* Typical Way Description */}
+                <div
+                  style={{
+                    backgroundColor: '#0A3531',
+                    borderBottom: index < comparisonData.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
+                  }}
+                  className="p-3 md:p-4 xl:p-6 flex items-center"
+                >
+                  <p className="text-xs md:text-sm xl:text-base" style={{ color: '#D1D3D4' }}>
+                    {item.typical}
+                  </p>
+                </div>
+
+                {/* Chikitra Way Description */}
+                <div
+                  style={{
+                    backgroundColor: '#10443D',
+                    borderBottom: index < comparisonData.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
+                  }}
+                  className="p-3 md:p-4 xl:p-6 flex items-center"
+                >
+                  <p className="text-xs md:text-sm xl:text-base font-medium" style={{ color: '#C2E2CB' }}>
+                    {item.chikitra}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
+    </>
   );
 };
 
