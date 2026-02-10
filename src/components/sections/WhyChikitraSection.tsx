@@ -64,7 +64,7 @@ const WhyChikitraSection = () => {
         }
       `}</style>
 
-      <section id="about" className="py-16 md:py-20 lg:py-24 relative" style={{ backgroundColor: '#052826' }}>
+      <section id="why-chikitra" className="py-16 md:py-20 lg:py-24 relative" style={{ backgroundColor: '#052826' }}>
         <div className="container mx-auto px-4 md:px-6">
           {/* Main Content */}
           <div className="max-w-6xl mx-auto relative">
