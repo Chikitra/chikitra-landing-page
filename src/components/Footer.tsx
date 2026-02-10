@@ -143,7 +143,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="pt-8" style={{ borderTop: '1px solid rgba(230, 231, 232, 0.2)' }}>
           <p className="text-center text-sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
-            © 2025 Chikitra. All rights reserved.
+            © 2026 Chikitra. All rights reserved.
           </p>
         </div>
       </div>
