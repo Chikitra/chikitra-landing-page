@@ -29,6 +29,12 @@ const HeroSection = ({ hideSidebar = false }: HeroSectionProps) => {
         .levitating-bot {
           animation: levitate 4s ease-in-out infinite;
         }
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .hero-heading {
+            font-size: 1.85rem !important;
+            line-height: 1.2 !important;
+          }
+        }
       `}</style>
 
     <section id="hero" className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#0A4944' }}>
@@ -133,7 +139,7 @@ const HeroSection = ({ hideSidebar = false }: HeroSectionProps) => {
                   alt="Chikitra Bot"
                   className="w-full h-auto object-contain"
                   style={{
-                    filter: 'drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5))',
+                    //filter: 'drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5))',
                     maxWidth: '800px',
                     margin: '0 auto'
                   }}
@@ -158,7 +164,7 @@ const HeroSection = ({ hideSidebar = false }: HeroSectionProps) => {
             <div className="relative flex flex-col h-full pb-4 order-1 lg:order-2">
               {/* Headline */}
               <h1
-                className="font-bold leading-tight pt-4 lg:pt-28 px-4 lg:pr-8 text-center lg:text-right text-3xl lg:text-[2.625rem]"
+                className="hero-heading font-bold leading-tight pt-4 lg:pt-28 px-4 lg:pr-8 text-center lg:text-right text-3xl lg:text-[2.625rem]"
                 style={{ color: '#D6EADB', lineHeight: '1.2' }}
               >
                 See more patients every day.
@@ -206,27 +212,35 @@ const HeroSection = ({ hideSidebar = false }: HeroSectionProps) => {
                 </div>
 
                 {/* Appointments Image */}
-                <div className="flex-1 px-4 lg:pr-8">
+                <div className="flex-1 px-4 lg:pr-4 lg:pl-0">
                   <div
-                    className="w-full rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_35px_rgba(67,119,105,0.9)]"
+                    className="relative lg:absolute w-full rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_35px_rgba(67,119,105,0.9)]"
                     style={{
                       opacity: 0.9,
                       border: '2px solid #437769',
                       boxShadow: '0 0 25px rgba(67, 119, 105, 0.6)',
-                      //minHeight: '550px',
-                      maxHeight: '700px',
-                      backgroundColor: '#0A4944'
                     }}
                   >
-                    <img
-                      src={appointmentsImage}
-                      alt="Appointments Dashboard"
-                      className="w-full h-full"
-                      style={{
-                        objectFit: 'contain',
-                        objectPosition: 'top center'
-                      }}
-                    />
+                    <style>{`
+                      @media (min-width: 1024px) {
+                        .appointments-container {
+                          
+                          left: -118px;
+                        }
+                      }
+                    `}</style>
+                    <div className="appointments-container">
+                      <img
+                        src={appointmentsImage}
+                        alt="Appointments Dashboard"
+                        className="w-full h-full"
+                        style={{
+                          objectFit: 'cover',
+                          objectPosition: 'top center',
+                          //minHeight: '400px'
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
