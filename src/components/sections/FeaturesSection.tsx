@@ -73,6 +73,7 @@ const FeaturesSection = () => {
           animation: float 4s ease-in-out infinite;
         }
         .feature-card {
+          text-align: left;
           background-color: #0E564F;
           border-radius: 1rem;
           padding: 1.25rem;
