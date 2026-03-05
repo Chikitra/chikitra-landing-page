@@ -193,9 +193,9 @@ const FeaturesSection = () => {
           {/* Feature Cards Layout */}
           <div className="max-w-7xl mx-auto">
             {/* Mobile & Tablet: 3 Icons Left | Ninja Bot Center | 3 Icons Right */}
-            <div className="flex items-center justify-center gap-3 md:gap-5 xl:hidden">
+            <div className="flex items-center justify-center gap-6 md:gap-10 xl:hidden">
               {/* LEFT COLUMN - Icons 1, 2, 3 */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-6 md:gap-8">
                 {features.slice(0, 3).map((feature) => (
                   <button
                     key={feature.id}
@@ -205,7 +205,7 @@ const FeaturesSection = () => {
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-8 h-8 object-contain"
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
                     />
                   </button>
                 ))}
@@ -214,7 +214,7 @@ const FeaturesSection = () => {
               {/* CENTER - Ninja Bot */}
               <div
                 className="floating-ninja-mobile flex-shrink-0"
-                style={{ width: '180px', height: '180px' }}
+                style={{ width: '240px', height: '240px' }}
               >
                 <img
                   src={ninjaBot}
@@ -224,7 +224,7 @@ const FeaturesSection = () => {
               </div>
 
               {/* RIGHT COLUMN - Icons 4, 5, 6 */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-6 md:gap-8">
                 {features.slice(3, 6).map((feature) => (
                   <button
                     key={feature.id}
@@ -234,7 +234,7 @@ const FeaturesSection = () => {
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-8 h-8 object-contain"
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
                     />
                   </button>
                 ))}
