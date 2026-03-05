@@ -7,6 +7,7 @@ import featureBot4 from "@/assets/Feature_Bot4.png";
 import featureBot5 from "@/assets/Feature_Bot5.png";
 import featureBot6 from "@/assets/Feature_Bot6.png";
 import ninjaBot from "@/assets/Features-Section_Bot.png";
+import ninjaBotOnly from "@/assets/Features-Section_Bot_only.png";
 import iconNotification from "@/assets/Notification.png";
 import iconDashboard from "@/assets/dashboard.png";
 import iconLiveSync from "@/assets/live_sync.png";
@@ -193,9 +194,9 @@ const FeaturesSection = () => {
           {/* Feature Cards Layout */}
           <div className="max-w-7xl mx-auto">
             {/* Mobile & Tablet: 3 Icons Left | Ninja Bot Center | 3 Icons Right */}
-            <div className="flex items-center justify-center gap-6 md:gap-10 xl:hidden">
+            <div className="flex items-center justify-center gap-2 md:gap-4 xl:hidden">
               {/* LEFT COLUMN - Icons 1, 2, 3 */}
-              <div className="flex flex-col gap-6 md:gap-8">
+              <div className="flex flex-col gap-5 md:gap-7">
                 {features.slice(0, 3).map((feature) => (
                   <button
                     key={feature.id}
@@ -205,7 +206,7 @@ const FeaturesSection = () => {
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </button>
                 ))}
@@ -217,14 +218,14 @@ const FeaturesSection = () => {
                 style={{ width: '240px', height: '240px' }}
               >
                 <img
-                  src={ninjaBot}
+                  src={ninjaBotOnly}
                   alt="Ninja Bot"
                   className="w-full h-full object-contain"
                 />
               </div>
 
               {/* RIGHT COLUMN - Icons 4, 5, 6 */}
-              <div className="flex flex-col gap-6 md:gap-8">
+              <div className="flex flex-col gap-5 md:gap-7">
                 {features.slice(3, 6).map((feature) => (
                   <button
                     key={feature.id}
@@ -234,7 +235,7 @@ const FeaturesSection = () => {
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </button>
                 ))}
