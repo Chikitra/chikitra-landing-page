@@ -185,7 +185,7 @@ const CommunitySection = () => {
               {/* Doctor Info */}
               <div className="text-center mb-4">
                 <p className="font-semibold text-sm md:text-base" style={{ color: '#231F20' }}>
-                  {currentTestimonial.name} ({currentTestimonial.degree})
+                  {currentTestimonial.name}{currentTestimonial.degree ? ` (${currentTestimonial.degree})` : ''}
                 </p>
                 <p className="text-sm" style={{ color: '#231F20' }}>
                   {currentTestimonial.clinic}
