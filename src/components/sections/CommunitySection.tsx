@@ -9,23 +9,11 @@ import founderTahreem from "@/assets/founder-tahreem.png";
 
 const testimonials = [
   {
-    quote: '"can\'t wait to try the demo"',
-    name: "Dr. Random Random",
-    degree: "MBBS, MS",
-    clinic: "Random Hospital/Clinic",
+    quote: '"It\'s organizing chaos without hiring more people"',
+    name: "Dr. Yashwanth",
+    degree: "",
+    clinic: "Bangalore, India",
     video: testimonialVideo1,
-  },
-  {
-    quote: '"Chikitra is doing a great job..."',
-    name: "Dr. Random Random",
-    degree: "MBBS, MS",
-    clinic: "Random Hospital/Clinic",
-  },
-  {
-    quote: '"Chikitra solves the big problem"',
-    name: "Dr. Random Random",
-    degree: "MBBS, MS",
-    clinic: "Random Hospital/Clinic",
   },
 ];
 
@@ -95,9 +83,6 @@ const CommunitySection = () => {
               >
                 What doctors & clinics are saying...
               </p>
-              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
-              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
-              <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>Some text</p>
             </div>
 
             {/* Right Column - Video Carousel */}
@@ -112,15 +97,17 @@ const CommunitySection = () => {
 
               {/* Video Player with Navigation Arrows */}
               <div className="relative flex items-center justify-center w-full mb-4 md:mb-6">
-                {/* Left Arrow */}
-                <button
-                  onClick={prevTestimonial}
-                  className="absolute left-0 md:left-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
-                  style={{ backgroundColor: '#0A8B80' }}
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
-                </button>
+                {/* Left Arrow - hidden when only 1 testimonial */}
+                {testimonials.length > 1 && (
+                  <button
+                    onClick={prevTestimonial}
+                    className="absolute left-0 md:left-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
+                    style={{ backgroundColor: '#0A8B80' }}
+                    aria-label="Previous testimonial"
+                  >
+                    <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
+                  </button>
+                )}
 
                 {/* Video Frame with Video Inside */}
                 <div className="relative w-64 h-56 md:w-80 md:h-72 lg:w-96 lg:h-80">
@@ -139,11 +126,10 @@ const CommunitySection = () => {
                         className="absolute object-cover  z-10"
                         style={{
                           top: '10%',
-                          left: '9%',
-                          width: '82%',
+                          left: '11%',
+                          width: '78%',
                           height: '79%',
-                          borderRadius: '114px',
-                          padding: '1rem'
+                          borderRadius: '100px',
                         }}
                         onEnded={() => setIsPlaying(false)}
                       />
@@ -183,15 +169,17 @@ const CommunitySection = () => {
                   )}
                 </div>
 
-                {/* Right Arrow */}
-                <button
-                  onClick={nextTestimonial}
-                  className="absolute right-0 md:right-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
-                  style={{ backgroundColor: '#0A8B80' }}
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
-                </button>
+                {/* Right Arrow - hidden when only 1 testimonial */}
+                {testimonials.length > 1 && (
+                  <button
+                    onClick={nextTestimonial}
+                    className="absolute right-0 md:right-4 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
+                    style={{ backgroundColor: '#0A8B80' }}
+                    aria-label="Next testimonial"
+                  >
+                    <ChevronRight className="w-6 h-6 md:w-8 md:h-8" style={{ color: '#C2E2CB' }} />
+                  </button>
+                )}
               </div>
 
               {/* Doctor Info */}
@@ -204,24 +192,26 @@ const CommunitySection = () => {
                 </p>
               </div>
 
-              {/* Pagination Dots */}
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentIndex(index);
-                      setIsPlaying(false);
-                    }}
-                    className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300"
-                    style={{
-                      backgroundColor: index === currentIndex ? '#0A8B80' : '#7FA587',
-                      opacity: index === currentIndex ? 1 : 0.5
-                    }}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {/* Pagination Dots - hidden when only 1 testimonial */}
+              {testimonials.length > 1 && (
+                <div className="flex gap-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentIndex(index);
+                        setIsPlaying(false);
+                      }}
+                      className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300"
+                      style={{
+                        backgroundColor: index === currentIndex ? '#0A8B80' : '#7FA587',
+                        opacity: index === currentIndex ? 1 : 0.5
+                      }}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
