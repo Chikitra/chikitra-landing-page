@@ -261,7 +261,7 @@ const FeaturesSection = () => {
                   </button>
 
                   {/* Card Content */}
-                  <div className="relative z-10">
+                  <div className="relative z-10 text-left">
                     <h3 className="text-xl font-bold mb-3 pr-8" style={{ color: '#C2E2CB' }}>
                       {features.find(f => f.id === activeFeature)?.title}
                     </h3>
@@ -297,7 +297,7 @@ const FeaturesSection = () => {
                     <ArrowUpRight className="absolute top-4 right-4 w-5 h-5 transition-colors" style={{ color: '#1A9E88' }} />
 
                     {/* Content */}
-                    <div className="relative z-10 h-full flex flex-col">
+                    <div className="relative z-10 h-full flex flex-col text-left">
                       <h3 className="text-base font-bold mb-1.5" style={{ color: '#C2E2CB' }}>
                         {feature.title}
                       </h3>
@@ -346,7 +346,7 @@ const FeaturesSection = () => {
                     <ArrowUpRight className="absolute top-4 right-4 w-5 h-5 transition-colors" style={{ color: '#1A9E88' }} />
 
                     {/* Content */}
-                    <div className="relative z-10 h-full flex flex-col">
+                    <div className="relative z-10 h-full flex flex-col text-left">
                       <h3 className="text-base font-bold mb-1.5" style={{ color: '#C2E2CB' }}>
                         {feature.title}
                       </h3>
