@@ -139,10 +139,11 @@ const CommunitySection = () => {
                         className="absolute object-cover  z-10"
                         style={{
                           top: '10%',
-                          left: '11%',
-                          width: '78%',
+                          left: '9%',
+                          width: '82%',
                           height: '79%',
-                          borderRadius: '100px',
+                          borderRadius: '114px',
+                          padding: '1rem'
                         }}
                         onEnded={() => setIsPlaying(false)}
                       />
