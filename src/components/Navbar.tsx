@@ -13,6 +13,7 @@ const navItems = [
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("hero");
+  const [isChaosSection, setIsChaosSection] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Navbar = () => {
             } else {
               setActiveSection(sectionId);
             }
+            setIsChaosSection(sectionId === "chaos");
             break;
           }
         }
@@ -80,7 +82,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] backdrop-blur-sm" style={{ backgroundColor: 'rgba(235, 245, 233, 0.95)' }}>
+    <header className="fixed top-0 left-0 right-0 z-[100] backdrop-blur-sm transition-colors duration-300" style={{ backgroundColor: isChaosSection ? '#F9EAEB' : '#EBF5E9' }}>
       <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">

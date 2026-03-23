@@ -1,5 +1,5 @@
 import bgImage from "@/assets/Old-Ways-Section_Bg_image.png";
-import infographicImage from "@/assets/Old-Ways-Section_Image1.png";
+import infographicImage from "@/assets/Old_way_section_image.png";
 
 const ChaosSection = () => {
   return (
@@ -36,12 +36,13 @@ const ChaosSection = () => {
               The Problem…
             </p>
 
-            {/* Main Headline */}
             <h2
               className="font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 md:mb-10 text-center lg:text-left"
               style={{ color: '#F9C1C8' }}
             >
-              Most clinics still run on paper, memory and CHAOS.
+              <span className="block pb-2 lg:pb-3">Most clinics still run</span>
+              <span className="block pb-2 lg:pb-3">on paper, memory</span>
+              <span className="block pt-1 lg:pt-2">and CHAOS.</span>
             </h2>
 
             {/* Sub-headline */}
@@ -61,7 +62,7 @@ const ChaosSection = () => {
             </div>
 
             {/* Description Text */}
-            <div className="mb-6 md:mb-8 space-y-4">
+            <div className="mb-6 md:mb-8 space-y-6">
               <p
                 className="text-base md:text-lg leading-relaxed text-center lg:text-left"
                 style={{ color: '#F9C1C8' }}
@@ -72,7 +73,7 @@ const ChaosSection = () => {
                 className="text-base md:text-lg leading-relaxed text-center lg:text-left"
                 style={{ color: '#F9C1C8' }}
               >
-                ...and you're not ALONE.
+                ...and you're not <span className="font-bold">ALONE.</span>
               </p>
               <p
                 className="text-base md:text-lg leading-relaxed text-center lg:text-left"
