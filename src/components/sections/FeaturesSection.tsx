@@ -24,7 +24,7 @@ const features = [
     description: "Automated reminders, reports, and recalls via WhatsApp, Call & SMS.",
     bot: featureBot1,
     icon: iconNotification,
-    botStyle: { width: '110px', bottom: '-8px', right: '-10px', transform: 'scaleX(-1)' }
+    botStyle: { width: '110px', bottom: '-60px', right: '-10px', transform: 'scaleX(-1)' }
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const features = [
     description: "Past history, medications, labs, visit notes, and today's reason—on one screen.",
     bot: featureBot2,
     icon: iconDashboard,
-    botStyle: { width: '125px', bottom: '-20px', right: '-15px' }
+    botStyle: { width: '125px', bottom: '-60px', right: '-15px' }
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const features = [
     description: "Real-time appointment list that updates continuously through the day.",
     bot: featureBot3,
     icon: iconLiveSync,
-    botStyle: { width: '115px', bottom: '-1px', right: '-10px' }
+    botStyle: { width: '100px', bottom: '-10px', right: '-10px' }
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const features = [
     description: "Answers patient queries, captures details, and preps intake—so your team starts informed.",
     bot: featureBot4,
     icon: iconIntake,
-    botStyle: { width: '90px', bottom: '-15px', right: '-15px' }
+    botStyle: { width: '90px', bottom: '-50px', right: '-15px' }
   },
   {
     id: 5,
@@ -69,7 +69,7 @@ const features = [
     description: "E-prescriptions or handwritten ones. Everything together. Future visits.",
     bot: featureBot6,
     icon: iconPrescription,
-    botStyle: { width: '90px', bottom: '-15px', right: '-15px' }
+    botStyle: { width: '90px', bottom: '-40px', right: '-15px', transform: 'scaleX(-1)' }
   }
 ];
 
@@ -182,7 +182,7 @@ const FeaturesSection = () => {
         }
       `}</style>
 
-      <section id="features" className="py-24 relative" style={{ backgroundColor: '#0A4944' }}>
+      <section id="features" className="py-24 relative" style={{ background: "linear-gradient(180deg, #2F1012 0%, #241416 28%, #143733 68%, #0C3A35 100%)" }}>
         <div className="container mx-auto px-6">
           {/* Title */}
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -306,7 +306,7 @@ const FeaturesSection = () => {
                     tabIndex={0}
                   >
                     {/* Arrow Icon */}
-                    <img src={featureArrow} alt="Arrow" className="absolute top-4 right-4 w-5 h-5 transition-transform hover:scale-110 object-contain" />
+                    {/* <img src={featureArrow} alt="Arrow" className="absolute top-4 right-4 w-5 h-5 transition-transform hover:scale-110 object-contain" /> */}
 
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-left pr-10">
@@ -358,7 +358,7 @@ const FeaturesSection = () => {
                     tabIndex={0}
                   >
                     {/* Arrow Icon */}
-                    <img src={featureArrow} alt="Arrow" className="absolute top-4 right-4 w-5 h-5 transition-transform hover:scale-110 object-contain" />
+                    {/* <img src={featureArrow} alt="Arrow" className="absolute top-4 right-4 w-5 h-5 transition-transform hover:scale-110 object-contain" /> */}
 
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-left pr-10">

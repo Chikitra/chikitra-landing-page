@@ -35,7 +35,7 @@ const HeroSection = () => {
           style={{
             left: '34%',
             transform: 'translate(-50%, -50%)',
-            zIndex: 4,
+            zIndex: 2,
           }}
         >
           <img
