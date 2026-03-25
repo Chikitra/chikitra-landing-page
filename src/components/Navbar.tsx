@@ -13,7 +13,7 @@ const navItems = [
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("hero");
-  const [isChaosSection, setIsChaosSection] = useState(false);
+  const [isInHero, setIsInHero] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,6 +22,12 @@ const Navbar = () => {
     const handleScroll = () => {
       const sections = ["hero", "chaos", "why-chikitra", "features", "community", "about", "pricing", "book-demo"];
       const scrollPosition = window.scrollY + 100;
+
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+        setIsInHero(scrollPosition < heroBottom);
+      }
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -35,7 +41,6 @@ const Navbar = () => {
             } else {
               setActiveSection(sectionId);
             }
-            setIsChaosSection(sectionId === "chaos");
             break;
           }
         }
@@ -47,7 +52,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -55,16 +59,13 @@ const Navbar = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        element?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     } else {
-      const element = document.getElementById(sectionId);
-      element?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -81,33 +82,38 @@ const Navbar = () => {
     }
   };
 
+  const navBg = isInHero ? '#0B3A35' : '#EBF5E9';
+  const linkColor = isInHero ? '#D6EADB' : '#033F3D';
+  const bookDemoBg = isInHero ? '#016361' : '#D6EADB';
+  const bookDemoText = isInHero ? '#EBF5E9' : '#033F3D';
+  const bookDemoBorder = isInHero
+    ? '1.5px solid rgba(91, 178, 157, 0.6)'
+    : '1.5px solid rgba(91, 178, 157, 0.6)';
+  const bookDemoShadow = '0 0 10px rgba(91, 178, 157, 0.4)';
+  const signInColor = isInHero ? '#D6EADB' : '#033F3D';
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] backdrop-blur-sm transition-colors duration-300" style={{ backgroundColor: isChaosSection ? '#F9EAEB' : '#EBF5E9' }}>
-      <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+    <header
+      className="fixed top-0 left-0 right-0 z-[100] transition-colors duration-300"
+      style={{ backgroundColor: navBg }}
+    >
+      <nav className="container mx-auto px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img
-            src={iconLogo}
-            alt="Chikitra Icon"
-            className="h-8 md:h-10 w-auto object-contain"
-          />
-          <img
-            src={chikitraLogo}
-            alt="Chikitra"
-            className="h-6 md:h-8 w-auto object-contain"
-          />
+        <div className="flex items-center gap-1.5">
+          <img src={iconLogo} alt="Chikitra Icon" className="h-7 md:h-8 w-auto object-contain" />
+          <img src={chikitraLogo} alt="Chikitra" className="h-5 md:h-6 w-auto object-contain" />
         </div>
 
-        {/* Desktop Nav Links - hidden below 1024px (lg breakpoint) */}
+        {/* Desktop Nav Links */}
         <ul className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-12 flex-1 justify-center mx-4 lg:mx-8">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                className="text-sm lg:text-base font-medium transition-colors whitespace-nowrap"
+                className="text-sm lg:text-base font-medium transition-colors duration-300 whitespace-nowrap hover:opacity-80"
                 style={{
-                  color: '#053F3D',
+                  color: linkColor,
                   fontWeight: activeSection === item.sectionId ? '600' : '500'
                 }}
               >
@@ -116,17 +122,15 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* Book a demo - outlined pill */}
           <li>
             <button
               onClick={handleBookDemo}
-              className="btn-pill text-xs lg:text-sm whitespace-nowrap"
+              className="text-xs lg:text-sm whitespace-nowrap rounded-full px-4 py-1.5 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center"
               style={{
-                color: '#053F3D',
-                borderColor: '#016361',
-                borderWidth: '2px',
-                borderStyle: 'solid',
-                backgroundColor: 'transparent'
+                backgroundColor: bookDemoBg,
+                color: bookDemoText,
+                border: bookDemoBorder,
+                boxShadow: bookDemoShadow,
               }}
             >
               Book a demo
@@ -134,25 +138,20 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Right side: Sign in + Hamburger */}
+        {/* Right side */}
         <div className="flex items-center gap-3">
-          {/* Sign in button */}
           <Link
             to="/signin"
-            className="btn-pill text-xs lg:text-sm whitespace-nowrap"
-            style={{
-              color: '#DBEFE9',
-              backgroundColor: '#016361'
-            }}
+            className="text-xs lg:text-sm whitespace-nowrap font-medium transition-colors duration-300 hover:opacity-80"
+            style={{ color: signInColor }}
           >
             Sign in
           </Link>
 
-          {/* Hamburger Menu Button - visible below lg (1024px) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg transition-colors"
-            style={{ color: '#053F3D' }}
+            style={{ color: linkColor }}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -160,11 +159,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile/Tablet Menu Overlay */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div 
+        <div
           className="lg:hidden absolute top-full left-0 right-0 border-t shadow-lg"
-          style={{ backgroundColor: 'rgba(235, 245, 233, 0.98)', borderColor: '#016361' }}
+          style={{ backgroundColor: isInHero ? 'rgba(11, 58, 53, 0.98)' : 'rgba(235, 245, 233, 0.98)', borderColor: '#016361' }}
         >
           <ul className="container mx-auto px-4 py-4 flex flex-col gap-2">
             {navItems.map((item) => (
@@ -174,9 +173,9 @@ const Navbar = () => {
                   onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
                   className="block py-3 px-4 text-base font-medium transition-colors rounded-lg"
                   style={{
-                    color: '#053F3D',
+                    color: linkColor,
                     fontWeight: activeSection === item.sectionId ? '600' : '500',
-                    backgroundColor: activeSection === item.sectionId ? 'rgba(1, 99, 97, 0.1)' : 'transparent'
+                    backgroundColor: activeSection === item.sectionId ? (isInHero ? 'rgba(1, 99, 97, 0.3)' : 'rgba(1, 99, 97, 0.1)') : 'transparent'
                   }}
                 >
                   {item.label}
@@ -186,13 +185,12 @@ const Navbar = () => {
             <li className="pt-2">
               <button
                 onClick={handleBookDemo}
-                className="w-full py-3 px-4 text-base font-medium rounded-lg transition-colors"
+                className="w-full py-2.5 px-4 text-base font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
                 style={{
-                  color: '#053F3D',
-                  borderColor: '#016361',
-                  borderWidth: '2px',
-                  borderStyle: 'solid',
-                  backgroundColor: 'transparent'
+                  backgroundColor: bookDemoBg,
+                  color: bookDemoText,
+                  border: bookDemoBorder,
+                  boxShadow: bookDemoShadow,
                 }}
               >
                 Book a demo
