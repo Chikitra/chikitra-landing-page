@@ -244,52 +244,52 @@ const CommunitySection = () => {
         className="pt-12 md:pt-16 pb-0 relative overflow-hidden"
         style={{ backgroundColor: '#C4D6C8' }}
       >
-        {/* Background Illustrations - Very large, almost filling section */}
+        {/* Background Illustrations - full section height, behind characters */}
         <img
           src={thinkingIcon}
           alt=""
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
-          style={{ opacity: 0.02 }}
+          className="absolute pointer-events-none select-none h-full"
+          style={{ opacity: 0.04, top: 0, left: '28%', transform: 'translateX(-50%)', width: 'auto' }}
         />
         <img
           src={promotionIcon}
           alt=""
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
-          style={{ opacity: 0.02 }}
+          className="absolute pointer-events-none select-none h-full"
+          style={{ opacity: 0.04, top: 0, right: '25%', transform: 'translateX(50%)', width: 'auto' }}
         />
 
         <div className="container mx-auto px-6">
           {/* Main Heading */}
           <div className="text-center mb-8 md:mb-10">
-            <p className="text-base md:text-lg lg:text-xl mb-2" style={{ color: '#052826' }}>
-              <span className="font-extrabold" style={{ color: '#008080' }}>C</span>
-              <span className="font-extrabold" style={{ color: '#3ABDAA' }}>hikitra</span>
-              <span style={{ color: '#052826' }}> - India's first AI-powered clinic management tool</span>
+            <p className="text-base md:text-lg lg:text-xl font-semibold mb-2" style={{ color: '#052826' }}>
+              <span className="font-extrabold" style={{ color: '#025F5C' }}>C</span>
+              <span className="font-extrabold" style={{ color: '#2C9382' }}>hikitra</span>
+              <span style={{ color: '#052826' }}> - Your Clinic's All-in-One Automated Management Software</span>
             </p>
-            <p className="text-base md:text-lg lg:text-xl" style={{ color: '#052826' }}>
+            <p className="text-base md:text-lg lg:text-xl font-semibold" style={{ color: '#052826' }}>
               built to transform <span className="font-semibold">your</span> clinic into a <span className="font-bold">smarter one</span>
             </p>
           </div>
 
           {/* Built by Doctors */}
           <p
-            className="text-lg md:text-xl lg:text-2xl italic text-center mb-10 md:mb-12"
+            className="text-xl md:text-2xl lg:text-3xl italic text-center mb-10 md:mb-12"
             style={{ color: '#0D514C' }}
           >
-            Built by '<span className="font-semibold not-italic">Doctors</span>', for '<span className="font-semibold not-italic">Doctors</span>'
+            Built by '<span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">Doctors</span>', for '<span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">Doctors</span>'
           </p>
 
           {/* Founders - Images with text beside them */}
-          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-8 lg:gap-12">
+          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-1 lg:gap-2">
             {/* Founder 1 - Dr. Ankeeta Roy with text beside head area */}
             <div className="relative flex items-start z-10">
               {/* Text positioned beside head/face area */}
-              <div className="text-right pr-4 pt-4 md:pt-6 lg:pt-8">
-                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>
+              <div className="text-right pr-0 -mr-12 pt-4 md:pt-6 lg:pt-8">
+                <p className="font-bold text-base md:text-lg lg:text-xl whitespace-nowrap" style={{ color: '#231F20' }}>
                   Dr. Ankeeta Roy, <span className="font-normal italic">a.k.a 'The Big Brain'</span>
                 </p>
-                <p className="text-sm md:text-base" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-sm md:text-base lg:text-lg" style={{ color: '#231F20' }}>Founder & CEO</p>
+                <p className="text-base md:text-lg font-semibold" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>Founder & CEO</p>
               </div>
               <img
                 src={founderAnkeeta}
@@ -300,7 +300,7 @@ const CommunitySection = () => {
             </div>
 
             {/* Founder 2 - Dr. Tahreem Afroz with text beside torso area */}
-            <div className="relative flex items-start z-20">
+            <div className="relative flex items-start z-20 -ml-2 md:-ml-4 lg:-ml-6">
               <img
                 src={founderTahreem}
                 alt="Dr. Tahreem Afroz - Co-founder & CMO"
@@ -309,11 +309,11 @@ const CommunitySection = () => {
               />
               {/* Text positioned beside torso/chest area */}
               <div className="text-left pl-4 pt-32 md:pt-40 lg:pt-48">
-                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>
+                <p className="font-bold text-base md:text-lg lg:text-xl whitespace-nowrap" style={{ color: '#231F20' }}>
                   Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
                 </p>
-                <p className="text-sm md:text-base" style={{ color: '#231F20' }}>MBBS</p>
-                <p className="font-semibold text-sm md:text-base lg:text-lg" style={{ color: '#231F20' }}>Co-founder & CMO</p>
+                <p className="text-base md:text-lg font-semibold" style={{ color: '#231F20' }}>MBBS</p>
+                <p className="font-bold text-base md:text-lg lg:text-xl" style={{ color: '#231F20' }}>Co-founder & CMO</p>
               </div>
             </div>
           </div>
