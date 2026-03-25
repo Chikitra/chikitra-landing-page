@@ -6,7 +6,7 @@ const ChaosSection = () => {
     <section
       id="chaos"
       className="relative min-h-screen overflow-hidden z-[60]"
-      style={{ backgroundColor: '#381416' }}
+      style={{ background: 'linear-gradient(180deg, #002D29 0%, #102B27 12%, #2A1D1E 24%, #371618 40%, #371618 100%)' }}
     >
       {/* Background Image - Woman crying */}
       <div
@@ -21,23 +21,23 @@ const ChaosSection = () => {
       />
 
       {/* Navigator Bar */}
-      
+
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* LEFT COLUMN - Text Content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 max-w-md lg:max-w-[460px] xl:max-w-[480px] mx-auto lg:mx-0 flex flex-col justify-center origin-left scale-[1.07]">
             {/* "The Problem..." */}
             <p
-              className="text-lg md:text-xl mb-6 md:mb-8 text-center lg:text-left"
-              style={{ color: '#F9C1C8', opacity: 0.5 }}
+              className="text-xl md:text-2xl font-medium mb-2 md:mb-3 text-center lg:text-left"
+              style={{ color: '#F9C1C8', opacity: 0.75 }}
             >
               The Problem…
             </p>
 
             <h2
-              className="font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 md:mb-10 text-center lg:text-left"
+              className="font-medium text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 md:mb-10 text-center lg:text-left tracking-tight"
               style={{ color: '#F9C1C8' }}
             >
               <span className="block pb-2 lg:pb-3">Most clinics still run</span>
@@ -48,21 +48,21 @@ const ChaosSection = () => {
             {/* Sub-headline */}
             <div className="mb-6 md:mb-8">
               <p
-                className="text-xl md:text-2xl font-semibold mb-2 text-center lg:text-left"
+                className="text-lg md:text-xl lg:text-2xl font-normal mb-1 md:mb-2 text-center lg:text-left"
                 style={{ color: '#F9C1C8' }}
               >
-                Your clinic is <span className="font-bold">BUSY.</span>
+                Your clinic is <span className="font-medium">BUSY.</span>
               </p>
               <p
-                className="text-xl md:text-2xl font-semibold text-center lg:text-left"
+                className="text-lg md:text-xl lg:text-2xl font-normal text-center lg:text-left"
                 style={{ color: '#F9C1C8' }}
               >
-                But it might be <span className="font-bold">BREAKING.</span>
+                But it might be <span className="font-medium">BREAKING.</span>
               </p>
             </div>
 
             {/* Description Text */}
-            <div className="mb-6 md:mb-8 space-y-6">
+            <div className="mb-8 md:mb-10">
               <p
                 className="text-base md:text-lg leading-relaxed text-center lg:text-left"
                 style={{ color: '#F9C1C8' }}
@@ -85,7 +85,7 @@ const ChaosSection = () => {
 
             {/* Final Statement */}
             <p
-              className="text-lg md:text-xl lg:text-2xl font-bold uppercase tracking-wide text-center lg:text-left"
+              className="text-base md:text-lg lg:text-xl font-medium uppercase tracking-wide text-center lg:text-left mt-2 md:mt-3 whitespace-nowrap"
               style={{ color: '#F9C1C8' }}
             >
               THIS IS NOT HOW A MODERN CLINIC SHOULD RUN.
@@ -95,7 +95,7 @@ const ChaosSection = () => {
           {/* RIGHT COLUMN - Infographic */}
           <div className="order-1 lg:order-2 w-full flex justify-center lg:justify-end">
             <div
-              className="relative w-full max-w-md lg:max-w-lg rounded-xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-md lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl overflow-hidden shadow-2xl"
               style={{
                 border: '2px solid rgba(249, 193, 200, 0.3)',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
