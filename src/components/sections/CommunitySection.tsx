@@ -15,6 +15,7 @@ const testimonials = [
     clinic: "Bangalore, India",
     video: testimonialVideo1,
   },
+
 ];
 
 const CommunitySection = () => {
@@ -64,12 +65,12 @@ const CommunitySection = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-2 items-center">
             {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left lg:pl-16">
+            <div className="text-center lg:text-left lg:pl-16 flex flex-col justify-center">
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl mb-1"
                 style={{ color: '#043A38' }}
               >
-                <span className="font-normal">From the</span>
+                <span className="font-semibold">From the</span>
               </h2>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6"
@@ -83,6 +84,26 @@ const CommunitySection = () => {
               >
                 What doctors & clinics are saying...
               </p>
+              <div className="space-y-1">
+                <p
+                  className="text-xs md:text-sm italic"
+                  style={{ color: '#043A38' }}
+                >
+                  "The perfect solution for OPD clinics and busy practices…"
+                </p>
+                <p
+                  className="text-xs md:text-sm italic"
+                  style={{ color: '#043A38' }}
+                >
+                  "…Nothing like this existed for clinics before Chikitra."
+                </p>
+                <p
+                  className="text-xs md:text-sm italic"
+                  style={{ color: '#043A38' }}
+                >
+                  "I wish I had Chikitra for my clinic all along…"
+                </p>
+              </div>
             </div>
 
             {/* Right Column - Video Carousel */}
@@ -110,7 +131,7 @@ const CommunitySection = () => {
                 )}
 
                 {/* Video Frame with Video Inside */}
-                <div className="relative w-64 h-56 md:w-80 md:h-72 lg:w-96 lg:h-80">
+                <div className="relative w-52 h-48 md:w-64 md:h-56 lg:w-80 lg:h-72">
                   {currentTestimonial.video ? (
                     <>
                       {/* Video Frame at bottom */}
@@ -123,13 +144,13 @@ const CommunitySection = () => {
                       <video
                         ref={videoRef}
                         src={currentTestimonial.video}
-                        className="absolute object-cover  z-10"
+                        className="absolute object-cover z-10"
                         style={{
-                          top: '10%',
-                          left: '11%',
-                          width: '78%',
-                          height: '79%',
-                          borderRadius: '100px',
+                          top: '12%',
+                          left: '13%',
+                          width: '74%',
+                          height: '74%',
+                          borderRadius: '80px',
                         }}
                         onEnded={() => setIsPlaying(false)}
                       />
@@ -218,21 +239,21 @@ const CommunitySection = () => {
       </section>
 
       {/* About Us Section */}
-      <section 
-        id="about" 
+      <section
+        id="about"
         className="pt-12 md:pt-16 pb-0 relative overflow-hidden"
         style={{ backgroundColor: '#C4D6C8' }}
       >
         {/* Background Illustrations - Very large, almost filling section */}
-        <img 
-          src={thinkingIcon} 
-          alt="" 
+        <img
+          src={thinkingIcon}
+          alt=""
           className="absolute left-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
-        <img 
-          src={promotionIcon} 
-          alt="" 
+        <img
+          src={promotionIcon}
+          alt=""
           className="absolute right-0 top-1/2 -translate-y-1/2 w-[40vw] md:w-[35vw] lg:w-[30vw] max-w-[500px] h-auto pointer-events-none select-none"
           style={{ opacity: 0.02 }}
         />
@@ -251,7 +272,7 @@ const CommunitySection = () => {
           </div>
 
           {/* Built by Doctors */}
-          <p 
+          <p
             className="text-lg md:text-xl lg:text-2xl italic text-center mb-10 md:mb-12"
             style={{ color: '#0D514C' }}
           >
@@ -270,9 +291,9 @@ const CommunitySection = () => {
                 <p className="text-sm md:text-base" style={{ color: '#231F20' }}>MBBS</p>
                 <p className="font-semibold text-sm md:text-base lg:text-lg" style={{ color: '#231F20' }}>Founder & CEO</p>
               </div>
-              <img 
-                src={founderAnkeeta} 
-                alt="Dr. Ankeeta Roy - Founder & CEO" 
+              <img
+                src={founderAnkeeta}
+                alt="Dr. Ankeeta Roy - Founder & CEO"
                 className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
@@ -280,9 +301,9 @@ const CommunitySection = () => {
 
             {/* Founder 2 - Dr. Tahreem Afroz with text beside torso area */}
             <div className="relative flex items-start z-20">
-              <img 
-                src={founderTahreem} 
-                alt="Dr. Tahreem Afroz - Co-founder & CMO" 
+              <img
+                src={founderTahreem}
+                alt="Dr. Tahreem Afroz - Co-founder & CMO"
                 className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
