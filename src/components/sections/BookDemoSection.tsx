@@ -7,6 +7,7 @@ const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(15, "Phone number is too long"),
   email: z.string().trim().email("Please enter a valid email").optional().or(z.literal("")),
+  clinic: z.string().trim().min(1, "Clinic/Organization name is required").max(100, "Clinic/Organization name must be less than 100 characters"),
 });
 
 const BookDemoSection = () => {
@@ -15,6 +16,7 @@ const BookDemoSection = () => {
     name: "",
     phone: "",
     email: "",
+    clinic: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -127,23 +129,23 @@ const BookDemoSection = () => {
               TODAY.
             </h2>
 
-            <div className="pt-8 mb-6 mx-auto lg:mx-0" style={{ borderTop: '1px solid rgba(194, 226, 203, 0.3)' }}>
+            <div className="pt-8 mb-6 mx-auto lg:mx-0 w-full max-w-[450px]" style={{ borderTop: '2px solid rgba(194, 226, 203, 0.3)' }}>
               <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>Book a demo</p>
               <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C2E2CB' }}>and enjoy a</p>
               <p className="text-2xl md:text-3xl font-bold" style={{ color: '#C2E2CB' }}>FREE 30-day trial.</p>
             </div>
 
-            <p className="text-base md:text-lg" style={{ color: '#C2E2CB' }}>
+            <p className="text-base md:text-lg font-light" style={{ color: '#C2E2CB' }}>
               *Our team will reach out to help you get started.
             </p>
           </div>
 
           {/* Right - Form */}
-          <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#155146' }}>
+          <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#155146', border: '2px solid #1B6054', boxShadow: '0 0 20px #1B6054' }}>
             <h3 className="text-3xl md:text-4xl font-bold text-center mb-2" style={{ color: '#C2E2CB' }}>Book a demo</h3>
             <p className="text-xl md:text-2xl text-center mb-8" style={{ color: '#C2E2CB' }}>See Chikitra in action</p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block mb-2 text-base font-medium" style={{ color: '#C2E2CB' }}>
                   Name
@@ -212,6 +214,30 @@ const BookDemoSection = () => {
                 />
                 {errors.email && (
                   <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="clinic" className="block mb-2 text-base font-medium" style={{ color: '#C2E2CB' }}>
+                  Clinic/Organization name
+                </label>
+                <input
+                  type="text"
+                  id="clinic"
+                  name="clinic"
+                  value={formData.clinic}
+                  onChange={handleChange}
+                  placeholder="Enter the name of your clinic/organization"
+                  className="w-full px-5 py-3 rounded-xl text-base focus:outline-none focus:ring-2 placeholder:opacity-40"
+                  style={{
+                    backgroundColor: '#123D34',
+                    color: '#C2E2CB',
+                    border: 'none'
+                  }}
+                  required
+                />
+                {errors.clinic && (
+                  <p className="text-red-400 text-xs mt-1">{errors.clinic}</p>
                 )}
               </div>
 
