@@ -31,15 +31,11 @@ const HeroSection = () => {
       <section id="hero" className="relative overflow-hidden" style={{ backgroundColor: '#0A4944', height: '100vh' }}>
         {/* LAYER 1: Bot with radial circles - large background element */}
         <div
-          className="absolute levitating-bot-desktop hidden lg:block pointer-events-none"
+          className="absolute levitating-bot-desktop hidden lg:block pointer-events-none top-[40%] xl:top-[42%] 2xl:top-[43%] w-[45vw] xl:w-[50vw] 2xl:w-[58vw] max-w-[700px] xl:max-w-[800px] 2xl:max-w-[1000px] min-w-[350px] xl:min-w-[400px]"
           style={{
             left: '34%',
-            top: '46%',
             transform: 'translate(-50%, -50%)',
             zIndex: 4,
-            width: '65vw',
-            maxWidth: '1200px',
-            minWidth: '800px',
           }}
         >
           <img
@@ -56,10 +52,9 @@ const HeroSection = () => {
         >
           {/* WhatsApp Chat Image */}
           <div
-            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(91,178,157,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(91,178,157,0.8)] h-[90%] xl:h-[100%] 2xl:h-[110%]"
             style={{
               width: '20%',
-              height: '95%',
               border: '2px solid #5BB29D',
               borderBottom: 'none',
               boxShadow: '0 0 16px rgba(91, 178, 157, 0.5)',
@@ -70,10 +65,9 @@ const HeroSection = () => {
 
           {/* Patient Details Card */}
           <div
-            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)] h-[58%] xl:h-[60%] 2xl:h-[64%]"
             style={{
               width: '25%',
-              height: '55%',
               border: '2px solid #437769',
               borderBottom: 'none',
               boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)',
@@ -85,10 +79,9 @@ const HeroSection = () => {
 
           {/* Appointments Dashboard */}
           <div
-            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)] h-[75%] xl:h-[82%] 2xl:h-[89%]"
             style={{
-              width: '51%',
-              height: '82%',
+              width: '53%',
               border: '2px solid #437769',
               borderBottom: 'none',
               boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)',
@@ -107,7 +100,7 @@ const HeroSection = () => {
         <div className="h-full hidden flex-col absolute top-[5%] right-[3%] z-10 pointer-events-none lg:flex items-end text-right w-[75%] max-w-[1000px]">
           <div className="pt-4 lg:pt-6">
             <h1
-              className="font-bold text-3xl lg:text-[3.2rem] xl:text-[3.8rem] whitespace-nowrap"
+              className="font-bold text-3xl lg:text-4xl xl:text-[3.2rem] 2xl:text-[3.8rem]"
               style={{ color: '#D6EADB', lineHeight: '1.2' }}
             >
               See more patients every day.
@@ -116,7 +109,7 @@ const HeroSection = () => {
             </h1>
 
             <p
-              className="text-base lg:text-lg xl:text-[1.35rem] mt-3 lg:mt-6 ml-auto"
+              className="text-sm lg:text-base xl:text-lg 2xl:text-[1.35rem] mt-3 lg:mt-4 2xl:mt-6 ml-auto"
               style={{ color: '#D6EADB', lineHeight: '1.6', maxWidth: '750px' }}
             >
               Chikitra is your OPD's digital front desk—handles bookings, reminders, intake
@@ -126,10 +119,10 @@ const HeroSection = () => {
           </div>
 
           {/* Get Started button - right aligned */}
-          <div className="mt-8 lg:mt-12" style={{ pointerEvents: 'auto' }}>
+          <div className="mt-6 lg:mt-8 2xl:mt-12" style={{ pointerEvents: 'auto' }}>
             <button
               onClick={() => scrollToSection('book-demo')}
-              className="py-3 px-8 rounded-full font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105"
+              className="py-2.5 px-6 xl:py-3 xl:px-8 rounded-full font-medium text-sm xl:text-base transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: 'rgba(1, 99, 97, 0.9)',
                 border: '2px solid #5BB29D',
