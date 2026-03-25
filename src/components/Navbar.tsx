@@ -99,13 +99,13 @@ const Navbar = () => {
     >
       <nav className="container mx-auto px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 lg:flex-1">
           <img src={iconLogo} alt="Chikitra Icon" className="h-7 md:h-8 w-auto object-contain" />
           <img src={chikitraLogo} alt="Chikitra" className="h-5 md:h-6 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav Links */}
-        <ul className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-12 flex-1 justify-center mx-4 lg:mx-8">
+        <ul className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-12 justify-center mx-4 lg:mx-8">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
@@ -125,7 +125,7 @@ const Navbar = () => {
           <li>
             <button
               onClick={handleBookDemo}
-              className="text-xs lg:text-sm whitespace-nowrap rounded-full px-4 py-1.5 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center"
+              className="text-xs lg:text-sm whitespace-nowrap rounded-full px-3 lg:px-3.5 pt-[5px] pb-[7px] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center"
               style={{
                 backgroundColor: bookDemoBg,
                 color: bookDemoText,
@@ -139,7 +139,7 @@ const Navbar = () => {
         </ul>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 lg:flex-1 justify-end">
           <Link
             to="/signin"
             className="text-xs lg:text-sm whitespace-nowrap font-medium transition-colors duration-300 hover:opacity-80"
@@ -185,7 +185,7 @@ const Navbar = () => {
             <li className="pt-2">
               <button
                 onClick={handleBookDemo}
-                className="w-full py-2.5 px-4 text-base font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
+                className="w-full pt-[9px] pb-[11px] px-4 text-base font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
                 style={{
                   backgroundColor: bookDemoBg,
                   color: bookDemoText,
