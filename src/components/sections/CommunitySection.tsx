@@ -146,10 +146,10 @@ const CommunitySection = () => {
                         src={currentTestimonial.video}
                         className="absolute object-cover z-10"
                         style={{
-                          top: '12%',
+                          top: '17%',
                           left: '13%',
                           width: '74%',
-                          height: '74%',
+                          height: '65%',
                           borderRadius: '80px',
                         }}
                         onEnded={() => setIsPlaying(false)}
