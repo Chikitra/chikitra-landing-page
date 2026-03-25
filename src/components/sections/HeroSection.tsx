@@ -51,15 +51,15 @@ const HeroSection = () => {
 
         {/* LAYER 2: Desktop cards row - pinned to bottom, BELOW bot body */}
         <div
-          className="hidden lg:flex items-end justify-between absolute bottom-0 left-[3%] right-[4%]"
+          className="hidden lg:flex items-end justify-between absolute bottom-0 left-0 right-[3%]"
           style={{ height: '55%', zIndex: 3 }}
         >
           {/* WhatsApp Chat Image */}
           <div
-            className="rounded-xl overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(91,178,157,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(91,178,157,0.8)]"
             style={{
-              width: '17%',
-              height: '75%',
+              width: '20%',
+              height: '95%',
               border: '2px solid #5BB29D',
               borderBottom: 'none',
               boxShadow: '0 0 16px rgba(91, 178, 157, 0.5)',
@@ -70,10 +70,10 @@ const HeroSection = () => {
 
           {/* Patient Details Card */}
           <div
-            className="rounded-xl overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
             style={{
-              width: '23%',
-              height: '58%',
+              width: '25%',
+              height: '55%',
               border: '2px solid #437769',
               borderBottom: 'none',
               boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)',
@@ -85,10 +85,10 @@ const HeroSection = () => {
 
           {/* Appointments Dashboard */}
           <div
-            className="rounded-xl overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
+            className="rounded-t-[2rem] overflow-hidden flex-shrink-0 transition-all duration-300 hover:shadow-[0_0_30px_rgba(67,119,105,0.8)]"
             style={{
-              width: '50%',
-              height: '95%',
+              width: '51%',
+              height: '82%',
               border: '2px solid #437769',
               borderBottom: 'none',
               boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)',
@@ -104,7 +104,7 @@ const HeroSection = () => {
         </div>
 
         {/* LAYER 3: Text content - on top of everything */}
-        <div className="h-full hidden flex-col absolute top-[14%] right-[3%] z-10 pointer-events-none lg:flex items-end text-right w-[75%] max-w-[1000px]">
+        <div className="h-full hidden flex-col absolute top-[5%] right-[3%] z-10 pointer-events-none lg:flex items-end text-right w-[75%] max-w-[1000px]">
           <div className="pt-4 lg:pt-6">
             <h1
               className="font-bold text-3xl lg:text-[3.2rem] xl:text-[3.8rem] whitespace-nowrap"
@@ -116,7 +116,7 @@ const HeroSection = () => {
             </h1>
 
             <p
-              className="text-base lg:text-lg xl:text-[1.35rem] mt-3 lg:mt-6"
+              className="text-base lg:text-lg xl:text-[1.35rem] mt-3 lg:mt-6 ml-auto"
               style={{ color: '#D6EADB', lineHeight: '1.6', maxWidth: '750px' }}
             >
               Chikitra is your OPD's digital front desk—handles bookings, reminders, intake
@@ -126,7 +126,7 @@ const HeroSection = () => {
           </div>
 
           {/* Get Started button - right aligned */}
-          <div className="mt-6 lg:mt-8 pr-2" style={{ pointerEvents: 'auto' }}>
+          <div className="mt-8 lg:mt-12" style={{ pointerEvents: 'auto' }}>
             <button
               onClick={() => scrollToSection('book-demo')}
               className="py-3 px-8 rounded-full font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105"
@@ -194,19 +194,19 @@ const HeroSection = () => {
           {/* Mobile cards */}
           <div className="flex flex-col gap-3 px-4 mt-4 flex-1 overflow-hidden" style={{ pointerEvents: 'auto' }}>
             <div
-              className="rounded-xl overflow-hidden flex-shrink-0"
+              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
               style={{ border: '2px solid #5BB29D', boxShadow: '0 0 16px rgba(91, 178, 157, 0.5)', height: '200px' }}
             >
               <img src={whatsappImage} alt="WhatsApp Chat" className="w-full h-full object-cover object-top" />
             </div>
             <div
-              className="rounded-xl overflow-hidden flex-shrink-0"
+              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
               style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '300px' }}
             >
               <img src={patientDetailsImage} alt="Patient Details" className="w-full h-full object-cover object-top" />
             </div>
             <div
-              className="rounded-xl overflow-hidden flex-shrink-0"
+              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
               style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '300px' }}
             >
               <img src={appointmentsImage} alt="Appointments Dashboard" className="w-full h-full object-cover object-top" />
