@@ -20,7 +20,7 @@ const PolicyLayout = ({ title, children }: PolicyLayoutProps) => {
           <img src={chikitraLogo} alt="Chikitra" className="h-5 w-auto object-contain" />
         </Link>
 
-        <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-10">
+        <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-20">
           <Link
             to="/"
             className="text-sm font-medium transition-colors hover:opacity-80"
