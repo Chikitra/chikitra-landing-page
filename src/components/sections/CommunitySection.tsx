@@ -280,7 +280,7 @@ const CommunitySection = () => {
           </p>
 
           {/* Founders - Images with text beside them */}
-          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-1 lg:gap-2">
+          <div className="relative flex flex-col lg:flex-row items-end justify-center gap-0 lg:gap-0">
             {/* Founder 1 - Dr. Ankeeta Roy with text beside head area */}
             <div className="relative flex items-start z-10">
               {/* Text positioned beside head/face area */}
@@ -294,21 +294,21 @@ const CommunitySection = () => {
               <img
                 src={founderAnkeeta}
                 alt="Dr. Ankeeta Roy - Founder & CEO"
-                className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
+                className="w-52 md:w-60 lg:w-80 h-80 md:h-88 lg:h-[26rem] object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
             </div>
 
             {/* Founder 2 - Dr. Tahreem Afroz with text beside torso area */}
-            <div className="relative flex items-start z-20 -ml-2 md:-ml-4 lg:-ml-6">
+            <div className="relative flex items-start z-20 -ml-4 md:-ml-8 lg:-ml-12">
               <img
                 src={founderTahreem}
                 alt="Dr. Tahreem Afroz - Co-founder & CMO"
-                className="w-48 md:w-56 lg:w-72 h-72 md:h-80 lg:h-96 object-cover object-top"
+                className="w-52 md:w-60 lg:w-80 h-80 md:h-88 lg:h-[26rem] object-cover object-top"
                 style={{ opacity: 0.89 }}
               />
               {/* Text positioned beside torso/chest area */}
-              <div className="text-left pl-4 pt-32 md:pt-40 lg:pt-48">
+              <div className="text-left pl-4 pt-36 md:pt-44 lg:pt-52">
                 <p className="font-bold text-base md:text-lg lg:text-xl whitespace-nowrap" style={{ color: '#231F20' }}>
                   Dr. Tahreem Afroz, <span className="font-normal italic">a.k.a 'Marketing Mojo'</span>
                 </p>
