@@ -33,7 +33,7 @@ const features = [
     description: "Past history, medications, labs, visit notes, and today's reason—on one screen.",
     bot: featureBot2,
     icon: iconDashboard,
-    botStyle: { width: '125px', bottom: '-60px', right: '-15px' }
+    botStyle: { width: '125px', bottom: '-60px', right: '-25px' }
   },
   {
     id: 3,

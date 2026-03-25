@@ -50,16 +50,21 @@ const WhyChikitraSection = () => {
     <>
       <style>{`
         .comparison-grid {
-          grid-template-columns: minmax(100px, 120px) 1fr 1fr;
+          grid-template-columns: minmax(120px, 140px) 1fr 1fr;
         }
         @media (min-width: 768px) {
           .comparison-grid {
-            grid-template-columns: minmax(140px, 160px) 1fr 1fr;
+            grid-template-columns: minmax(160px, 200px) 1fr 1fr;
           }
         }
         @media (min-width: 1280px) {
           .comparison-grid {
-            grid-template-columns: minmax(180px, 220px) 1fr 1fr;
+            grid-template-columns: minmax(200px, 260px) 1fr 1fr;
+          }
+        }
+        @media (min-width: 1536px) {
+          .comparison-grid {
+            grid-template-columns: minmax(240px, 300px) 1fr 1fr;
           }
         }
       `}</style>
@@ -69,7 +74,7 @@ const WhyChikitraSection = () => {
           {/* Main Content */}
           <div className="max-w-6xl mx-auto relative">
             {/* Spider-man Bot - Overlapping table */}
-            <div className="hidden xl:block absolute w-96 h-96 z-30" style={{ left: '-69px', top: '-178px' }}>
+            <div className="hidden xl:block absolute z-30" style={{ left: '-90px', top: '-256px', width: '480px', height: '480px' }}>
               <img
                 src={spidermanBot}
                 alt="Spiderman Bot"
@@ -81,79 +86,83 @@ const WhyChikitraSection = () => {
             <div className="rounded-xl md:rounded-2xl xl:rounded-[2.5rem] overflow-hidden relative z-10 flex flex-col" style={{ backgroundColor: '#10443D' }}>
               {/* Header Row */}
               <div className="grid comparison-grid" style={{ backgroundColor: '#10443D' }}>
-              {/* Left Column Header - Empty */}
-              <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
+                {/* Left Column Header - Empty */}
+                <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
+                </div>
+
+                {/* Typical Way Header */}
+                <div style={{ backgroundColor: '#0A3531' }} className="p-3 md:p-4 xl:p-6">
+                  <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#D1D3D4' }}>
+                    Typical Way
+                  </h3>
+                </div>
+
+                {/* Chikitra Way Header */}
+                <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
+                  <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#C2E2CB' }}>
+                    The "<span style={{ fontStyle: 'italic' }}>Chikitra</span>" Way
+                  </h3>
+                </div>
               </div>
 
-              {/* Typical Way Header */}
-              <div style={{ backgroundColor: '#0A3531' }} className="p-3 md:p-4 xl:p-6">
-                <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#D1D3D4' }}>
-                  Typical Way
-                </h3>
-              </div>
-
-              {/* Chikitra Way Header */}
-              <div style={{ backgroundColor: '#10443D' }} className="p-3 md:p-4 xl:p-6">
-                <h3 className="text-sm md:text-lg xl:text-xl 2xl:text-2xl font-bold text-left" style={{ color: '#C2E2CB' }}>
-                  The "<span style={{ fontStyle: 'italic' }}>Chikitra</span>" Way
-                </h3>
-              </div>
-            </div>
-
-            {/* Data Rows */}
-            {comparisonData.map((item, index) => (
-              <div
-                key={index}
-                className="grid comparison-grid"
-                style={{ backgroundColor: '#10443D' }}
-              >
-                {/* Category with Icon */}
+              {/* Data Rows */}
+              {comparisonData.map((item, index) => (
                 <div
+                  key={index}
+                  className="grid comparison-grid"
                   style={{ backgroundColor: '#10443D' }}
-                  className="p-3 md:p-4 xl:p-6 md:flex md:items-center xl:justify-end gap-1 md:gap-2"
                 >
-                  <span className="font-semibold text-xs md:text-sm xl:text-base block md:inline" style={{ color: '#ADC9B4' }}>
-                    {item.category}
-                  </span>
-                  <img
-                    src={item.icon}
-                    alt={item.category}
-                    className="hidden md:inline-block w-6 md:h-6 xl:w-7 xl:h-7 object-contain flex-shrink-0"
-                    style={{ opacity: 0.5 }}
-                  />
-                </div>
+                  {/* Category with Icon */}
+                  <div
+                    style={{ backgroundColor: '#10443D' }}
+                    className="p-3 md:p-4 xl:p-6 md:flex md:items-center xl:justify-end gap-2 md:gap-3 xl:gap-4"
+                  >
+                    <span className="font-semibold text-xs md:text-sm xl:text-base block md:inline" style={{ color: '#ADC9B4' }}>
+                      {item.category}
+                    </span>
+                    <img
+                      src={item.icon}
+                      alt={item.category}
+                      className="hidden md:inline-block w-6 md:h-6 xl:w-7 xl:h-7 object-contain flex-shrink-0"
+                      style={{ opacity: 0.5 }}
+                    />
+                  </div>
 
-                {/* Typical Way Description */}
-                <div
-                  style={{
-                    backgroundColor: '#0A3531',
-                    borderBottom: index < comparisonData.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
-                  }}
-                  className="p-3 md:p-4 xl:p-6 flex items-center"
-                >
-                  <p className="text-xs md:text-sm xl:text-base" style={{ color: '#D1D3D4' }}>
-                    {item.typical}
-                  </p>
-                </div>
+                  {/* Typical Way Description */}
+                  <div
+                    style={{
+                      backgroundColor: '#0A3531',
+                    }}
+                    className="p-3 md:p-4 xl:p-6 flex items-center relative"
+                  >
+                    <p className="text-xs md:text-sm xl:text-base font-light" style={{ color: '#D1D3D4' }}>
+                      {item.typical}
+                    </p>
+                    {index < comparisonData.length - 1 && (
+                      <div style={{ position: 'absolute', bottom: 0, left: '16px', right: '16px', height: '2px', backgroundColor: '#0F3F37' }} />
+                    )}
+                  </div>
 
-                {/* Chikitra Way Description */}
-                <div
-                  style={{
-                    backgroundColor: '#10443D',
-                    borderBottom: index < comparisonData.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
-                  }}
-                  className="p-3 md:p-4 xl:p-6 flex items-center"
-                >
-                  <p className="text-xs md:text-sm xl:text-base font-medium" style={{ color: '#C2E2CB' }}>
-                    {item.chikitra}
-                  </p>
+                  {/* Chikitra Way Description */}
+                  <div
+                    style={{
+                      backgroundColor: '#10443D',
+                    }}
+                    className="p-3 md:p-4 xl:p-6 flex items-center relative"
+                  >
+                    <p className="text-xs md:text-sm xl:text-base font-light" style={{ color: '#C2E2CB' }}>
+                      {item.chikitra}
+                    </p>
+                    {index < comparisonData.length - 1 && (
+                      <div style={{ position: 'absolute', bottom: 0, left: '16px', right: '16px', height: '2px', backgroundColor: '#0F3F37' }} />
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };
