@@ -74,7 +74,7 @@ const WhyChikitraSection = () => {
           {/* Main Content */}
           <div className="max-w-6xl mx-auto relative">
             {/* Spider-man Bot - Overlapping table */}
-            <div className="hidden xl:block absolute z-30" style={{ left: '-90px', top: '-256px', width: '480px', height: '480px' }}>
+            <div className="hidden xl:block absolute z-30" style={{ left: '-120px', top: '-256px', width: '480px', height: '480px' }}>
               <img
                 src={spidermanBot}
                 alt="Spiderman Bot"
