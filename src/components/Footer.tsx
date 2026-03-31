@@ -32,7 +32,7 @@ const FacebookIcon = () => (
 const socialLinks = [
   {
     icon: InstagramIcon,
-    href: "https://www.instagram.com/chikitra_official?utm_source=qr&igsh=aWluN2tia3JyeXNv",
+    href: "https://www.instagram.com/chikitra_official",
     label: "Instagram"
   },
   {
@@ -203,12 +203,12 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="tel:+919192422622440"
+                  href="tel:+9192422622440"
                   className="transition-colors text-sm font-light hover:opacity-80 flex items-center gap-2"
                   style={{ color: '#E6E7E8' }}
                 >
                   <Phone className="w-4 h-4 flex-shrink-0" />
-                  +91 91 92422 62240
+                  +91 92422 62240
                 </a>
               </li>
             </ul>
