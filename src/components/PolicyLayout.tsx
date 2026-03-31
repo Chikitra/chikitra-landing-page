@@ -8,6 +8,9 @@ interface PolicyLayoutProps {
 }
 
 const PolicyLayout = ({ title, children }: PolicyLayoutProps) => {
+  
+  
+
   return (
     <div style={{ backgroundColor: '#ECF5EA', minHeight: '100vh' }}>
       {/* Sticky header */}
