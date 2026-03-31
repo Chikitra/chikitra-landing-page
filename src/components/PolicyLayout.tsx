@@ -46,11 +46,18 @@ const PolicyLayout = ({ title, children }: PolicyLayoutProps) => {
       </header>
 
       {/* Page content */}
-      <main className="container mx-auto px-6 py-12 max-w-4xl">
-        <h1 className="text-3xl font-semibold text-center mb-8" style={{ color: '#008080' }}>
-          {title}
-        </h1>
-        {children}
+      <main className="w-full">
+        <div className="w-full px-6 pt-1 flex justify-end">
+          <p className="text-sm" style={{ color: '#008080' }}>
+            Last Updated: 30.03.2026
+          </p>
+        </div>
+        <div className="container mx-auto px-6 pt-4 max-w-4xl">
+          <h1 className="text-3xl font-semibold text-center mb-14" style={{ color: '#008080' }}>
+            {title}
+          </h1>
+          {children}
+        </div>
       </main>
     </div>
   );
