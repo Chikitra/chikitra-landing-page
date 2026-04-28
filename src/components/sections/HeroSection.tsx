@@ -100,8 +100,8 @@ const HeroSection = () => {
         <div className="h-full hidden flex-col absolute top-[5%] right-[3%] z-10 pointer-events-none lg:flex items-end text-right w-[75%] max-w-[1000px]">
           <div className="pt-4 lg:pt-6">
             <h1
-              className="font-bold text-3xl lg:text-4xl xl:text-[3.2rem] 2xl:text-[3.8rem]"
-              style={{ color: '#D6EADB', lineHeight: '1.2' }}
+              className="font-bold text-3xl lg:text-[2.4rem] xl:text-[3.0rem] 2xl:text-[3.6rem]"
+              style={{ color: '#D6EADB', lineHeight: '1.15' }}
             >
               See more patients every day.
               <br />
@@ -109,8 +109,8 @@ const HeroSection = () => {
             </h1>
 
             <p
-              className="text-sm lg:text-base xl:text-lg 2xl:text-[1.35rem] mt-3 lg:mt-4 2xl:mt-6 ml-auto"
-              style={{ color: '#D6EADB', lineHeight: '1.6', maxWidth: '750px' }}
+              className="text-sm lg:text-[1.05rem] xl:text-[1.15rem] 2xl:text-[1.3rem] mt-2 lg:mt-3 2xl:mt-4 ml-auto"
+              style={{ color: '#D6EADB', lineHeight: '1.55', maxWidth: '750px' }}
             >
               Chikitra is your OPD's digital front desk—handles bookings, reminders, intake
               <br className="hidden lg:inline" />
@@ -119,7 +119,7 @@ const HeroSection = () => {
           </div>
 
           {/* Get Started button - right aligned */}
-          <div className="mt-6 lg:mt-8 2xl:mt-12" style={{ pointerEvents: 'auto' }}>
+          <div className="mt-4 lg:mt-5 2xl:mt-8" style={{ pointerEvents: 'auto' }}>
             <button
               onClick={() => scrollToSection('book-demo')}
               className="py-2.5 px-6 xl:py-3 xl:px-8 rounded-full font-medium text-sm xl:text-base transition-all duration-300 hover:scale-105"
