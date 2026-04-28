@@ -97,7 +97,7 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-[100] transition-colors duration-300"
       style={{ backgroundColor: navBg }}
     >
-      <nav className="mx-auto w-[98%] lg:w-[95%] xl:w-[92%] 2xl:w-[86%] max-w-[1600px] px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between">
+      <nav className="w-full px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-1.5 lg:flex-1">
           <img src={iconLogo} alt="Chikitra Icon" className="h-7 md:h-8 w-auto object-contain" />
