@@ -1,9 +1,29 @@
+import { useState, useEffect } from "react";
 import botImage from "@/assets/Hero-Section_Bot.png";
 import patientDetailsImage from "@/assets/Hero-Section_Image1.png";
 import appointmentsImage from "@/assets/Hero-Section_Image2.png";
 import whatsappImage from "@/assets/Hero-Section_Image3.jpeg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const HeroSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(1); // Default to middle slide to match image
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -31,7 +51,7 @@ const HeroSection = () => {
       <section id="hero" className="relative overflow-hidden" style={{ backgroundColor: '#0A4944', height: '100vh' }}>
         {/* LAYER 1: Bot with radial circles - large background element */}
         <div
-          className="absolute levitating-bot-desktop hidden lg:block pointer-events-none top-[40%] xl:top-[42%] 2xl:top-[43%] w-[45vw] xl:w-[50vw] 2xl:w-[58vw] max-w-[700px] xl:max-w-[800px] 2xl:max-w-[1000px] min-w-[350px] xl:min-w-[400px]"
+          className="absolute levitating-bot-desktop hidden lg:block pointer-events-none top-[35%] xl:top-[37%] 2xl:top-[38%] w-[45vw] xl:w-[50vw] 2xl:w-[58vw] max-w-[700px] xl:max-w-[800px] 2xl:max-w-[1000px] min-w-[350px] xl:min-w-[400px]"
           style={{
             left: '34%',
             transform: 'translate(-50%, -50%)',
@@ -138,31 +158,40 @@ const HeroSection = () => {
         {/* =========================================
             MOBILE/TABLET LAYOUT (Below lg)
            ========================================= */}
-        <div className="lg:hidden h-full flex flex-col pt-20 relative z-10 w-full">
+        <div className="lg:hidden h-full flex flex-col pt-16 relative z-10 w-full pb-8">
           {/* Mobile Text content */}
           <div className="text-center px-4">
             <h1
-              className="font-bold text-3xl"
-              style={{ color: '#D6EADB', lineHeight: '1.2' }}
+              className="text-3xl sm:text-4xl"
+              style={{ color: '#D6EADB', lineHeight: '1.3' }}
             >
-              See more patients every day.
+              <span className="font-normal opacity-90">
+                See more patients<br />
+                every day.
+              </span>
               <br />
-              No extra STAFF. Zero CHAOS.
+              <span className="font-extrabold text-[1.05em] tracking-wide block mt-1">
+                No extra STAFF.<br />
+                Zero CHAOS.
+              </span>
             </h1>
+          </div>
 
-            <p
-              className="text-base mt-3 mx-auto max-w-[640px]"
-              style={{ color: '#D6EADB', lineHeight: '1.7' }}
-            >
-              Chikitra is your OPD's digital front desk—handles bookings, reminders, intake and follow-ups so your team focuses only on patients, not paperwork.
-            </p>
+          {/* Mobile bot */}
+          <div className="flex justify-center levitating-bot mt-6">
+            <img
+              src={botImage}
+              alt="Chikitra Bot"
+              className="object-contain"
+              style={{ width: '190px', filter: 'drop-shadow(0 0 25px rgba(91, 178, 157, 0.6))', transform: 'scale(1.25)' }}
+            />
           </div>
 
           {/* Mobile Get Started */}
           <div className="flex justify-center mt-4" style={{ pointerEvents: 'auto' }}>
             <button
               onClick={() => scrollToSection('book-demo')}
-              className="py-2.5 px-8 rounded-full font-medium text-sm transition-all duration-300 hover:scale-105"
+              className="py-3 px-10 rounded-full font-medium text-base transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: 'rgba(1, 99, 97, 0.9)',
                 border: '2px solid #5BB29D',
@@ -174,35 +203,48 @@ const HeroSection = () => {
             </button>
           </div>
 
-          {/* Mobile bot */}
-          <div className="flex justify-center levitating-bot mt-4">
-            <img
-              src={botImage}
-              alt="Chikitra Bot"
-              className="object-contain"
-              style={{ width: '260px' }}
-            />
-          </div>
+          {/* Mobile Carousel */}
+          <div className="w-full mt-auto flex-1 flex flex-col justify-end overflow-hidden" style={{ pointerEvents: 'auto' }}>
+            <Carousel setApi={setApi} className="w-full max-w-full" opts={{ align: "center", startIndex: 1 }}>
+              <CarouselContent>
+                <CarouselItem className="basis-[85%] pl-4">
+                  <div
+                    className="rounded-[1.5rem] overflow-hidden"
+                    style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '260px', backgroundColor: 'black' }}
+                  >
+                    <img src={patientDetailsImage} alt="Patient Details" className="w-full h-full object-cover object-top" />
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="basis-[85%] pl-4">
+                  <div
+                    className="rounded-[1.5rem] overflow-hidden"
+                    style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '260px', backgroundColor: 'black' }}
+                  >
+                    <img src={appointmentsImage} alt="Appointments Dashboard" className="w-full h-full object-cover object-top" />
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="basis-[85%] pl-4">
+                  <div
+                    className="rounded-[1.5rem] overflow-hidden"
+                    style={{ border: '2px solid #5BB29D', boxShadow: '0 0 16px rgba(91, 178, 157, 0.5)', height: '260px', backgroundColor: 'black' }}
+                  >
+                    <img src={whatsappImage} alt="WhatsApp Chat" className="w-full h-full object-cover object-top" />
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
 
-          {/* Mobile cards */}
-          <div className="flex flex-col gap-3 px-4 mt-4 flex-1 overflow-hidden" style={{ pointerEvents: 'auto' }}>
-            <div
-              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
-              style={{ border: '2px solid #5BB29D', boxShadow: '0 0 16px rgba(91, 178, 157, 0.5)', height: '200px' }}
-            >
-              <img src={whatsappImage} alt="WhatsApp Chat" className="w-full h-full object-cover object-top" />
-            </div>
-            <div
-              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
-              style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '300px' }}
-            >
-              <img src={patientDetailsImage} alt="Patient Details" className="w-full h-full object-cover object-top" />
-            </div>
-            <div
-              className="rounded-[1.5rem] overflow-hidden flex-shrink-0"
-              style={{ border: '2px solid #437769', boxShadow: '0 0 20px rgba(67, 119, 105, 0.6)', height: '300px' }}
-            >
-              <img src={appointmentsImage} alt="Appointments Dashboard" className="w-full h-full object-cover object-top" />
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all ${current === index ? "bg-white" : "bg-white/40"
+                    }`}
+                  onClick={() => api?.scrollTo(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
