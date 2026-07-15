@@ -49,7 +49,9 @@ const HeroSection = () => {
   const mobileConfig = {
     // 1. Spacing at the very top (between navbar and text)
     //    Using svh (Smallest Viewport Height) — constant unit, doesn't change with browser chrome.
-    paddingTop: '8svh',
+    //    Increased from 8svh → 14svh for more breathing room below the navbar.
+    //    The flex spacer between button and carousel absorbs the difference automatically.
+    paddingTop: '12svh',
 
     // 2. Text sizing
     titleSize: '2rem',
