@@ -1,5 +1,6 @@
 import bgImage from "@/assets/Old-Ways-Section_Bg_image.png";
 import infographicImage from "@/assets/Old_way_section_image.png";
+import stressBotMobile from "@/assets/Stress_bot_mobile.png";
 
 const ChaosSection = () => {
   return (
@@ -25,36 +26,98 @@ const ChaosSection = () => {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        {/* MOBILE & TABLET VIEW (< lg) */}
+        <div className="flex flex-col items-center lg:hidden w-full pt-4 pb-8">
+          {/* "THE PROBLEM" Pill */}
+          <div className="mb-10">
+            <span className="px-6 py-2 rounded-full border border-solid text-xs md:text-sm tracking-widest font-semibold uppercase" style={{ borderColor: '#3E8379', color: '#3E8379' }}>
+              The Problem
+            </span>
+          </div>
+
+          <h2
+            className="font-medium text-4xl md:text-5xl leading-tight mb-8 text-center tracking-tight"
+            style={{ color: '#F9C1C8' }}
+          >
+            <span className="block pb-1 md:pb-2">Most clinics still run</span>
+            <span className="block pb-1 md:pb-2">on paper, memory</span>
+            <span className="block">and <span className="font-bold">CHAOS.</span></span>
+          </h2>
+
+          {/* Sub-headline */}
+          <div className="mb-12">
+            <p
+              className="text-xl md:text-2xl font-normal mb-1 md:mb-2 text-center"
+              style={{ color: '#F9C1C8' }}
+            >
+              Your clinic is <span className="font-bold">BUSY.</span>
+            </p>
+            <p
+              className="text-xl md:text-2xl font-normal text-center"
+              style={{ color: '#F9C1C8' }}
+            >
+              But it might be <span className="font-bold">BREAKING.</span>
+            </p>
+          </div>
+
+          {/* Image */}
+          <div className="w-full max-w-[280px] md:max-w-[360px] mb-12">
+            <img
+              src={stressBotMobile}
+              alt="Stress Bot"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
+          {/* Bottom text */}
+          <div className="text-center">
+            <p
+              className="text-xl md:text-2xl font-normal mb-1 md:mb-2"
+              style={{ color: '#F9C1C8' }}
+            >
+              You know the problem.
+            </p>
+            <p
+              className="text-xl md:text-2xl font-normal"
+              style={{ color: '#F9C1C8' }}
+            >
+              Meet the solution — <span className="font-black uppercase tracking-wide">CHIKITRA.</span>
+            </p>
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW (>= lg) */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT COLUMN - Text Content */}
-          <div className="order-2 lg:order-1 max-w-md lg:max-w-[460px] xl:max-w-[480px] mx-auto lg:mx-0 flex flex-col justify-center origin-left scale-[1.07]">
+          <div className="max-w-[460px] xl:max-w-[480px] flex flex-col justify-center origin-left scale-[1.07]">
             {/* "The Problem..." */}
             <p
-              className="text-xl md:text-2xl font-medium mb-2 md:mb-3 text-center lg:text-left"
+              className="text-2xl font-medium mb-3 text-left"
               style={{ color: '#F9C1C8', opacity: 0.75 }}
             >
               The Problem…
             </p>
 
             <h2
-              className="font-medium text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 md:mb-10 text-center lg:text-left tracking-tight"
+              className="font-medium text-5xl leading-tight mb-10 text-left tracking-tight"
               style={{ color: '#F9C1C8' }}
             >
-              <span className="block pb-2 lg:pb-3">Most clinics still run</span>
-              <span className="block pb-2 lg:pb-3">on paper, memory</span>
-              <span className="block pt-1 lg:pt-2">and CHAOS.</span>
+              <span className="block pb-3">Most clinics still run</span>
+              <span className="block pb-3">on paper, memory</span>
+              <span className="block pt-2">and CHAOS.</span>
             </h2>
 
             {/* Sub-headline */}
-            <div className="mb-6 md:mb-8">
+            <div className="mb-8">
               <p
-                className="text-lg md:text-xl lg:text-2xl font-normal mb-1 md:mb-2 text-center lg:text-left"
+                className="text-2xl font-normal mb-2 text-left"
                 style={{ color: '#F9C1C8' }}
               >
                 Your clinic is <span className="font-medium">BUSY.</span>
               </p>
               <p
-                className="text-lg md:text-xl lg:text-2xl font-normal text-center lg:text-left"
+                className="text-2xl font-normal text-left"
                 style={{ color: '#F9C1C8' }}
               >
                 But it might be <span className="font-medium">BREAKING.</span>
@@ -62,21 +125,21 @@ const ChaosSection = () => {
             </div>
 
             {/* Description Text */}
-            <div className="mb-8 md:mb-10">
+            <div className="mb-10">
               <p
-                className="text-base md:text-lg leading-relaxed text-center lg:text-left"
+                className="text-lg leading-relaxed text-left"
                 style={{ color: '#F9C1C8' }}
               >
                 Unclear waits, scattered records, overwhelmed staff, and silent revenue leaks hurt patients and profits alike.
               </p>
               <p
-                className="text-base md:text-lg leading-relaxed text-center lg:text-left"
+                className="text-lg leading-relaxed text-left"
                 style={{ color: '#F9C1C8' }}
               >
                 ...and you're not <span className="font-bold">ALONE.</span>
               </p>
               <p
-                className="text-base md:text-lg leading-relaxed text-center lg:text-left"
+                className="text-lg leading-relaxed text-left"
                 style={{ color: '#F9C1C8' }}
               >
                 This is the reality for a majority of clinics trying to manage OPDs with outdated systems and manual processes.
@@ -85,7 +148,7 @@ const ChaosSection = () => {
 
             {/* Final Statement */}
             <p
-              className="text-base md:text-lg lg:text-xl font-medium uppercase tracking-wide text-center lg:text-left mt-2 md:mt-3 whitespace-nowrap"
+              className="text-xl font-medium uppercase tracking-wide text-left mt-3 whitespace-nowrap"
               style={{ color: '#F9C1C8' }}
             >
               THIS IS NOT HOW A MODERN CLINIC SHOULD RUN.
@@ -93,9 +156,9 @@ const ChaosSection = () => {
           </div>
 
           {/* RIGHT COLUMN - Infographic */}
-          <div className="order-1 lg:order-2 w-full flex justify-center lg:justify-end">
+          <div className="w-full flex justify-end">
             <div
-              className="relative w-full max-w-md lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-xl xl:max-w-2xl 2xl:max-w-3xl overflow-hidden shadow-2xl"
               style={{
                 border: '2px solid rgba(249, 193, 200, 0.3)',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
