@@ -7,7 +7,7 @@ const ChaosSection = () => {
     <section
       id="chaos"
       className="relative min-h-screen overflow-hidden z-[60]"
-      style={{ background: 'linear-gradient(180deg, #002D29 0%, #102B27 12%, #2A1D1E 24%, #371618 40%, #371618 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #002D29 0%, #002D29 5vh, #102B27 25vh, #2A1D1E 50vh, #371618 80vh, #371618 100%)' }}
     >
       {/* Background Image - Woman crying */}
       <div
