@@ -56,10 +56,197 @@ const CommunitySection = () => {
 
   return (
     <>
-      {/* Community / Testimonials Section */}
+      {/* =============================================
+          MOBILE / TABLET VERSION (hidden on lg+)
+         ============================================= */}
       <section
         id="community"
-        className="py-12 md:py-16 lg:py-20 relative overflow-hidden"
+        className="lg:hidden py-12 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(180deg, #042825 0%, #5B736A 55%, #C0E1CA 100%)',
+        }}
+      >
+        <div className="container mx-auto px-6">
+          {/* TESTIMONIALS pill */}
+          <div className="flex justify-center mb-10">
+            <span
+              className="px-5 py-1.5 text-xs tracking-widest font-semibold uppercase"
+              style={{
+                border: '1.5px solid #01665E',
+                borderRadius: '999px',
+                color: '#C0E1CA',
+                letterSpacing: '0.18em',
+              }}
+            >
+              Testimonials
+            </span>
+          </div>
+
+          {/* Heading — left-aligned */}
+          <div className="mb-8">
+            <h2
+              className="text-4xl sm:text-5xl font-normal leading-tight"
+              style={{ color: '#B6DCBE' }}
+            >
+              From the
+            </h2>
+            <h2
+              className="text-5xl sm:text-6xl font-extrabold leading-none mb-5"
+              style={{ color: '#B6DCBE' }}
+            >
+              community.
+            </h2>
+            <p
+              className="text-sm"
+              style={{ color: '#B6DCBE', opacity: 0.85 }}
+            >
+              What doctors &amp; clinics are saying…
+            </p>
+          </div>
+
+          {/* Quote card — glass chip, more breathing room above, tight below to attach to video */}
+          <div
+            className="mt-10 mb-3 mx-auto text-center"
+            style={{
+              background: 'rgba(255,255,255,0.10)',
+              backdropFilter: 'blur(8px)',
+              borderRadius: '14px',
+              padding: '14px 18px',
+              borderLeft: '3px solid #0A8B80',
+              maxWidth: '92%',
+            }}
+          >
+            {/* Decorative open-quote */}
+            <span
+              className="block leading-none mb-1"
+              style={{ fontSize: '2rem', color: '#0A8B80', fontFamily: 'Georgia, serif', lineHeight: 1 }}
+            >
+              &ldquo;
+            </span>
+            <p
+              className="text-sm sm:text-base font-bold text-center leading-snug"
+              style={{ color: '#0D0D0D' }}
+            >
+              It&rsquo;s organizing chaos without hiring more people
+            </p>
+          </div>
+
+          {/* Video Player */}
+          <div className="relative flex items-center justify-center w-full mb-5">
+            {testimonials.length > 1 && (
+              <button
+                onClick={prevTestimonial}
+                className="absolute left-0 z-10 p-2 rounded-full transition-all duration-300 hover:scale-110"
+                style={{ backgroundColor: '#0A8B80' }}
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-6 h-6" style={{ color: '#C0E1CA' }} />
+              </button>
+            )}
+
+            {/* Video Frame */}
+            <div className="relative w-48 h-44 sm:w-56 sm:h-52">
+              {currentTestimonial.video ? (
+                <>
+                  <img
+                    src={videoFrame}
+                    alt="Video frame"
+                    className="w-full h-full object-contain absolute inset-0"
+                  />
+                  <video
+                    ref={videoRef}
+                    src={currentTestimonial.video}
+                    className="absolute object-cover z-10"
+                    style={{
+                      top: '17%',
+                      left: '13%',
+                      width: '74%',
+                      height: '65%',
+                      borderRadius: '80px',
+                    }}
+                    onEnded={() => setIsPlaying(false)}
+                  />
+                  <button
+                    onClick={togglePlayPause}
+                    className="absolute inset-0 flex items-center justify-center transition-all z-20"
+                    style={{ backgroundColor: 'transparent' }}
+                    aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                  >
+                    {!isPlaying && (
+                      <Play className="w-12 h-12 text-white drop-shadow-lg" fill="white" />
+                    )}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <img
+                    src={videoFrame}
+                    alt="Video frame"
+                    className="w-full h-full object-contain"
+                  />
+                  <button
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className="absolute inset-0 flex items-center justify-center z-20"
+                    aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                  >
+                    {isPlaying ? (
+                      <Pause className="w-12 h-12 text-white drop-shadow-lg" fill="white" />
+                    ) : (
+                      <Play className="w-12 h-12 text-white drop-shadow-lg" fill="white" />
+                    )}
+                  </button>
+                </>
+              )}
+            </div>
+
+            {testimonials.length > 1 && (
+              <button
+                onClick={nextTestimonial}
+                className="absolute right-0 z-10 p-2 rounded-full transition-all duration-300 hover:scale-110"
+                style={{ backgroundColor: '#0A8B80' }}
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-6 h-6" style={{ color: '#C0E1CA' }} />
+              </button>
+            )}
+          </div>
+
+          {/* Doctor Info */}
+          <div className="text-center mb-4">
+            <p className="font-normal text-sm sm:text-base" style={{ color: '#231F20' }}>
+              {currentTestimonial.name}{currentTestimonial.degree ? ` (${currentTestimonial.degree})` : ''}
+            </p>
+            <p className="text-sm" style={{ color: '#231F20' }}>
+              {currentTestimonial.clinic}
+            </p>
+          </div>
+
+          {/* Pagination Dots */}
+          {testimonials.length > 1 && (
+            <div className="flex justify-center gap-2 pb-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => { setCurrentIndex(index); setIsPlaying(false); }}
+                  className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                  style={{
+                    backgroundColor: index === currentIndex ? '#0A8B80' : '#7FA587',
+                    opacity: index === currentIndex ? 1 : 0.5,
+                  }}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* =============================================
+          DESKTOP / LAPTOP VERSION (hidden below lg)
+         ============================================= */}
+      <section
+        id="community-desktop"
+        className="hidden lg:block py-20 relative overflow-hidden"
         style={{ backgroundColor: '#C2E2CB' }}
       >
         <div className="container mx-auto px-6">
@@ -82,25 +269,16 @@ const CommunitySection = () => {
                 className="text-sm md:text-base lg:text-lg mb-3 md:mb-4"
                 style={{ color: '#043A38' }}
               >
-                What doctors & clinics are saying...
+                What doctors &amp; clinics are saying...
               </p>
               <div className="space-y-1">
-                <p
-                  className="text-xs md:text-sm italic"
-                  style={{ color: '#043A38' }}
-                >
+                <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>
                   "The perfect solution for OPD clinics and busy practices…"
                 </p>
-                <p
-                  className="text-xs md:text-sm italic"
-                  style={{ color: '#043A38' }}
-                >
+                <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>
                   "…Nothing like this existed for clinics before Chikitra."
                 </p>
-                <p
-                  className="text-xs md:text-sm italic"
-                  style={{ color: '#043A38' }}
-                >
+                <p className="text-xs md:text-sm italic" style={{ color: '#043A38' }}>
                   "I wish I had Chikitra for my clinic all along…"
                 </p>
               </div>
@@ -118,7 +296,6 @@ const CommunitySection = () => {
 
               {/* Video Player with Navigation Arrows */}
               <div className="relative flex items-center justify-center w-full mb-4 md:mb-6">
-                {/* Left Arrow - hidden when only 1 testimonial */}
                 {testimonials.length > 1 && (
                   <button
                     onClick={prevTestimonial}
@@ -130,17 +307,14 @@ const CommunitySection = () => {
                   </button>
                 )}
 
-                {/* Video Frame with Video Inside */}
                 <div className="relative w-52 h-48 md:w-64 md:h-56 lg:w-80 lg:h-72">
                   {currentTestimonial.video ? (
                     <>
-                      {/* Video Frame at bottom */}
                       <img
                         src={videoFrame}
                         alt="Video frame"
                         className="w-full h-full object-contain absolute inset-0"
                       />
-                      {/* Video on top, positioned in screen area */}
                       <video
                         ref={videoRef}
                         src={currentTestimonial.video}
@@ -154,12 +328,11 @@ const CommunitySection = () => {
                         }}
                         onEnded={() => setIsPlaying(false)}
                       />
-                      {/* Play/Pause Button Overlay */}
                       <button
                         onClick={togglePlayPause}
                         className="absolute inset-0 flex items-center justify-center hover:bg-opacity-30 transition-all z-20"
                         style={{ backgroundColor: isPlaying ? 'transparent' : 'transparent' }}
-                        aria-label={isPlaying ? "Pause video" : "Play video"}
+                        aria-label={isPlaying ? 'Pause video' : 'Play video'}
                       >
                         {!isPlaying && (
                           <Play className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg" fill="white" />
@@ -168,17 +341,15 @@ const CommunitySection = () => {
                     </>
                   ) : (
                     <>
-                      {/* Video Frame */}
                       <img
                         src={videoFrame}
                         alt="Video frame"
                         className="w-full h-full object-contain"
                       />
-                      {/* Play/Pause Button Overlay for placeholder */}
                       <button
                         onClick={() => setIsPlaying(!isPlaying)}
                         className="absolute inset-0 flex items-center justify-center z-20"
-                        aria-label={isPlaying ? "Pause video" : "Play video"}
+                        aria-label={isPlaying ? 'Pause video' : 'Play video'}
                       >
                         {isPlaying ? (
                           <Pause className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg" fill="white" />
@@ -190,7 +361,6 @@ const CommunitySection = () => {
                   )}
                 </div>
 
-                {/* Right Arrow - hidden when only 1 testimonial */}
                 {testimonials.length > 1 && (
                   <button
                     onClick={nextTestimonial}
@@ -213,20 +383,16 @@ const CommunitySection = () => {
                 </p>
               </div>
 
-              {/* Pagination Dots - hidden when only 1 testimonial */}
               {testimonials.length > 1 && (
                 <div className="flex gap-2">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => {
-                        setCurrentIndex(index);
-                        setIsPlaying(false);
-                      }}
+                      onClick={() => { setCurrentIndex(index); setIsPlaying(false); }}
                       className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300"
                       style={{
                         backgroundColor: index === currentIndex ? '#0A8B80' : '#7FA587',
-                        opacity: index === currentIndex ? 1 : 0.5
+                        opacity: index === currentIndex ? 1 : 0.5,
                       }}
                       aria-label={`Go to testimonial ${index + 1}`}
                     />
