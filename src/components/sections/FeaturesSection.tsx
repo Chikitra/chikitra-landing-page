@@ -137,7 +137,7 @@ const FeaturesSection = () => {
         }
         /* Mobile icon overlay buttons — no box, just glow */
         .mobile-icon-btn {
-          background: rgba(5, 38, 33, 0.5);
+          
           border-radius: 50%;
           border: none;
           display: flex;
@@ -221,15 +221,14 @@ const FeaturesSection = () => {
 
           {/* Feature Cards Layout */}
           <div className="max-w-7xl mx-auto">
-            {/*
-              MOBILE & TABLET: Icons overlaid on bot hands
-              =============================================
-            */}
+            {/* =========================================
+                MOBILE VERSION
+               ========================================= */}
             <div
               className="relative w-full max-w-[360px] mx-auto xl:hidden"
               style={{ aspectRatio: '4/5' }}
             >
-              {/* ── Shared floating wrapper — bot + icons move as one unit ── */}
+              {/* Shared floating wrapper — bot + icons move as one unit */}
               <div
                 className="floating-ninja-mobile"
                 style={{ position: 'absolute', inset: 0 }}
@@ -255,7 +254,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[0].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '21%', left: '10%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '18%', left: '1%' }}
                   aria-label={features[0].title}
                 >
                   <img src={features[0].icon} alt={features[0].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -265,7 +264,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[1].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '44%', left: '3%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '35%', left: '0.05%' }}
                   aria-label={features[1].title}
                 >
                   <img src={features[1].icon} alt={features[1].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -275,7 +274,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[2].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '64%', left: '10%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '54%', left: '9%' }}
                   aria-label={features[2].title}
                 >
                   <img src={features[2].icon} alt={features[2].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -287,7 +286,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[3].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '21%', right: '14%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '17.5%', right: '0.05%' }}
                   aria-label={features[3].title}
                 >
                   <img src={features[3].icon} alt={features[3].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -297,7 +296,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[4].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '44%', right: '7%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '33%', right: '0.05%' }}
                   aria-label={features[4].title}
                 >
                   <img src={features[4].icon} alt={features[4].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -307,7 +306,7 @@ const FeaturesSection = () => {
                 <button
                   onClick={() => setActiveFeature(features[5].id)}
                   className="mobile-icon-btn"
-                  style={{ width: '18%', aspectRatio: '1', top: '64%', right: '14%' }}
+                  style={{ width: '25%', aspectRatio: '1', top: '48%', right: '3%' }}
                   aria-label={features[5].title}
                 >
                   <img src={features[5].icon} alt={features[5].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
@@ -359,8 +358,10 @@ const FeaturesSection = () => {
               </div>
             )}
 
-            {/* Desktop: 3 Cards Left | Ninja Bot Center | 3 Cards Right */}
-            <div className="hidden xl:flex xl:items-center xl:justify-center  relative">
+            {/* =========================================
+                DESKTOP VERSION
+               ========================================= */}
+            <div className="hidden xl:flex xl:items-center xl:justify-center relative">
               {/* LEFT COLUMN - Cards 1, 2, 3 */}
               <div className="flex flex-col gap-5 w-[300px]">
                 {features.slice(0, 3).map((feature) => (
