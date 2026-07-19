@@ -31,7 +31,10 @@ const ChaosSection = () => {
         <div className="flex flex-col items-center lg:hidden w-full pt-4 pb-8">
           {/* "THE PROBLEM" Pill */}
           <div className="mb-10">
-            <span className="px-6 py-2 rounded-full border border-solid text-xs md:text-sm tracking-widest font-semibold uppercase" style={{ borderColor: '#3E8379', color: '#3E8379' }}>
+            <span
+              className="px-5 py-1.5 text-xs sm:text-sm tracking-widest font-semibold uppercase"
+              style={{ border: '1.5px solid #01665E', borderRadius: '999px', color: '#C0E1CA', letterSpacing: '0.18em' }}
+            >
               The Problem
             </span>
           </div>

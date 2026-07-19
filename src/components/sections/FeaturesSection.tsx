@@ -189,8 +189,8 @@ const FeaturesSection = () => {
             {/* The Product Pill - Mobile & Tablet Only */}
             <div className="flex justify-center mb-6 xl:hidden">
               <span
-                className="px-6 py-2 rounded-full border border-solid text-xs md:text-sm tracking-widest font-semibold uppercase"
-                style={{ borderColor: '#3E8379', color: '#3E8379' }}
+                className="px-5 py-1.5 text-xs sm:text-sm tracking-widest font-semibold uppercase"
+                style={{ border: '1.5px solid #01665E', borderRadius: '999px', color: '#C0E1CA', letterSpacing: '0.18em' }}
               >
                 The Product
               </span>
