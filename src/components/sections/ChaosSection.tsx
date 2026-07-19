@@ -7,7 +7,7 @@ const ChaosSection = () => {
     <section
       id="chaos"
       className="relative min-h-screen overflow-hidden z-[60]"
-      style={{ background: 'linear-gradient(180deg, #002D29 0%, #002D29 5vh, #102B27 25vh, #2A1D1E 50vh, #371618 80vh, #371618 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #002D28 0%, #002D28 5vh, #102B27 25vh, #2A1D1E 50vh, #371617 80vh, #371617 100%)' }}
     >
       {/* Background Image - Woman crying */}
       <div
@@ -41,7 +41,7 @@ const ChaosSection = () => {
 
           <h2
             className="font-medium text-4xl md:text-5xl leading-tight mb-8 text-center tracking-normal"
-            style={{ color: '#F9C1C8' }}
+            style={{ color: '#F7BFC7' }}
           >
             <span className="block pb-1 md:pb-2">Most clinics still run</span>
             <span className="block pb-1 md:pb-2">on paper, memory</span>
@@ -52,13 +52,13 @@ const ChaosSection = () => {
           <div className="mb-12">
             <p
               className="text-xl md:text-2xl font-normal mb-1 md:mb-2 text-center tracking-wide"
-              style={{ color: '#F9C1C8' }}
+              style={{ color: '#F7BFC7' }}
             >
               Your clinic is <span className="font-bold">BUSY.</span>
             </p>
             <p
               className="text-xl md:text-2xl font-normal text-center tracking-wide"
-              style={{ color: '#F9C1C8' }}
+              style={{ color: '#F7BFC7' }}
             >
               But it might be <span className="font-bold">BREAKING.</span>
             </p>
@@ -77,13 +77,13 @@ const ChaosSection = () => {
           <div className="text-center">
             <p
               className="text-xl md:text-2xl font-normal mb-1 md:mb-2 tracking-wide"
-              style={{ color: '#F9C1C8' }}
+              style={{ color: '#F7BFC7' }}
             >
               You know the problem.
             </p>
             <p
               className="text-xl md:text-2xl font-normal tracking-wide"
-              style={{ color: '#F9C1C8' }}
+              style={{ color: '#F7BFC7' }}
             >
               Meet the solution — <span className="font-black uppercase tracking-wide">CHIKITRA.</span>
             </p>

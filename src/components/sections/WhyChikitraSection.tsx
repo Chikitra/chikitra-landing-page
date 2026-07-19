@@ -47,7 +47,7 @@ const comparisonData = [
   }
 ];
 
-const SLIDE_DURATION = 2500; // ms per slide
+const SLIDE_DURATION = 4000; // ms per slide
 
 /* ── Mobile Carousel ─────────────────────────────────────── */
 const MobileCarousel = () => {

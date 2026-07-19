@@ -182,7 +182,7 @@ const FeaturesSection = () => {
         }
       `}</style>
 
-      <section id="features" className="pt-14 pb-24 xl:py-24 relative overflow-x-hidden" style={{ background: "linear-gradient(180deg, #2F1012 0%, #241416 28%, #143733 68%, #0C3A35 100%)" }}>
+      <section id="features" className="pt-14 pb-24 xl:py-24 relative overflow-x-hidden" style={{ background: "linear-gradient(180deg, #361719 0%, #241416 28%, #143733 68%, #0C3A35 100%)" }}>
         <div className="container mx-auto px-6">
           {/* Title */}
           <div className="text-center max-w-3xl mx-auto mb-10 xl:mb-16">
@@ -199,21 +199,21 @@ const FeaturesSection = () => {
             {/* Mobile heading: let text flow naturally — no forced <br> so it wraps cleanly on any screen */}
             <h2
               className="xl:hidden text-2xl sm:text-3xl font-bold leading-snug mb-4"
-              style={{ color: '#C2E2CB' }}
+              style={{ color: '#C0E1CA' }}
             >
               Chikitra replaces clinic chaos with calm, coordinated care.
             </h2>
             {/* Desktop heading */}
             <h2
               className="hidden xl:block text-4xl lg:text-5xl font-medium leading-tight mb-6"
-              style={{ color: '#C2E2CB' }}
+              style={{ color: '#C0E1CA' }}
             >
               Chikitra replaces clinic chaos
               <br />
               with calm, coordinated care.
             </h2>
 
-            <p className="text-sm sm:text-base xl:text-lg leading-relaxed" style={{ color: '#C2E2CB' }}>
+            <p className="text-sm sm:text-base xl:text-lg leading-relaxed" style={{ color: '#C0E1CA' }}>
               Automates the busywork to help clinics run smoother –{' '}
               without adding staff or complexity.
             </p>
@@ -336,13 +336,13 @@ const FeaturesSection = () => {
 
                   {/* Card Content */}
                   <div className="relative z-10 text-left">
-                    <h3 className="text-xl font-bold mb-3 pr-8 whitespace-pre-line" style={{ color: '#C2E2CB' }}>
+                    <h3 className="text-xl font-bold mb-3 pr-8 whitespace-pre-line" style={{ color: '#C0E1CA' }}>
                       {features.find(f => f.id === activeFeature)?.title}
                     </h3>
-                    <p className="text-base font-normal mb-2" style={{ color: '#C2E2CB' }}>
+                    <p className="text-base font-normal mb-2" style={{ color: '#C0E1CA' }}>
                       {features.find(f => f.id === activeFeature)?.subtitle}
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: '#C2E2CB', opacity: 0.8 }}>
+                    <p className="text-sm leading-relaxed" style={{ color: '#C0E1CA', opacity: 0.8 }}>
                       {features.find(f => f.id === activeFeature)?.description}
                     </p>
                   </div>
@@ -377,13 +377,13 @@ const FeaturesSection = () => {
 
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-left pr-10">
-                      <h3 className="text-base font-bold mb-1.5 whitespace-pre-line leading-tight" style={{ color: '#C2E2CB' }}>
+                      <h3 className="text-base font-bold mb-1.5 whitespace-pre-line leading-tight" style={{ color: '#C0E1CA' }}>
                         {feature.title}
                       </h3>
-                      <p className="text-sm font-normal mb-1.5 pr-2" style={{ color: '#C2E2CB' }}>
+                      <p className="text-sm font-normal mb-1.5 pr-2" style={{ color: '#C0E1CA' }}>
                         {feature.subtitle}
                       </p>
-                      <p className="text-xs leading-relaxed" style={{ color: '#C2E2CB', opacity: 0.8 }}>
+                      <p className="text-xs leading-relaxed" style={{ color: '#C0E1CA', opacity: 0.8 }}>
                         {feature.description}
                       </p>
                     </div>
@@ -429,13 +429,13 @@ const FeaturesSection = () => {
 
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-left pr-10">
-                      <h3 className="text-base font-bold mb-1.5 whitespace-pre-line leading-tight" style={{ color: '#C2E2CB' }}>
+                      <h3 className="text-base font-bold mb-1.5 whitespace-pre-line leading-tight" style={{ color: '#C0E1CA' }}>
                         {feature.title}
                       </h3>
-                      <p className="text-sm font-normal mb-1.5 pr-2" style={{ color: '#C2E2CB' }}>
+                      <p className="text-sm font-normal mb-1.5 pr-2" style={{ color: '#C0E1CA' }}>
                         {feature.subtitle}
                       </p>
-                      <p className="text-xs leading-relaxed" style={{ color: '#C2E2CB', opacity: 0.8 }}>
+                      <p className="text-xs leading-relaxed" style={{ color: '#C0E1CA', opacity: 0.8 }}>
                         {feature.description}
                       </p>
                     </div>
