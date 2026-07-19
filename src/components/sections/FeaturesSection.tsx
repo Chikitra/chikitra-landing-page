@@ -129,26 +129,28 @@ const FeaturesSection = () => {
           pointer-events: none;
         }
         .feature-icon-btn {
-          background: none;
-          border: none;
-          padding: 0;
+          background-color: #0D5049;
+          border: 1.5px solid rgba(26, 158, 136, 0.7);
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           cursor: pointer;
           transition: all 0.3s ease;
+          box-shadow: 0 0 12px rgba(26, 158, 136, 0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+          animation: iconGlowBtn 2.5s ease-in-out infinite;
         }
-        .feature-icon-btn img {
-          filter: drop-shadow(0 0 8px rgba(26, 158, 136, 0.5)) drop-shadow(0 0 16px rgba(26, 158, 136, 0.3));
-          animation: iconGlow 2.5s ease-in-out infinite;
+        .feature-icon-btn:hover {
+          transform: scale(1.08);
+          background-color: #0F6059;
+          box-shadow: 0 0 22px rgba(26, 158, 136, 0.6);
         }
-        .feature-icon-btn:hover img {
-          filter: drop-shadow(0 0 14px rgba(26, 158, 136, 0.7)) drop-shadow(0 0 28px rgba(26, 158, 136, 0.4));
-          transform: scale(1.1);
-        }
-        @keyframes iconGlow {
+        @keyframes iconGlowBtn {
           0%, 100% {
-            filter: drop-shadow(0 0 8px rgba(26, 158, 136, 0.5)) drop-shadow(0 0 16px rgba(26, 158, 136, 0.3));
+            box-shadow: 0 0 8px rgba(26, 158, 136, 0.3), inset 0 1px 0 rgba(255,255,255,0.05);
           }
           50% {
-            filter: drop-shadow(0 0 14px rgba(26, 158, 136, 0.7)) drop-shadow(0 0 28px rgba(26, 158, 136, 0.4));
+            box-shadow: 0 0 18px rgba(26, 158, 136, 0.65), inset 0 1px 0 rgba(255,255,255,0.05);
           }
         }
         .feature-popup-overlay {
@@ -182,72 +184,109 @@ const FeaturesSection = () => {
         }
       `}</style>
 
-      <section id="features" className="py-24 relative" style={{ background: "linear-gradient(180deg, #2F1012 0%, #241416 28%, #143733 68%, #0C3A35 100%)" }}>
+      <section id="features" className="pt-14 pb-24 xl:py-24 relative overflow-x-hidden" style={{ background: "linear-gradient(180deg, #2F1012 0%, #241416 28%, #143733 68%, #0C3A35 100%)" }}>
         <div className="container mx-auto px-6">
           {/* Title */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-6" style={{ color: '#C2E2CB' }}>
+          <div className="text-center max-w-3xl mx-auto mb-10 xl:mb-16">
+            {/* The Product Pill - Mobile & Tablet Only */}
+            <div className="flex justify-center mb-6 xl:hidden">
+              <span
+                className="px-6 py-2 rounded-full border border-solid text-xs md:text-sm tracking-widest font-semibold uppercase"
+                style={{ borderColor: '#3E8379', color: '#3E8379' }}
+              >
+                The Product
+              </span>
+            </div>
+
+            {/* Mobile heading: let text flow naturally — no forced <br> so it wraps cleanly on any screen */}
+            <h2
+              className="xl:hidden text-2xl sm:text-3xl font-bold leading-snug mb-4"
+              style={{ color: '#C2E2CB' }}
+            >
+              Chikitra replaces clinic chaos with calm, coordinated care.
+            </h2>
+            {/* Desktop heading */}
+            <h2
+              className="hidden xl:block text-4xl lg:text-5xl font-medium leading-tight mb-6"
+              style={{ color: '#C2E2CB' }}
+            >
               Chikitra replaces clinic chaos
               <br />
               with calm, coordinated care.
             </h2>
 
-            <p className="text-lg" style={{ color: '#C2E2CB' }}>
-              Smartly automates the busywork, connects every touchpoint,
-              <br />
-              and helps clinics run smoother - without adding staff or complexity.
+            <p className="text-sm sm:text-base xl:text-lg leading-relaxed" style={{ color: '#C2E2CB' }}>
+              Automates the busywork to help clinics run smoother –{' '}
+              without adding staff or complexity.
             </p>
           </div>
 
           {/* Feature Cards Layout */}
           <div className="max-w-7xl mx-auto">
-            {/* Mobile & Tablet: 3 Icons Left | Ninja Bot Center | 3 Icons Right */}
-            <div className="flex items-center justify-center gap-2 md:gap-4 xl:hidden">
-              {/* LEFT COLUMN - Icons 1, 2, 3 */}
-              <div className="flex flex-col gap-5 md:gap-7">
+            {/*
+              MOBILE & TABLET LAYOUT
+              =======================
+              Root-cause of overflow: using vw-based widths (min(90vw,360px)) inside a
+              padded container overflows the available content width on small screens.
+
+              Solution: flex 3-column layout (left icons | bot | right icons).
+              Total width = iconCol(56px) + gap(12px) + bot(flex-1 up to 220px) + gap(12px) + iconCol(56px)
+              This is always <= parent content width — zero chance of horizontal scroll.
+
+              Icon alignment: the bot image's 6 hands naturally extend into the gaps
+              between the bot and the icon columns. Setting icon column to
+              justify-between with vertical padding aligns icons with hand-tips.
+            */}
+            <div className="flex items-center justify-center gap-3 sm:gap-5 xl:hidden px-1">
+
+              {/* LEFT COLUMN — icons 1, 2, 3 from top to bottom */}
+              <div className="flex flex-col justify-between flex-shrink-0" style={{ gap: '28px' }}>
                 {features.slice(0, 3).map((feature) => (
                   <button
                     key={feature.id}
                     onClick={() => setActiveFeature(feature.id)}
                     className="feature-icon-btn"
+                    style={{ width: '56px', height: '56px' }}
                   >
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                      style={{ width: '60%', height: '60%', objectFit: 'contain' }}
                     />
                   </button>
                 ))}
               </div>
 
-              {/* CENTER - Ninja Bot */}
+              {/* CENTER — Ninja Bot, constrained to flex-shrink-0 so it never gets squished */}
               <div
                 className="floating-ninja-mobile flex-shrink-0"
-                style={{ width: '240px', height: '240px' }}
+                style={{ width: 'clamp(180px, 50vw, 240px)', height: 'clamp(220px, 60vw, 290px)' }}
               >
                 <img
                   src={ninjaBotOnly}
                   alt="Ninja Bot"
-                  className="w-full h-full object-contain"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 />
               </div>
 
-              {/* RIGHT COLUMN - Icons 4, 5, 6 */}
-              <div className="flex flex-col gap-5 md:gap-7">
+              {/* RIGHT COLUMN — icons 4, 5, 6 from top to bottom */}
+              <div className="flex flex-col justify-between flex-shrink-0" style={{ gap: '28px' }}>
                 {features.slice(3, 6).map((feature) => (
                   <button
                     key={feature.id}
                     onClick={() => setActiveFeature(feature.id)}
                     className="feature-icon-btn"
+                    style={{ width: '56px', height: '56px' }}
                   >
                     <img
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                      style={{ width: '60%', height: '60%', objectFit: 'contain' }}
                     />
                   </button>
                 ))}
               </div>
+
             </div>
 
             {/* Mobile Popup */}
