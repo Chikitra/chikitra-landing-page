@@ -2,6 +2,10 @@ import bgImage from "@/assets/Old-Ways-Section_Bg_image.png";
 import infographicImage from "@/assets/Old_way_section_image.png";
 import stressBotMobile from "@/assets/Stress_bot_mobile.png";
 
+
+const IMAGE_WIDTH_MOBILE = "400px";
+const IMAGE_WIDTH_TABLET = "520px";
+
 const ChaosSection = () => {
   return (
     <section
@@ -26,7 +30,7 @@ const ChaosSection = () => {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20">
-        
+
         {/* MOBILE & TABLET VIEW (< lg) */}
         <div className="flex flex-col items-center lg:hidden w-full pt-4 pb-8">
           {/* "THE PROBLEM" Pill */}
@@ -65,7 +69,13 @@ const ChaosSection = () => {
           </div>
 
           {/* Image */}
-          <div className="w-full max-w-[280px] md:max-w-[360px] mb-12">
+          <div
+            className="w-full mb-12 max-w-[var(--img-w-mobile)] md:max-w-[var(--img-w-tablet)]"
+            style={{
+              '--img-w-mobile': IMAGE_WIDTH_MOBILE,
+              '--img-w-tablet': IMAGE_WIDTH_TABLET,
+            } as React.CSSProperties}
+          >
             <img
               src={stressBotMobile}
               alt="Stress Bot"
