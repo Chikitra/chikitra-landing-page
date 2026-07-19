@@ -129,29 +129,27 @@ const FeaturesSection = () => {
           pointer-events: none;
         }
         .feature-icon-btn {
-          background-color: #0D5049;
-          border: 1.5px solid rgba(26, 158, 136, 0.7);
-          border-radius: 18px;
+          /* kept for any future desktop use */
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 0 12px rgba(26, 158, 136, 0.35), inset 0 1px 0 rgba(255,255,255,0.05);
-          animation: iconGlowBtn 2.5s ease-in-out infinite;
         }
-        .feature-icon-btn:hover {
-          transform: scale(1.08);
-          background-color: #0F6059;
-          box-shadow: 0 0 22px rgba(26, 158, 136, 0.6);
+        /* Mobile icon overlay buttons — no box, just glow */
+        .mobile-icon-btn {
+          background: rgba(5, 38, 33, 0.5);
+          border-radius: 50%;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: transform 0.25s ease;
+          position: absolute;
+          z-index: 20;
         }
-        @keyframes iconGlowBtn {
-          0%, 100% {
-            box-shadow: 0 0 8px rgba(26, 158, 136, 0.3), inset 0 1px 0 rgba(255,255,255,0.05);
-          }
-          50% {
-            box-shadow: 0 0 18px rgba(26, 158, 136, 0.65), inset 0 1px 0 rgba(255,255,255,0.05);
-          }
+        .mobile-icon-btn:hover {
+          transform: scale(1.15);
         }
         .feature-popup-overlay {
           position: fixed;
@@ -224,69 +222,98 @@ const FeaturesSection = () => {
           {/* Feature Cards Layout */}
           <div className="max-w-7xl mx-auto">
             {/*
-              MOBILE & TABLET LAYOUT
-              =======================
-              Root-cause of overflow: using vw-based widths (min(90vw,360px)) inside a
-              padded container overflows the available content width on small screens.
-
-              Solution: flex 3-column layout (left icons | bot | right icons).
-              Total width = iconCol(56px) + gap(12px) + bot(flex-1 up to 220px) + gap(12px) + iconCol(56px)
-              This is always <= parent content width — zero chance of horizontal scroll.
-
-              Icon alignment: the bot image's 6 hands naturally extend into the gaps
-              between the bot and the icon columns. Setting icon column to
-              justify-between with vertical padding aligns icons with hand-tips.
+              MOBILE & TABLET: Icons overlaid on bot hands
+              =============================================
             */}
-            <div className="flex items-center justify-center gap-3 sm:gap-5 xl:hidden px-1">
-
-              {/* LEFT COLUMN — icons 1, 2, 3 from top to bottom */}
-              <div className="flex flex-col justify-between flex-shrink-0" style={{ gap: '28px' }}>
-                {features.slice(0, 3).map((feature) => (
-                  <button
-                    key={feature.id}
-                    onClick={() => setActiveFeature(feature.id)}
-                    className="feature-icon-btn"
-                    style={{ width: '56px', height: '56px' }}
-                  >
-                    <img
-                      src={feature.icon}
-                      alt={feature.title}
-                      style={{ width: '60%', height: '60%', objectFit: 'contain' }}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              {/* CENTER — Ninja Bot, constrained to flex-shrink-0 so it never gets squished */}
+            <div
+              className="relative w-full max-w-[360px] mx-auto xl:hidden"
+              style={{ aspectRatio: '4/5' }}
+            >
+              {/* ── Shared floating wrapper — bot + icons move as one unit ── */}
               <div
-                className="floating-ninja-mobile flex-shrink-0"
-                style={{ width: 'clamp(180px, 50vw, 240px)', height: 'clamp(220px, 60vw, 290px)' }}
+                className="floating-ninja-mobile"
+                style={{ position: 'absolute', inset: 0 }}
               >
+                {/* Ninja Bot – slightly smaller than wrapper (88%), centered */}
                 <img
                   src={ninjaBotOnly}
                   alt="Ninja Bot"
-                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                  style={{
+                    position: 'absolute',
+                    top: '6%',
+                    left: '6%',
+                    width: '88%',
+                    height: '88%',
+                    objectFit: 'contain',
+                    zIndex: 10,
+                  }}
                 />
-              </div>
 
-              {/* RIGHT COLUMN — icons 4, 5, 6 from top to bottom */}
-              <div className="flex flex-col justify-between flex-shrink-0" style={{ gap: '28px' }}>
-                {features.slice(3, 6).map((feature) => (
-                  <button
-                    key={feature.id}
-                    onClick={() => setActiveFeature(feature.id)}
-                    className="feature-icon-btn"
-                    style={{ width: '56px', height: '56px' }}
-                  >
-                    <img
-                      src={feature.icon}
-                      alt={feature.title}
-                      style={{ width: '60%', height: '60%', objectFit: 'contain' }}
-                    />
-                  </button>
-                ))}
-              </div>
+                {/* ── LEFT HANDS ── */}
 
+                {/* Left – Upper hand (feature 1: bell) */}
+                <button
+                  onClick={() => setActiveFeature(features[0].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '21%', left: '10%' }}
+                  aria-label={features[0].title}
+                >
+                  <img src={features[0].icon} alt={features[0].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+                {/* Left – Middle hand (feature 2: dashboard) */}
+                <button
+                  onClick={() => setActiveFeature(features[1].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '44%', left: '3%' }}
+                  aria-label={features[1].title}
+                >
+                  <img src={features[1].icon} alt={features[1].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+                {/* Left – Lower hand (feature 3: live sync) */}
+                <button
+                  onClick={() => setActiveFeature(features[2].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '64%', left: '10%' }}
+                  aria-label={features[2].title}
+                >
+                  <img src={features[2].icon} alt={features[2].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+                {/* ── RIGHT HANDS ── */}
+
+                {/* Right – Upper hand (feature 4: intake) */}
+                <button
+                  onClick={() => setActiveFeature(features[3].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '21%', right: '14%' }}
+                  aria-label={features[3].title}
+                >
+                  <img src={features[3].icon} alt={features[3].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+                {/* Right – Middle hand (feature 5: calendar) */}
+                <button
+                  onClick={() => setActiveFeature(features[4].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '44%', right: '7%' }}
+                  aria-label={features[4].title}
+                >
+                  <img src={features[4].icon} alt={features[4].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+                {/* Right – Lower hand (feature 6: prescription) */}
+                <button
+                  onClick={() => setActiveFeature(features[5].id)}
+                  className="mobile-icon-btn"
+                  style={{ width: '18%', aspectRatio: '1', top: '64%', right: '14%' }}
+                  aria-label={features[5].title}
+                >
+                  <img src={features[5].icon} alt={features[5].title} style={{ width: '62%', height: '62%', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(26,158,136,1))' }} />
+                </button>
+
+              </div>{/* end floating wrapper */}
             </div>
 
             {/* Mobile Popup */}
