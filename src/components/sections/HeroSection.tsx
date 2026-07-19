@@ -1,30 +1,303 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import botImage from "@/assets/Hero-Section_Bot.png";
 import botImageMobile from "@/assets/Hero-Section_Bot_Mobile.png";
 import patientDetailsImage from "@/assets/Hero-Section_Image1.png";
 import appointmentsImage from "@/assets/Hero-Section_Image2.png";
 import whatsappImage from "@/assets/Hero-Section_Image3.jpeg";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel";
 
-const HeroSection = () => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(1); // Default to middle slide to match image
-  const sectionRef = useRef<HTMLElement>(null);
+// ─── Slide timing ────────────────────────────────────────────────────────────
+// WhatsApp card stays for 9s = full whatsapp-chat-scroll animation cycle.
+// Other slides stay for 2s each.
+const SLIDE_DURATIONS = [2000, 2000, 9000]; // index matches slides array
 
+// ─── Slide definitions ───────────────────────────────────────────────────────
+const slides = [
+  {
+    src: patientDetailsImage,
+    alt: 'Patient Details',
+    label: 'Patient Records',
+    border: '#437769',
+    shadow: 'rgba(67, 119, 105, 0.6)',
+    objectFit: 'cover' as const,
+    objectPosition: 'top',
+    background: '#000',
+    bottomFade: true,
+    scrollAnim: false,
+  },
+  {
+    src: appointmentsImage,
+    alt: 'Appointments Dashboard',
+    label: 'Appointments',
+    border: '#437769',
+    shadow: 'rgba(67, 119, 105, 0.6)',
+    objectFit: 'contain' as const,
+    objectPosition: 'center',
+    background: 'linear-gradient(180deg, #060f0d 0%, #0c1f1b 50%, #060f0d 100%)',
+    bottomFade: false,
+    scrollAnim: false,
+  },
+  {
+    src: whatsappImage,
+    alt: 'WhatsApp Chat',
+    label: 'WhatsApp Integration',
+    border: '#5BB29D',
+    shadow: 'rgba(91, 178, 157, 0.5)',
+    objectFit: 'cover' as const,
+    objectPosition: 'top',
+    background: '#000',
+    bottomFade: true,
+    scrollAnim: true,
+  },
+];
+
+// ─── Mobile 3-D Gallery Carousel ─────────────────────────────────────────────
+/**
+ * Custom carousel that does NOT use Embla, so we get full control over:
+ *  - CSS perspective / translateZ for real depth
+ *  - Variable slide durations per slide
+ *  - Touch drag without overflow-hidden clipping
+ *
+ * Each card is absolutely positioned in a fixed-height container.
+ * Active card: scale(1) translateZ(0)  → front, full opacity
+ * Left/right:  scale(0.78) translateZ(-120px) → pushed far back, blurred
+ */
+const MobileGallery = ({
+  current,
+  onChangeTo,
+}: {
+  current: number;
+  onChangeTo: (idx: number) => void;
+}) => {
+  const count = slides.length;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dragStartX = useRef<number | null>(null);
+  const dragStartY = useRef<number | null>(null);
+  const dragDelta = useRef(0);
+  const isHorizontalDrag = useRef<boolean | null>(null); // null = undecided
+
+  const prevRef = useRef<() => void>(() => {});
+  const nextRef = useRef<() => void>(() => {});
+  prevRef.current = () => onChangeTo((current - 1 + count) % count);
+  nextRef.current = () => onChangeTo((current + 1) % count);
+
+  // ── Native touch + mouse listeners with { passive: false } ──────────────────
+  // React's synthetic onPointerMove is always passive on mobile, meaning we
+  // can't call e.preventDefault() to stop the page from scrolling during a
+  // horizontal swipe. Native listeners with passive:false give us that control.
   useEffect(() => {
-    if (!api) {
-      return;
-    }
-    setCurrent(api.selectedScrollSnap());
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      dragStartX.current = e.touches[0].clientX;
+      dragStartY.current = e.touches[0].clientY;
+      dragDelta.current = 0;
+      isHorizontalDrag.current = null;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (dragStartX.current === null) return;
+      const dx = e.touches[0].clientX - dragStartX.current;
+      const dy = e.touches[0].clientY - (dragStartY.current ?? 0);
+
+      // Lock axis on first significant movement
+      if (isHorizontalDrag.current === null) {
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+          isHorizontalDrag.current = Math.abs(dx) >= Math.abs(dy);
+        }
+      }
+
+      if (isHorizontalDrag.current) {
+        // Horizontal swipe — prevent vertical page scroll
+        e.preventDefault();
+        dragDelta.current = dx;
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (dragStartX.current === null) return;
+      if (isHorizontalDrag.current) {
+        if (dragDelta.current < -40) nextRef.current();
+        else if (dragDelta.current > 40) prevRef.current();
+      }
+      dragStartX.current = null;
+      dragStartY.current = null;
+      dragDelta.current = 0;
+      isHorizontalDrag.current = null;
+    };
+
+    // Mouse drag (desktop fallback)
+    const onMouseDown = (e: MouseEvent) => {
+      dragStartX.current = e.clientX;
+      dragDelta.current = 0;
+    };
+    const onMouseMove = (e: MouseEvent) => {
+      if (dragStartX.current === null) return;
+      dragDelta.current = e.clientX - dragStartX.current;
+    };
+    const onMouseUp = () => {
+      if (dragStartX.current === null) return;
+      if (dragDelta.current < -40) nextRef.current();
+      else if (dragDelta.current > 40) prevRef.current();
+      dragStartX.current = null;
+      dragDelta.current = 0;
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+  }, []); // stable refs — no deps needed
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full relative select-none"
+      style={{
+        height: 'clamp(145px, 27svh, 305px)',
+        // perspective on the direct parent of the transformed cards = real 3D depth
+        perspective: '900px',
+        perspectiveOrigin: '50% 50%',
+        touchAction: 'pan-y', // allow vertical scroll; horizontal is handled by us
+      }}
+    >
+      {slides.map((slide, index) => {
+        // Compute relative position: -1 = left, 0 = active, 1 = right
+        let rel = index - current;
+        // Wrap for loop
+        if (rel > 1) rel -= count;
+        if (rel < -1) rel += count;
+
+        const isActive = rel === 0;
+        const isLeft = rel === -1;
+        const isRight = rel === 1;
+        const isHidden = !isActive && !isLeft && !isRight;
+
+        // 3D transform values
+        const scale = isActive ? 1 : 0.75;
+        const translateX = isActive ? '0px' : isLeft ? '-62%' : '62%';
+        const translateZ = isActive ? '0px' : '-130px';
+        const opacity = isActive ? 1 : 0.35;
+        const blur = isActive ? 0 : 2.5;
+        const borderColor = isActive ? slide.border : '#58595B';
+        const boxShadow = isActive
+          ? `0 0 28px ${slide.shadow}, 0 0 56px ${slide.shadow.replace('0.6', '0.25').replace('0.5', '0.2')}`
+          : 'none';
+
+        return (
+          <div
+            key={index}
+            onClick={() => !isActive && onChangeTo(index)}
+            style={{
+              position: 'absolute',
+              top: 0,
+              // Center the active card and offset sides
+              left: '50%',
+              width: '72%',
+              height: '100%',
+              borderRadius: '1.5rem',
+              overflow: 'hidden',
+              cursor: isActive ? 'default' : 'pointer',
+              background: slide.background,
+              border: `2px solid ${borderColor}`,
+              boxShadow,
+              // 3D transform — translateX is applied via translate(-50%) offset
+              transform: `translateX(calc(-50% + ${translateX})) scale(${scale}) translateZ(${translateZ})`,
+              transformOrigin: 'center center',
+              opacity: isHidden ? 0 : opacity,
+              filter: `blur(${blur}px)`,
+              pointerEvents: isHidden ? 'none' : 'auto',
+              zIndex: isActive ? 10 : isLeft || isRight ? 5 : 0,
+              transition: 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease',
+              willChange: 'transform, opacity, filter',
+            }}
+          >
+            {/* Image */}
+            {slide.scrollAnim ? (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="whatsapp-scroll-img"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                }}
+              />
+            ) : (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: slide.objectFit,
+                  objectPosition: slide.objectPosition,
+                  display: 'block',
+                }}
+              />
+            )}
+
+            {/* Bottom gradient fade */}
+            {slide.bottomFade && (
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.94) 100%)',
+                  pointerEvents: 'none',
+                }}
+              />
+            )}
+
+            {/* Card label */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: '10px 14px',
+                color: 'rgba(214, 234, 219, 0.85)',
+                fontSize: '10px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                background: slide.bottomFade
+                  ? 'none'
+                  : 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%)',
+              }}
+            >
+              {slide.label}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// ─── Main Section ─────────────────────────────────────────────────────────────
+const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const userInteractedRef = useRef(false);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     /**
@@ -38,6 +311,49 @@ const HeroSection = () => {
     }
   }, []); // Run once on mount — intentionally no dependencies
 
+  // Auto-advance with per-slide durations
+  useEffect(() => {
+    const advance = () => {
+      if (userInteractedRef.current) return;
+      setCurrent(prev => {
+        const next = (prev + 1) % slides.length;
+        scheduleNext(next);
+        return next;
+      });
+    };
+
+    const scheduleNext = (idx: number) => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(advance, SLIDE_DURATIONS[idx]);
+    };
+
+    scheduleNext(current);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run once — intentionally no current dependency
+
+  const handleChangeTo = useCallback((idx: number) => {
+    setCurrent(idx);
+    // Pause auto-slide for 10s after user interaction
+    userInteractedRef.current = true;
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      userInteractedRef.current = false;
+      // Restart auto from current slide
+      const restart = (idx: number) => {
+        timerRef.current = setTimeout(() => {
+          setCurrent(prev => {
+            const next = (prev + 1) % slides.length;
+            restart(next);
+            return next;
+          });
+        }, SLIDE_DURATIONS[idx]);
+      };
+      setCurrent(c => { restart(c); return c; });
+    }, 10000);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -48,79 +364,16 @@ const HeroSection = () => {
   // ==========================================
   const mobileConfig = {
     // 1. Spacing at the very top (between navbar and text)
-    //    Using svh (Smallest Viewport Height) — constant unit, doesn't change with browser chrome.
-    //    Increased from 8svh → 14svh for more breathing room below the navbar.
-    //    The flex spacer between button and carousel absorbs the difference automatically.
     paddingTop: '12svh',
-
     // 2. Text sizing
     titleSize: '2rem',
-
     // 3. Spacing between text and bot
     botMarginTop: '0.5svh',
-
     // 4. Bot image max height (width is responsive via clamp)
     botMaxHeight: '20svh',
-
     // 5. Spacing between bot and 'Get Started' button
     buttonMarginTop: '0.5svh',
   };
-
-  /**
-   * Carousel slide config — each tailored to the actual image dimensions:
-   *
-   *   Image1 (Patient Details):    647×808  portrait  → cover + bottom fade
-   *   Image2 (Appointments):      1575×790  landscape → contain + dark gradient bg
-   *                               The 2:1 ratio always shows the FULL dashboard with
-   *                               a small dark letterbox at any screen width.
-   *   Image3 (WhatsApp):          1080×2400 very tall → CSS scroll animation
-   *                               Instead of cropping, the image auto-scrolls upward
-   *                               revealing lower messages, like a live chat preview.
-   *
-   * scrollAnim: true → the image slides upward via CSS animation to show more content
-   */
-  const slides = [
-    {
-      src: patientDetailsImage,
-      alt: 'Patient Details',
-      label: 'Patient Records',
-      border: '#437769',
-      shadow: 'rgba(67, 119, 105, 0.6)',
-      objectFit: 'cover' as const,
-      objectPosition: 'top',
-      cardBasis: 'basis-[80%] sm:basis-[72%] md:basis-[65%]',
-      background: '#000',
-      bottomFade: true,
-      scrollAnim: false,
-    },
-    {
-      src: appointmentsImage,
-      alt: 'Appointments Dashboard',
-      label: 'Appointments',
-      border: '#437769',
-      shadow: 'rgba(67, 119, 105, 0.6)',
-      objectFit: 'contain' as const,
-      objectPosition: 'center',
-      cardBasis: 'basis-[88%] sm:basis-[82%] md:basis-[74%]',
-      // Dark gradient bg matches hero teal — looks like a premium screen frame
-      background: 'linear-gradient(180deg, #060f0d 0%, #0c1f1b 50%, #060f0d 100%)',
-      bottomFade: false,
-      scrollAnim: false,
-    },
-    {
-      src: whatsappImage,
-      alt: 'WhatsApp Chat',
-      label: 'WhatsApp Integration',
-      border: '#5BB29D',
-      shadow: 'rgba(91, 178, 157, 0.5)',
-      objectFit: 'cover' as const,
-      objectPosition: 'top',
-      cardBasis: 'basis-[80%] sm:basis-[72%] md:basis-[65%]',
-      background: '#000',
-      bottomFade: true,
-      scrollAnim: true, // Scroll animation to reveal more of the 1080×2400 image
-    },
-  ];
 
   return (
     <>
@@ -140,43 +393,15 @@ const HeroSection = () => {
           animation: levitate-desktop 4s ease-in-out infinite;
         }
 
-        /* ---- Mobile carousel gallery effects ---- */
-        .carousel-slide-inner {
-          transition:
-            transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            opacity 0.4s ease,
-            box-shadow 0.4s ease,
-            filter 0.4s ease,
-            border-color 0.4s ease;
-          will-change: transform, opacity, filter;
-        }
-        .carousel-slide-inner.is-active {
-          transform: scale(1) translateY(0);
-          opacity: 1;
-          filter: blur(0px);
-        }
-        .carousel-slide-inner.is-inactive {
-          transform: scale(0.88) translateY(8px);
-          opacity: 0.42;
-          filter: blur(1.5px);
-        }
-
         /*
          * WhatsApp "Live Chat" scroll animation
          *
-         * The image is 1080×2400 (very tall, 0.45:1 ratio). At a 300px wide card,
-         * it renders ~667px tall. Instead of a static hard-crop, we animate it
-         * scrolling upward to reveal more of the conversation — making it feel like
-         * a live, active chat preview.
-         *
-         * translateY(-60%) ≈ moves up 400px (of 667px rendered height),
-         * showing content from ~60% down the original image.
-         *
-         * Delay: 2s so the animation begins after the user has seen the top of the
-         * chat first.
+         * Duration: 9s = full cycle so the auto-slide (9s on this card)
+         * perfectly aligns — the scroll finishes as the slide advances.
+         * Delay: 2s so the user sees the top of the chat first.
          */
         @keyframes whatsapp-chat-scroll {
-          0%, 15%  { transform: translateY(0%); }
+          0%, 10%  { transform: translateY(0%); }
           50%, 65% { transform: translateY(-60%); }
           100%     { transform: translateY(0%); }
         }
@@ -196,7 +421,9 @@ const HeroSection = () => {
         ref={sectionRef}
         id="hero"
         className="relative overflow-hidden h-[100svh] lg:h-[100vh]"
-        style={{ backgroundColor: '#0A4944' }}
+        style={{
+          background: 'linear-gradient(180deg, #0A4944 0%, #002D28 100%)',
+        }}
       >
         {/* LAYER 1: Desktop bot */}
         <div
@@ -318,20 +545,9 @@ const HeroSection = () => {
            │  SPACER        [flex-1 min-h-0]  │  ← absorbs all extra space.
            │  (expands/collapses as needed)   │     Can shrink to 0 on tight screens.
            │  ·············                  │
-           │  Carousel      [shrink-0]        │  ← ALWAYS below button in DOM order.
+           │  Gallery       [shrink-0]        │  ← ALWAYS below button in DOM order.
            │  Dots          [shrink-0]        │     Can NEVER overlap button.
            └─────────────────────────────────┘
-
-           WHY this fixes the overlap:
-           Previously, `justify-end` inside `flex-1` caused cards to overflow UPWARD
-           when space was tight. Browsers don't always clip upward overflow from
-           justify-end with overflow:hidden. The spacer approach eliminates justify-end
-           entirely — the carousel simply follows the spacer in normal document flow.
-           If space is very tight, the spacer shrinks to 0 and the carousel is directly
-           below the button (acceptable). If the carousel is too tall for the remaining
-           space, it overflows DOWNWARD and is clipped by the section's overflow:hidden
-           — meaning only the bottom (dots/padding) might clip. The card image is
-           always visible from the top.
         */}
         <div
           className="lg:hidden h-full flex flex-col relative z-10 w-full"
@@ -341,7 +557,7 @@ const HeroSection = () => {
           <div className="text-center px-5 shrink-0">
             <h1
               className="sm:text-[2.6rem]"
-              style={{ fontSize: mobileConfig.titleSize, color: '#D6EADB', lineHeight: '1.2' }}
+              style={{ fontSize: mobileConfig.titleSize, color: '#D4E9DB', lineHeight: '1.2' }}
             >
               <span className="font-semibold opacity-90">
                 See more patients<br />
@@ -393,133 +609,24 @@ const HeroSection = () => {
           </div>
 
           {/*
-            FLEX SPACER — absorbs all remaining space between button and carousel.
-            When there's extra space (tall screen), spacer grows → carousel gets breathing room.
-            When space is tight (short screen), spacer shrinks to 0 → carousel is right below button.
+            FLEX SPACER — absorbs all remaining space between button and gallery.
+            When there's extra space (tall screen), spacer grows → gallery gets breathing room.
+            When space is tight (short screen), spacer shrinks to 0 → gallery is right below button.
             min-h-0 ensures it can shrink to 0 without any minimum constraint.
           */}
           <div className="flex-1 min-h-0" />
 
           {/*
-            Carousel section — shrink-0 so it always renders at its full natural height.
+            3-D Gallery section — shrink-0 so it always renders at its full natural height.
             Always appears BELOW the spacer (and therefore BELOW the button) in DOM flow.
             On very tight screens: the section's overflow:hidden clips the bottom of the
-            carousel (dots/padding) but the card image is always visible from the top.
+            gallery (dots/padding) but the card image is always visible from the top.
           */}
           <div
             className="w-full shrink-0"
             style={{ paddingBottom: '14px', pointerEvents: 'auto' }}
           >
-            <Carousel
-              setApi={setApi}
-              className="w-full max-w-full"
-              opts={{ align: 'center', startIndex: 1, loop: true }}
-            >
-              <CarouselContent className="-ml-3">
-                {slides.map((slide, index) => {
-                  const isActive = current === index;
-                  return (
-                    <CarouselItem
-                      key={index}
-                      className={`pl-3 ${slide.cardBasis}`}
-                      onClick={() => api?.scrollTo(index)}
-                    >
-                      <div
-                        className={`carousel-slide-inner rounded-[1.5rem] overflow-hidden cursor-pointer relative ${isActive ? 'is-active' : 'is-inactive'}`}
-                        style={{
-                          border: `2px solid ${isActive ? slide.border : slide.border + '66'}`,
-                          boxShadow: isActive
-                            ? `0 0 28px ${slide.shadow}, 0 0 56px ${slide.shadow.replace('0.6', '0.25').replace('0.5', '0.2')}`
-                            : `0 0 6px ${slide.shadow.replace('0.6', '0.1').replace('0.5', '0.08')}`,
-                          background: slide.background,
-                          /*
-                           * Card height uses svh (Smallest Viewport Height) — constant,
-                           * never changes with browser chrome. Lower minimum (140px) means
-                           * the card gracefully shrinks on very tight/short screens without
-                           * ever overflowing into the button above.
-                           */
-                          height: 'clamp(140px, 26svh, 300px)',
-                        }}
-                      >
-                        {slide.scrollAnim ? (
-                          /*
-                           * WhatsApp LIVE CHAT SCROLL ANIMATION
-                           *
-                           * The image (1080×2400, very tall) renders at natural aspect ratio
-                           * with width: 100% and height: auto. At ~300px card width, the image
-                           * is ~667px tall — much taller than the ~220px card. Instead of just
-                           * showing the static top portion, the image SCROLLS UPWARD via CSS
-                           * animation, revealing lower parts of the conversation over 9 seconds.
-                           *
-                           * This turns "heavy cropping" into a "live chat preview" — every few
-                           * seconds the viewer sees new messages appearing, making it feel dynamic
-                           * and real. The card's overflow:hidden does the clipping.
-                           */
-                          <img
-                            src={slide.src}
-                            alt={slide.alt}
-                            className="whatsapp-scroll-img"
-                            style={{
-                              width: '100%',
-                              height: 'auto',        // natural aspect ratio — lets image be very tall
-                              display: 'block',
-                              position: 'absolute',  // positioned within the relative card
-                              top: 0,
-                              left: 0,
-                            }}
-                          />
-                        ) : (
-                          <img
-                            src={slide.src}
-                            alt={slide.alt}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              objectFit: slide.objectFit,
-                              objectPosition: slide.objectPosition,
-                              display: 'block',
-                            }}
-                          />
-                        )}
-
-                        {/* Bottom gradient fade — makes the crop look intentional (content continues below) */}
-                        {slide.bottomFade && (
-                          <div
-                            style={{
-                              position: 'absolute',
-                              inset: 0,
-                              background: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.94) 100%)',
-                              pointerEvents: 'none',
-                            }}
-                          />
-                        )}
-
-                        {/* Card label */}
-                        <div
-                          style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            padding: '10px 14px',
-                            color: 'rgba(214, 234, 219, 0.85)',
-                            fontSize: '10px',
-                            fontWeight: 700,
-                            letterSpacing: '0.12em',
-                            textTransform: 'uppercase',
-                            background: slide.bottomFade
-                              ? 'none'
-                              : 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%)',
-                          }}
-                        >
-                          {slide.label}
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-            </Carousel>
+            <MobileGallery current={current} onChangeTo={handleChangeTo} />
 
             {/* Pill dots */}
             <div className="flex justify-center items-center gap-2.5 mt-3">
@@ -533,7 +640,7 @@ const HeroSection = () => {
                     backgroundColor: current === index ? '#5BB29D' : 'rgba(255,255,255,0.30)',
                     boxShadow: current === index ? '0 0 10px rgba(91, 178, 157, 0.75)' : 'none',
                   }}
-                  onClick={() => api?.scrollTo(index)}
+                  onClick={() => handleChangeTo(index)}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

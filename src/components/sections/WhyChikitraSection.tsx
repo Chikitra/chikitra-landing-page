@@ -55,6 +55,7 @@ const MobileCarousel = () => {
   const [progress, setProgress] = useState(0);
   const progressRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(Date.now());
+  const touchStartX = useRef<number | null>(null);
 
   const goTo = useCallback((idx: number) => {
     setCurrent(idx);
@@ -179,6 +180,14 @@ const MobileCarousel = () => {
       <div
         className="relative w-full px-4 sm:px-6 md:px-10"
         style={{ maxWidth: "560px" }}
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const delta = e.changedTouches[0].clientX - touchStartX.current;
+          if (delta < -40) next();
+          else if (delta > 40) prev();
+          touchStartX.current = null;
+        }}
       >
         {/* Tap left / right zones */}
         <div
