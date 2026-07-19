@@ -37,7 +37,7 @@ const ChaosSection = () => {
           </div>
 
           <h2
-            className="font-medium text-4xl md:text-5xl leading-tight mb-8 text-center tracking-tight"
+            className="font-medium text-4xl md:text-5xl leading-tight mb-8 text-center tracking-normal"
             style={{ color: '#F9C1C8' }}
           >
             <span className="block pb-1 md:pb-2">Most clinics still run</span>
@@ -48,13 +48,13 @@ const ChaosSection = () => {
           {/* Sub-headline */}
           <div className="mb-12">
             <p
-              className="text-xl md:text-2xl font-normal mb-1 md:mb-2 text-center"
+              className="text-xl md:text-2xl font-normal mb-1 md:mb-2 text-center tracking-wide"
               style={{ color: '#F9C1C8' }}
             >
               Your clinic is <span className="font-bold">BUSY.</span>
             </p>
             <p
-              className="text-xl md:text-2xl font-normal text-center"
+              className="text-xl md:text-2xl font-normal text-center tracking-wide"
               style={{ color: '#F9C1C8' }}
             >
               But it might be <span className="font-bold">BREAKING.</span>
@@ -73,13 +73,13 @@ const ChaosSection = () => {
           {/* Bottom text */}
           <div className="text-center">
             <p
-              className="text-xl md:text-2xl font-normal mb-1 md:mb-2"
+              className="text-xl md:text-2xl font-normal mb-1 md:mb-2 tracking-wide"
               style={{ color: '#F9C1C8' }}
             >
               You know the problem.
             </p>
             <p
-              className="text-xl md:text-2xl font-normal"
+              className="text-xl md:text-2xl font-normal tracking-wide"
               style={{ color: '#F9C1C8' }}
             >
               Meet the solution — <span className="font-black uppercase tracking-wide">CHIKITRA.</span>
