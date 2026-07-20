@@ -404,10 +404,178 @@ const CommunitySection = () => {
         </div>
       </section>
 
-      {/* About Us Section */}
+      {/* About Us Section — MOBILE/TABLET (hidden on lg+) */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          🎛  MOBILE ABOUT-US PARAMS
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {(() => {
+        const t = {
+          /* ── SECTION SPACING ── */
+          sectionPaddingX: '24px',      // left/right padding of the whole section content
+          sectionMaxWidth: '480px',     // max-width cap for wide tablets
+
+          /* ── TAGLINE (Chikitra - …smarter one) ── */
+          taglineSize: '1.2rem',        // font-size of the tagline paragraph
+          taglineFontWeight: '400',     // weight of the non-bold parts ('400' = normal)
+          taglineLineHeight: '1.55',    // line-height for comfortable reading
+          taglineMarginBottom: '40px',  // spacing below the tagline
+
+          /* ── "Built by 'Doctors', for 'Doctors'" ── */
+          builtBySize: '1.25rem',       // base font-size of the italic line
+          builtByBoldSize: '1.5rem',    // font-size of the bold 'Doctors' words
+          builtByPaddingY: '20px',      // vertical breathing room above/below this line
+
+          /* ── FOUNDER 1 (Dr. Ankeeta — text LEFT, image RIGHT) ── */
+          ankeeta: {
+            widthPct: '52%',            // image column width (text column fills the rest)
+            heightClamp: 'clamp(230px, 58vw, 330px)', // image height: min / fluid / max
+            objectPosition: 'top',      // crop anchor: 'top' | 'center' | 'bottom'
+            textPaddingTop: '28px',     // nudge text block down to align with face area
+            textTranslateX: '50px',      // nudge text block horizontally (positive = push right towards image)
+            textAlign: 'right',         // align text lines ('left', 'right', 'center')
+            imageTranslateX: '12px',    // nudge image horizontally (positive = push right towards edge)
+            nameSize: '1.15rem',        // "Dr. Ankeeta Roy," font-size
+            akaSize: '1.0rem',          // italic a.k.a line font-size
+            detailSize: '1.15rem',      // MBBS / Founder & CEO font-size
+          },
+
+          /* ── FOUNDER 2 (Dr. Tahreem — image LEFT, text RIGHT) ── */
+          tahreem: {
+            widthPct: '52%',            // image column width (text column fills the rest)
+            heightClamp: 'clamp(230px, 58vw, 330px)', // image height: min / fluid / max
+            objectPosition: 'top',      // crop anchor: 'top' | 'center' | 'bottom'
+            textPaddingTop: '10px',     // nudge text block down to align with torso area
+            textTranslateX: '-10px',      // nudge text block horizontally (negative = push left towards image)
+            textAlign: 'left',          // align text lines ('left', 'right', 'center')
+            imageTranslateX: '-12px',   // nudge image horizontally (negative = push left towards edge)
+            nameSize: '1.15rem',        // "Dr. Tahreem Afroz," font-size
+            akaSize: '1.0rem',          // italic a.k.a line font-size
+            detailSize: '1.15rem',      // MBBS / Co-founder & CMO font-size
+          },
+
+          /* ── BG ICON 1 (thinkingIcon — upper area) ── */
+          bgIcon1: {
+            opacity: 0.07,              // how faint the icon is
+            top: '25.78%',                 // vertical position from section top
+            left: '30%',               // horizontal position from left edge
+            width: '65%',              // icon size as % of section width
+          },
+
+          /* ── BG ICON 2 (promotionIcon — lower area) ── */
+          bgIcon2: {
+            opacity: 0.07,              // how faint the icon is
+            top: '65%',                 // vertical position from section top
+            right: '10%',              // horizontal position from right edge
+            width: '65%',              // icon size as % of section width
+          },
+        };
+        return (
+          <section
+            id="about"
+            className="lg:hidden pt-10 pb-0 relative overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #C0E1CA 0%, #C3D5C7 100%)' }}
+          >
+            {/* BG ICON 1 — thinkingIcon (upper) */}
+            <img
+              src={thinkingIcon}
+              alt=""
+              className="absolute pointer-events-none select-none"
+              style={{ opacity: t.bgIcon1.opacity, top: t.bgIcon1.top, left: t.bgIcon1.left, width: t.bgIcon1.width, height: 'auto' }}
+            />
+            {/* BG ICON 2 — promotionIcon (lower) */}
+            <img
+              src={promotionIcon}
+              alt=""
+              className="absolute pointer-events-none select-none"
+              style={{ opacity: t.bgIcon2.opacity, top: t.bgIcon2.top, right: t.bgIcon2.right, width: t.bgIcon2.width, height: 'auto' }}
+            />
+
+            <div
+              className="relative z-10 mx-auto"
+              style={{ paddingLeft: t.sectionPaddingX, paddingRight: t.sectionPaddingX, maxWidth: t.sectionMaxWidth }}
+            >
+              {/* ABOUT US pill — size kept as-is intentionally */}
+              <div className="flex justify-center mb-7">
+                <span
+                  className="px-5 py-1.5 text-xs tracking-widest font-semibold uppercase"
+                  style={{ border: '1.5px solid #4A7A6A', borderRadius: '999px', color: '#231F20', letterSpacing: '0.18em' }}
+                >
+                  About Us
+                </span>
+              </div>
+
+              {/* Tagline — only "smarter one" is bold, rest is normal weight */}
+              <div className="text-center" style={{ marginBottom: t.taglineMarginBottom }}>
+                <p style={{ color: '#052826', fontSize: t.taglineSize, fontWeight: t.taglineFontWeight, lineHeight: t.taglineLineHeight }}>
+                  <span style={{ fontWeight: 800, color: '#025F5C' }}>C</span>
+                  <span style={{ fontWeight: 800, color: '#2C9382' }}>hikitra</span>
+                  <span> - Your Clinic's All-in-One Automated Management Software built to transform your clinic into a </span>
+                  <span style={{ fontWeight: 700 }}>smarter one</span>
+                </p>
+              </div>
+
+              {/* Founder 1 — Dr. Ankeeta Roy: text LEFT, image RIGHT */}
+              <div className="relative flex items-start justify-between mt-6">
+                {/* Text block — left */}
+                <div
+                  className="flex flex-col justify-start flex-shrink-0"
+                  style={{ maxWidth: `calc(100% - ${t.ankeeta.widthPct})`, paddingTop: t.ankeeta.textPaddingTop, transform: `translateX(${t.ankeeta.textTranslateX})`, textAlign: t.ankeeta.textAlign as any }}
+                >
+                  <p style={{ fontWeight: 700, fontSize: t.ankeeta.nameSize, lineHeight: 1.3, color: '#231F20' }}>Dr. Ankeeta Roy,</p>
+                  <p style={{ fontWeight: 400, fontStyle: 'italic', fontSize: t.ankeeta.akaSize, lineHeight: 1.3, marginBottom: '4px', color: '#231F20' }}>a.k.a 'The Big Brain'</p>
+                  <p style={{ fontWeight: 600, fontSize: t.ankeeta.detailSize, color: '#231F20' }}>MBBS</p>
+                  <p style={{ fontWeight: 700, fontSize: t.ankeeta.detailSize, color: '#231F20' }}>Founder &amp; CEO</p>
+                </div>
+                {/* Image — right */}
+                <div className="flex-shrink-0" style={{ width: t.ankeeta.widthPct, transform: `translateX(${t.ankeeta.imageTranslateX})` }}>
+                  <img
+                    src={founderAnkeeta}
+                    alt="Dr. Ankeeta Roy - Founder & CEO"
+                    className="w-full object-cover"
+                    style={{ height: t.ankeeta.heightClamp, objectPosition: t.ankeeta.objectPosition, display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* "Built by Doctors" divider */}
+              <p
+                className="italic text-center"
+                style={{ color: '#0D514C', fontSize: t.builtBySize, paddingTop: t.builtByPaddingY, paddingBottom: t.builtByPaddingY }}
+              >
+                Built by &apos;<span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>Doctors</span>&apos;, for &apos;<span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>Doctors</span>&apos;
+              </p>
+
+              {/* Founder 2 — Dr. Tahreem Afroz: image LEFT, text RIGHT */}
+              <div className="relative flex items-start justify-between">
+                {/* Image — left */}
+                <div className="flex-shrink-0" style={{ width: t.tahreem.widthPct, transform: `translateX(${t.tahreem.imageTranslateX})` }}>
+                  <img
+                    src={founderTahreem}
+                    alt="Dr. Tahreem Afroz - Co-founder & CMO"
+                    className="w-full object-cover"
+                    style={{ height: t.tahreem.heightClamp, objectPosition: t.tahreem.objectPosition, display: 'block' }}
+                  />
+                </div>
+                {/* Text block — right */}
+                <div
+                  className="flex flex-col justify-start flex-shrink-0"
+                  style={{ maxWidth: `calc(100% - ${t.tahreem.widthPct})`, paddingTop: t.tahreem.textPaddingTop, transform: `translateX(${t.tahreem.textTranslateX})`, textAlign: t.tahreem.textAlign as any }}
+                >
+                  <p style={{ fontWeight: 700, fontSize: t.tahreem.nameSize, lineHeight: 1.3, color: '#231F20' }}>Dr. Tahreem Afroz,</p>
+                  <p style={{ fontWeight: 400, fontStyle: 'italic', fontSize: t.tahreem.akaSize, lineHeight: 1.3, marginBottom: '4px', color: '#231F20' }}>a.k.a 'Marketing Mojo'</p>
+                  <p style={{ fontWeight: 600, fontSize: t.tahreem.detailSize, color: '#231F20' }}>MBBS</p>
+                  <p style={{ fontWeight: 700, fontSize: t.tahreem.detailSize, color: '#231F20' }}>Co-founder &amp; CMO</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* About Us Section — DESKTOP/LAPTOP (hidden below lg) */}
       <section
-        id="about"
-        className="pt-12 md:pt-16 pb-0 relative overflow-hidden"
+        id="about-desktop"
+        className="hidden lg:block pt-12 md:pt-16 pb-0 relative overflow-hidden"
         style={{ backgroundColor: '#C4D6C8' }}
       >
         {/* Background Illustrations - full section height, behind characters */}
