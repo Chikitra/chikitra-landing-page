@@ -66,15 +66,117 @@ const Footer = () => {
   };
 
   return (
-    <footer className="pt-10 pb-0 relative overflow-hidden" style={{ backgroundColor: '#052826' }}>
+    <footer className="pt-10 pb-0 relative overflow-hidden bg-[#0A2821] md:bg-[#052826]">
       {/* Background bot - Extreme right */}
       <div className="absolute right-0 bottom-0 pointer-events-none h-full max-h-[300px] md:max-h-[400px] translate-x-[10%]" style={{ opacity: 0.07 }}>
         <img src={botPhone} alt="" className="h-full w-auto" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Main grid: 5 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 pb-6">
+        {/* Mobile Layout */}
+        <div className="flex md:hidden flex-col items-center pb-6 px-4">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <img src={iconLogo} alt="Chikitra Icon" className="h-10 w-auto object-contain" />
+            <img src={chikitraLogo} alt="Chikitra" className="h-8 w-auto object-contain" />
+          </div>
+
+          {/* Separator line */}
+          <div className="w-48 mt-4 mb-5" style={{ borderBottom: '1.5px solid rgba(230, 231, 232, 0.15)' }} />
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-8 mb-8">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center transition-colors hover:opacity-70 transform scale-110"
+                style={{ color: 'rgba(222, 222, 222, 0.75)' }}
+                aria-label={social.label}
+              >
+                <social.icon />
+              </a>
+            ))}
+          </div>
+
+          {/* Address */}
+          <div className="text-center text-[13px] font-light mb-10 leading-[1.6]" style={{ color: '#E5E6E6' }}>
+            80, Khaluibil Math, First Lane<br />
+            Bardhaman, West Bengal, India<br />
+            Pincode - 713101
+          </div>
+
+          {/* Links Grid */}
+          <div className="w-max grid grid-cols-2 gap-y-10 gap-x-20">
+            {/* Company */}
+            <div className="text-left">
+              <h4 className="font-bold text-[15px] mb-5" style={{ color: '#E6E7E8' }}>Company</h4>
+              <ul className="space-y-4">
+                <li>
+                  <button onClick={() => scrollToSection("about")} className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>About us</button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection("features")} className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Features</button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection("community")} className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Testimonials</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="text-left">
+              <h4 className="font-bold text-[15px] mb-5" style={{ color: '#E6E7E8' }}>Services</h4>
+              <ul className="space-y-4">
+                <li>
+                  <button onClick={() => scrollToSection("book-demo")} className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Book a demo</button>
+                </li>
+                <li>
+                  <a href="https://wa.me/918637389951" target="_blank" rel="noopener noreferrer" className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Support</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="text-left col-span-2">
+              <h4 className="font-bold text-[15px] mb-5" style={{ color: '#E6E7E8' }}>Legal</h4>
+              <div className="grid grid-cols-2 gap-x-20">
+                <ul className="space-y-4">
+                  <li><Link to="/privacy-policy" className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Privacy Policy</Link></li>
+                  <li><Link to="/terms-and-conditions" className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Terms &amp; Conditions</Link></li>
+                </ul>
+                <ul className="space-y-4">
+                  <li><Link to="/refund-policy" className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Refund Policy</Link></li>
+                  <li><Link to="/shipping-policy" className="transition-colors text-[13px] font-light hover:opacity-80" style={{ color: '#E6E7E8' }}>Shipping Policy</Link></li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Get in touch */}
+            <div className="text-left col-span-2 mt-2">
+              <h4 className="font-bold text-[15px] mb-5" style={{ color: '#E6E7E8' }}>Get in touch</h4>
+              <ul className="space-y-4">
+                <li>
+                  <a href="mailto:hello@chikitra.com" className="transition-colors text-[13px] font-light hover:opacity-80 flex items-center gap-2" style={{ color: '#E6E7E8' }}>
+                    <Mail className="w-4 h-4 flex-shrink-0" />
+                    hello@chikitra.com
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+9192422622440" className="transition-colors text-[13px] font-light hover:opacity-80 flex items-center gap-2" style={{ color: '#E6E7E8' }}>
+                    <Phone className="w-4 h-4 flex-shrink-0" />
+                    +91 92422 62240
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:grid md:grid-cols-5 gap-10 pb-6">
 
           {/* Col 1: Logo + Social Icons */}
           <div className="flex flex-col items-start gap-0">
