@@ -140,13 +140,13 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center gap-3 lg:flex-1 justify-end">
-          <Link
-            to="/signin"
+          <a
+            href="https://app.chikitra.com"
             className="text-xs lg:text-sm whitespace-nowrap font-medium transition-colors duration-300 hover:opacity-80"
             style={{ color: signInColor }}
           >
             Sign in
-          </Link>
+          </a>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
