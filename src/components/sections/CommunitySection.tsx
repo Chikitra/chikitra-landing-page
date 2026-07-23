@@ -74,7 +74,7 @@ const CommunitySection = () => {
               style={{
                 border: '1.5px solid #01665E',
                 borderRadius: '999px',
-                color: '#C0E1CA',
+                color: '#01665E',
                 letterSpacing: '0.18em',
               }}
             >
@@ -415,7 +415,7 @@ const CommunitySection = () => {
           sectionMaxWidth: '480px',     // max-width cap for wide tablets
 
           /* ── TAGLINE (Chikitra - …smarter one) ── */
-          taglineSize: '1.2rem',        // font-size of the tagline paragraph
+          taglineSize: '1.0rem',        // font-size of the tagline paragraph
           taglineFontWeight: '400',     // weight of the non-bold parts ('400' = normal)
           taglineLineHeight: '1.55',    // line-height for comfortable reading
           taglineMarginBottom: '40px',  // spacing below the tagline
@@ -434,9 +434,9 @@ const CommunitySection = () => {
             textTranslateX: '50px',      // nudge text block horizontally (positive = push right towards image)
             textAlign: 'right',         // align text lines ('left', 'right', 'center')
             imageTranslateX: '12px',    // nudge image horizontally (positive = push right towards edge)
-            nameSize: '1.15rem',        // "Dr. Ankeeta Roy," font-size
-            akaSize: '1.0rem',          // italic a.k.a line font-size
-            detailSize: '1.15rem',      // MBBS / Founder & CEO font-size
+            nameSize: '1.0rem',        // "Dr. Ankeeta Roy," font-size
+            akaSize: '0.85rem',          // italic a.k.a line font-size
+            detailSize: '0.95rem',      // MBBS / Founder & CEO font-size
           },
 
           /* ── FOUNDER 2 (Dr. Tahreem — image LEFT, text RIGHT) ── */
@@ -448,15 +448,15 @@ const CommunitySection = () => {
             textTranslateX: '-10px',      // nudge text block horizontally (negative = push left towards image)
             textAlign: 'left',          // align text lines ('left', 'right', 'center')
             imageTranslateX: '-12px',   // nudge image horizontally (negative = push left towards edge)
-            nameSize: '1.15rem',        // "Dr. Tahreem Afroz," font-size
-            akaSize: '1.0rem',          // italic a.k.a line font-size
-            detailSize: '1.15rem',      // MBBS / Co-founder & CMO font-size
+            nameSize: '1.0rem',        // "Dr. Tahreem Afroz," font-size
+            akaSize: '0.85rem',          // italic a.k.a line font-size
+            detailSize: '0.95rem',      // MBBS / Co-founder & CMO font-size
           },
 
           /* ── BG ICON 1 (thinkingIcon — upper area) ── */
           bgIcon1: {
             opacity: 0.07,              // how faint the icon is
-            top: '25.78%',                 // vertical position from section top
+            top: '24%',                 // vertical position from section top
             left: '30%',               // horizontal position from left edge
             width: '65%',              // icon size as % of section width
           },
@@ -498,7 +498,7 @@ const CommunitySection = () => {
               <div className="flex justify-center mb-7">
                 <span
                   className="px-5 py-1.5 text-xs tracking-widest font-semibold uppercase"
-                  style={{ border: '1.5px solid #4A7A6A', borderRadius: '999px', color: '#231F20', letterSpacing: '0.18em' }}
+                  style={{ border: '1.5px solid #4A7A6A', borderRadius: '999px', color: '#01665E', letterSpacing: '0.18em' }}
                 >
                   About Us
                 </span>
@@ -542,7 +542,7 @@ const CommunitySection = () => {
                 className="italic text-center"
                 style={{ color: '#0D514C', fontSize: t.builtBySize, paddingTop: t.builtByPaddingY, paddingBottom: t.builtByPaddingY }}
               >
-                Built by &apos;<span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>Doctors</span>&apos;, for &apos;<span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>Doctors</span>&apos;
+                Built by <span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>‘Doctors’</span>, for <span style={{ fontWeight: 700, fontStyle: 'normal', fontSize: t.builtByBoldSize }}>‘Doctors’</span>
               </p>
 
               {/* Founder 2 — Dr. Tahreem Afroz: image LEFT, text RIGHT */}
@@ -610,7 +610,7 @@ const CommunitySection = () => {
             className="text-xl md:text-2xl lg:text-3xl italic text-center mb-10 md:mb-12"
             style={{ color: '#0D514C' }}
           >
-            Built by '<span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">Doctors</span>', for '<span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">Doctors</span>'
+            Built by <span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">‘Doctors’</span>, for <span className="font-semibold not-italic text-2xl md:text-3xl lg:text-4xl">‘Doctors’</span>
           </p>
 
           {/* Founders - Images with text beside them */}

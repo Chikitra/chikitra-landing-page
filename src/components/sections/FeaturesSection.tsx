@@ -190,7 +190,7 @@ const FeaturesSection = () => {
             <div className="flex justify-center mb-6 xl:hidden">
               <span
                 className="px-5 py-1.5 text-xs sm:text-sm tracking-widest font-semibold uppercase"
-                style={{ border: '1.5px solid #01665E', borderRadius: '999px', color: '#C0E1CA', letterSpacing: '0.18em' }}
+                style={{ border: '1.5px solid #01665E', borderRadius: '999px', color: '#01665E', letterSpacing: '0.18em' }}
               >
                 The Product
               </span>

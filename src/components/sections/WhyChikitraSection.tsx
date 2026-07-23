@@ -109,7 +109,7 @@ const MobileCarousel = () => {
             style={{
               border: "1.5px solid #01665E",
               borderRadius: "999px",
-              color: "#C0E1CA",
+              color: "#01665E",
               letterSpacing: "0.18em",
             }}
           >
