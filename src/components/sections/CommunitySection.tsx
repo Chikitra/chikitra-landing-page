@@ -21,32 +21,52 @@ const testimonials = [
 const CommunitySection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+    if (mobileVideoRef.current) {
+      mobileVideoRef.current.pause();
+      mobileVideoRef.current.currentTime = 0;
+    }
+    if (desktopVideoRef.current) {
+      desktopVideoRef.current.pause();
+      desktopVideoRef.current.currentTime = 0;
     }
   };
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+    if (mobileVideoRef.current) {
+      mobileVideoRef.current.pause();
+      mobileVideoRef.current.currentTime = 0;
+    }
+    if (desktopVideoRef.current) {
+      desktopVideoRef.current.pause();
+      desktopVideoRef.current.currentTime = 0;
     }
   };
 
-  const togglePlayPause = () => {
-    if (videoRef.current) {
+  const togglePlayPauseMobile = () => {
+    if (mobileVideoRef.current) {
       if (isPlaying) {
-        videoRef.current.pause();
+        mobileVideoRef.current.pause();
       } else {
-        videoRef.current.play();
+        mobileVideoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const togglePlayPauseDesktop = () => {
+    if (desktopVideoRef.current) {
+      if (isPlaying) {
+        desktopVideoRef.current.pause();
+      } else {
+        desktopVideoRef.current.play();
       }
       setIsPlaying(!isPlaying);
     }
@@ -154,8 +174,9 @@ const CommunitySection = () => {
                     className="w-full h-full object-contain absolute inset-0"
                   />
                   <video
-                    ref={videoRef}
+                    ref={mobileVideoRef}
                     src={currentTestimonial.video}
+                    playsInline
                     className="absolute object-cover z-10"
                     style={{
                       top: '17%',
@@ -167,7 +188,7 @@ const CommunitySection = () => {
                     onEnded={() => setIsPlaying(false)}
                   />
                   <button
-                    onClick={togglePlayPause}
+                    onClick={togglePlayPauseMobile}
                     className="absolute inset-0 flex items-center justify-center transition-all z-20"
                     style={{ backgroundColor: 'transparent' }}
                     aria-label={isPlaying ? 'Pause video' : 'Play video'}
@@ -316,8 +337,9 @@ const CommunitySection = () => {
                         className="w-full h-full object-contain absolute inset-0"
                       />
                       <video
-                        ref={videoRef}
+                        ref={desktopVideoRef}
                         src={currentTestimonial.video}
+                        playsInline
                         className="absolute object-cover z-10"
                         style={{
                           top: '17%',
@@ -329,7 +351,7 @@ const CommunitySection = () => {
                         onEnded={() => setIsPlaying(false)}
                       />
                       <button
-                        onClick={togglePlayPause}
+                        onClick={togglePlayPauseDesktop}
                         className="absolute inset-0 flex items-center justify-center hover:bg-opacity-30 transition-all z-20"
                         style={{ backgroundColor: isPlaying ? 'transparent' : 'transparent' }}
                         aria-label={isPlaying ? 'Pause video' : 'Play video'}
