@@ -350,6 +350,11 @@ const WhyChikitraSection = () => {
             grid-template-columns: minmax(240px, 300px) 1fr 1fr;
           }
         }
+        @media (min-width: 1024px) {
+          #why-chikitra {
+            background: #052826 !important;
+          }
+        }
       `}</style>
 
       <section

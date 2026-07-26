@@ -8,11 +8,19 @@ const IMAGE_WIDTH_TABLET = "520px";
 
 const ChaosSection = () => {
   return (
-    <section
-      id="chaos"
-      className="relative min-h-screen overflow-hidden z-[60]"
-      style={{ background: 'linear-gradient(180deg, #002D28 0%, #002D28 5vh, #102B27 25vh, #2A1D1E 50vh, #371617 80vh, #371617 100%)' }}
-    >
+    <>
+      <style>{`
+        @media (min-width: 1024px) {
+          #chaos {
+            background: linear-gradient(180deg, #002D29 0%, #002D29 5vh, #102B27 25vh, #2A1D1E 50vh, #371618 80vh, #371618 100%) !important;
+          }
+        }
+      `}</style>
+      <section
+        id="chaos"
+        className="relative min-h-screen overflow-hidden z-[60]"
+        style={{ background: 'linear-gradient(180deg, #002D28 0%, #002D28 5vh, #102B27 25vh, #2A1D1E 50vh, #371617 80vh, #371617 100%)' }}
+      >
       {/* Background Image - Woman crying */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
@@ -187,6 +195,7 @@ const ChaosSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

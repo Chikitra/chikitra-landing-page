@@ -409,6 +409,11 @@ const HeroSection = () => {
           animation: whatsapp-chat-scroll 9s ease-in-out 2s infinite;
           will-change: transform;
         }
+        @media (min-width: 1024px) {
+          #hero {
+            background: #0A4944 !important;
+          }
+        }
       `}</style>
 
       {/*
