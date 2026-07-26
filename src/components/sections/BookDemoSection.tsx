@@ -92,7 +92,6 @@ const BookDemoSection = () => {
       <>
         {/* ── MOBILE thank you ── */}
         <section
-          id="book-demo"
           className="lg:hidden py-20 relative overflow-hidden"
           style={{ background: 'linear-gradient(180deg, #C2D5C6 0%, #3A6B5E 40%, #0D3A33 100%)' }}
         >
@@ -108,7 +107,7 @@ const BookDemoSection = () => {
         </section>
 
         {/* ── DESKTOP thank you ── */}
-        <section id="book-demo" className="hidden lg:block py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
+        <section className="hidden lg:block py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
           <div className="absolute left-[10%] top-1/2 -translate-y-1/2 pointer-events-none h-full max-h-[700px]" style={{ opacity: 0.03 }}>
             <img src={botTablet} alt="" className="h-full w-auto scale-x-[-1]" />
           </div>
@@ -126,13 +125,12 @@ const BookDemoSection = () => {
   }
 
   return (
-    <>
+    <div id="book-demo">
       {/* ================================================================
           MOBILE / TABLET LAYOUT  (hidden on lg and above)
           Gradient: #C2D5C6 (top) → #0D3A33 (bottom)
           ================================================================ */}
       <section
-        id="book-demo"
         className="lg:hidden relative overflow-hidden py-10 px-5"
         style={{ background: 'linear-gradient(180deg, #C2D5C6 0%, #4A7A6A 45%, #0D3A33 100%)' }}
       >
@@ -299,7 +297,7 @@ const BookDemoSection = () => {
       {/* ================================================================
           DESKTOP LAYOUT  (lg and above) — UNCHANGED
           ================================================================ */}
-      <section id="book-demo" className="hidden lg:block py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
+      <section className="hidden lg:block py-24 relative overflow-hidden" style={{ backgroundColor: '#0D3A33' }}>
         {/* Background bot watermark - Behind left text section */}
         <div className="absolute left-[10%] top-1/2 -translate-y-1/2 pointer-events-none h-full max-h-[700px]" style={{ opacity: 0.03 }}>
           <img src={botTablet} alt="" className="h-full w-auto scale-x-[-1]" />
@@ -423,7 +421,7 @@ const BookDemoSection = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

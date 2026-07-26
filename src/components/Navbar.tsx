@@ -99,10 +99,14 @@ const Navbar = () => {
     >
       <nav className="w-full px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-1.5 lg:flex-1">
+        <a 
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, "#hero", "hero")}
+          className="flex items-center gap-1.5 lg:flex-1 cursor-pointer"
+        >
           <img src={iconLogo} alt="Chikitra Icon" className="h-7 md:h-8 w-auto object-contain" />
           <img src={chikitraLogo} alt="Chikitra" className="h-5 md:h-6 w-auto object-contain" />
-        </div>
+        </a>
 
         {/* Desktop Nav Links */}
         <ul className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-14 justify-center mx-4 lg:mx-8">
@@ -125,7 +129,7 @@ const Navbar = () => {
           <li>
             <button
               onClick={handleBookDemo}
-              className="text-xs lg:text-[13.5px] whitespace-nowrap rounded-full px-3 lg:px-3.5 pt-[5px] pb-[7px] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center"
+              className="text-xs lg:text-[13.5px] whitespace-nowrap rounded-full px-3 lg:px-3.5 py-[6px] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center"
               style={{
                 backgroundColor: bookDemoBg,
                 color: bookDemoText,
@@ -142,6 +146,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 lg:flex-1 justify-end">
           <a
             href="https://app.chikitra.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs lg:text-sm whitespace-nowrap font-medium transition-colors duration-300 hover:opacity-80"
             style={{ color: signInColor }}
           >

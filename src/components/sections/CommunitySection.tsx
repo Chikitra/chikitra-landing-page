@@ -76,11 +76,11 @@ const CommunitySection = () => {
 
   return (
     <>
+      <div id="community">
       {/* =============================================
           MOBILE / TABLET VERSION (hidden on lg+)
          ============================================= */}
       <section
-        id="community"
         className="lg:hidden py-12 relative overflow-hidden"
         style={{
           background: 'linear-gradient(180deg, #042825 0%, #5B736A 55%, #C0E1CA 100%)',
@@ -266,7 +266,6 @@ const CommunitySection = () => {
           DESKTOP / LAPTOP VERSION (hidden below lg)
          ============================================= */}
       <section
-        id="community-desktop"
         className="hidden lg:block py-20 relative overflow-hidden"
         style={{ backgroundColor: '#C2E2CB' }}
       >
@@ -425,7 +424,9 @@ const CommunitySection = () => {
           </div>
         </div>
       </section>
+      </div>
 
+      <div id="about">
       {/* About Us Section — MOBILE/TABLET (hidden on lg+) */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           🎛  MOBILE ABOUT-US PARAMS
@@ -493,7 +494,6 @@ const CommunitySection = () => {
         };
         return (
           <section
-            id="about"
             className="lg:hidden pt-10 pb-0 relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #C0E1CA 0%, #C3D5C7 100%)' }}
           >
@@ -596,7 +596,6 @@ const CommunitySection = () => {
 
       {/* About Us Section — DESKTOP/LAPTOP (hidden below lg) */}
       <section
-        id="about-desktop"
         className="hidden lg:block pt-12 md:pt-16 pb-0 relative overflow-hidden"
         style={{ backgroundColor: '#C4D6C8' }}
       >
@@ -675,6 +674,7 @@ const CommunitySection = () => {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 };
