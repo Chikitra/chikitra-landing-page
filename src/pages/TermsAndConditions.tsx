@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
           </h2>
           <p>
             These Terms of Use constitute a legally binding agreement between you and
-            Chikitra Technologies Private Limited (“Chikitra”, “we”, “our”, or “us”)
+            CHIKITRA MEDTECH SOLUTIONS PRIVATE LIMITED (“Chikitra”, “we”, “our”, or “us”)
             and govern your use of the Chikitra digital platform, including its
             AI-enabled WhatsApp interaction system, associated digital tools, and any
             connected technological interfaces (“Services”).
@@ -173,8 +173,8 @@ const TermsAndConditions = () => {
           <p>
             The Chikitra platform, including its software, algorithms, data structures,
             user interface, design, logos, content, documentation, and all other
-            intellectual property elements, is owned exclusively by Chikitra
-            Technologies Private Limited.
+            intellectual property elements, is owned exclusively by CHIKITRA
+            MEDTECH SOLUTIONS PRIVATE LIMITED.
           </p>
           <p>
             You are granted a limited, personal, non-transferable and revocable licence

@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
             Understanding Your Privacy at Chikitra
           </h2>
           <p>
-            This Privacy Notice explains how Chikitra Technologies Private Limited
+            This Privacy Notice explains how CHIKITRA MEDTECH SOLUTIONS PRIVATE LIMITED
             (“Chikitra”, “we”, “our”, or “us”) collects, uses, processes, stores, and
             protects your personal data when you interact with our AI-based medical
             intake system.
